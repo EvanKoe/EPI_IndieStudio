@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0
       - name: Check if it builds
         run: |
-          rm -rf build; mkdir -p build && cd build && cmake ..
+          rm -rf build; mkdir -p build && cd build && cmake .. && make
       - name: Push to main repo
         if: success()
         uses: pixta-dev/repository-mirroring-action@v1
