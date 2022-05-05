@@ -8,6 +8,6 @@
 #include <iostream>
 
 int main(void) {
-  bonjour.lmq;
+  std::cout << "Hello World !" << std::endl;
   return 0;
 }
