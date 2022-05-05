@@ -8,5 +8,6 @@
 #include <iostream>
 
 int main(void) {
+  bonjour.lmq;
   return 0;
 }
