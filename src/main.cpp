@@ -5,9 +5,12 @@
 ** main
 */
 
-#include <iostream>
+#include "./graphics/Graphics.hpp"
 
 int main(void) {
+  Graphics *g = new Graphics();
+  g->openWindow();
   std::cout << "Hello World !" << std::endl;
+  delete(g);
   return 0;
 }
