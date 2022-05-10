@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.17)
 project(bomberman)
 
 find_package(raylib 3.0 REQUIRED)
