@@ -8,9 +8,11 @@
 #include "./graphics/Graphics.hpp"
 
 int main(void) {
-  Graphics *g = new Graphics();
-  g->openWindow();
+  // error gestion
+  // get old saves ==> parse save file
+
+  Graphics g;
+  g.openWindow(EASY);
   std::cout << "Hello World !" << std::endl;
-  delete(g);
   return 0;
 }

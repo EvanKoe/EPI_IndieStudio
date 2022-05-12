@@ -15,11 +15,16 @@ Graphics::Graphics(int w, int h, std::string title) {
   SetTargetFPS(60);
 }
 
-int Graphics::openWindow(void) {
+int Graphics::openWindow(States state) {
   while (!WindowShouldClose()) {
     BeginDrawing();
-    ClearBackground(RAYWHITE);
-    DrawText("Hello world !", 100, 200, 30, LIGHTGRAY);
+    for (auto element: stateArray) {
+      if (state == element.s) {
+        element.fun();
+      }
+    }
+    // ClearBackground(RAYWHITE);
+    // DrawText("Hello world !", 100, 200, 30, LIGHTGRAY);
     EndDrawing();
   }
   return 0;
