@@ -36,6 +36,8 @@ class Map {
         void SaveMap(std::string path); // Save a map in a txt file
         void ParseMap(std::string path); // Parse a map from a txt file
         ~Map();
+        //return en double tableau (protected) Cédric Kélian
+        // class error sans std::exception (pas dans classe map) Cedric Kélian
 
     protected:
         Position _size;
