@@ -3,7 +3,8 @@ project(bomberman)
 
 FIND_PACKAGE(raylib REQUIRED)
 
-add_executable(bomberman src/main.cpp)
+FILE(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/*.cpp")
+add_executable(bomberman ${SOURCES})
 target_link_libraries(bomberman raylib)
 
 if (NOT raylib_FOUND)

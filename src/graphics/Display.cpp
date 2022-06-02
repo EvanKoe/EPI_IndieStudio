@@ -19,11 +19,11 @@ Display::Display(int w, int h, std::string title) {
 int Display::openWindow(State state) {
   while (!WindowShouldClose()) {
     BeginDrawing();
-    for (auto element: stateArray) {
-      if (state == element.s) {
-        element.fun();
-      }
-    }
+    // for (auto element: stateArray) {
+    //   if (state == element.s) {
+    //     element.fun();
+    //   }
+    // }
     // ClearBackground(RAYWHITE);
     // DrawText("Hello world !", 100, 200, 30, LIGHTGRAY);
     EndDrawing();
