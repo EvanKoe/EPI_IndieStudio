@@ -7,12 +7,12 @@
 
 #pragma once
 
-#include <iostream>
-
-class IGraphic {
-    public:
-        virtual void draw(void);
-        virtual ~IGraphic();
-    protected:
-    private:
+namespace Indie {
+    class IGraphic {
+        public:
+            virtual void draw(void);
+            virtual ~IGraphic();
+        protected:
+        private:
+    };
 };

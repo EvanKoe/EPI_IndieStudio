@@ -5,14 +5,10 @@
 ** main
 */
 
-#include "./graphics/Graphics.hpp"
+#include "./GameCreator.hpp"
 
-int main(void) {
-  // error gestion
-  // get old saves ==> parse save file
-
-  Graphics g;
-  g.openWindow(EASY);
-  std::cout << "Hello World !" << std::endl;
+int main(int ac, char **av) {
+  Indie::GameCreator g;
+  g.getDisp().openWindow(Indie::MAIN_MENU);
   return 0;
 }

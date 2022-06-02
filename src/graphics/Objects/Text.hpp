@@ -9,10 +9,12 @@
 
 #include "../IGraphic.hpp"
 
-class Text: public IGraphic {
-    public:
-        Text();
-        ~Text();
-    protected:
-    private:
+namespace Indie {
+    class Text: public IGraphic {
+        public:
+            Text();
+            ~Text();
+        protected:
+        private:
+    };
 };

@@ -25,8 +25,8 @@ class Map {
         //         case (EASY): _size.x = 20; _size.y = 10; break;
         //         case (MEDIUM): _size.x = 30; _size.y = 20; break;
         //         default: _size.x = 50; _size.y = 30; break;
-        //     // }
-        // // }
+        //     }
+        //  }
 
         // If save
         // Map(std::list<std::list<int>> &map): _map(map) {};
@@ -36,7 +36,7 @@ class Map {
         void SaveMap(std::string path); // Save a map in a txt file
         void ParseMap(std::string path); // Parse a map from a txt file
         ~Map();
-        //return en double tableau (protected) Cédric Kélian
+        // return en double tableau (protected) Cédric Kélian
         // class error sans std::exception (pas dans classe map) Cedric Kélian
 
     protected:

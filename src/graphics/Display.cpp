@@ -2,20 +2,21 @@
 ** EPITECH PROJECT, 2022
 ** project_name
 ** File description:
-** Graphics
+** Display
 */
 
-#include "./Graphics.hpp"
-#include "raylib.h"
+#include "./Display.hpp"
 
-Graphics::Graphics(int w, int h, std::string title) {
+namespace Indie {
+
+Display::Display(int w, int h, std::string title) {
   _size.x = w;
   _size.y = h;
   InitWindow(w, h, title.c_str());
   SetTargetFPS(60);
 }
 
-int Graphics::openWindow(States state) {
+int Display::openWindow(State state) {
   while (!WindowShouldClose()) {
     BeginDrawing();
     for (auto element: stateArray) {
@@ -30,6 +31,8 @@ int Graphics::openWindow(States state) {
   return 0;
 }
 
-Graphics::~Graphics() {
+Display::~Display() {
   CloseWindow();
 }
+
+};

@@ -3,7 +3,7 @@ project(bomberman)
 
 FIND_PACKAGE(raylib REQUIRED)
 
-add_executable(bomberman src/main.cpp src/graphics/Graphics.cpp)
+add_executable(bomberman src/main.cpp)
 target_link_libraries(bomberman raylib)
 
 if (NOT raylib_FOUND)

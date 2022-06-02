@@ -7,15 +7,21 @@
 
 #pragma once
 
-/* This is our global game class. Everything will be
- * initialized through this class.
- */
+#include "./graphics/Display.hpp"
 
-class GameCreator {
-    public:
-        GameCreator();
-        void startGame(void) { return; };
-        ~GameCreator();
-    protected:
-    private:
+/** This is our global game class. Everything will be
+ * initialized through this class.
+**/
+
+namespace Indie {
+    class GameCreator {
+        public:
+            GameCreator();
+            void startGame(void) { return; };
+            Display getDisp(void) { return _disp; };
+            ~GameCreator();
+        protected:
+            Display _disp;
+        private:
+    };
 };
