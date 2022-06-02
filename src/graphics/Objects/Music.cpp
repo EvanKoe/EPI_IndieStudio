@@ -20,7 +20,7 @@ namespace Indie {
 
     bool Music::isPlaying(void)
     {
-
+        return false;
     }
 
     void Music::play(void)

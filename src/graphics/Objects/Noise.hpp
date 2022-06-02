@@ -10,13 +10,15 @@
 #include "../IGraphic.hpp"
 
 namespace Indie {
-    class Sound : public IGraphic {
+    class Noise : public IGraphic {
         public:
-            Sound(std::string);
+            Noise(std::string);
             void play(void);
-            ~Sound();
+            ~Noise();
 
         protected:
         private:
+            Sound _noise;
+            std::string _path;
     };
 };

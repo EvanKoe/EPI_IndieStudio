@@ -2,22 +2,23 @@
 ** EPITECH PROJECT, 2022
 ** EPI_IndieStudio
 ** File description:
-** Sound
+** Noise
 */
 
-#include "Sound.hpp"
+#include "Noise.hpp"
 
 namespace Indie {
-    Sound::Sound(std::string)
+    Noise::Noise(std::string path)
     {
+
     }
 
-    void Sound::play(void)
+    void Noise::play(void)
     {
 
     }
     
-    Sound::~Sound()
+    Noise::~Noise()
     {
     }
 };

@@ -20,5 +20,7 @@ namespace Indie {
             ~Button();
         protected:
         private:
+            std::string _name;
+            std::string _text;
     };
 };

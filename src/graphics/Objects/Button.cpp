@@ -8,18 +8,19 @@
 #include "Button.hpp"
 
 namespace Indie {
-    Button::Button(std::string)
+    Button::Button(std::string str)
     {
+        _name = str;
     }
 
-    void Button::setText(std::string)
+    void Button::setText(std::string str)
     {
-
+        _text = str;
     }
 
     std::string Button::getText(void)
     {
-
+        return "AAAAAAAAAA";
     }
 
     void Button::setDisabled(bool)
@@ -29,7 +30,7 @@ namespace Indie {
 
     bool Button::isDisabled(void)
     {
-
+        return false;
     }
     
     Button::~Button()
