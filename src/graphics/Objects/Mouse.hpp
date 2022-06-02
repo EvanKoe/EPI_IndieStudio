@@ -8,6 +8,8 @@
 #pragma once
 
 #include "../IGraphic.hpp"
+#include <vector>
+#include <list>
 
 namespace Indie {
     class Mouse : public IGraphic {
@@ -22,5 +24,3 @@ namespace Indie {
             std::vector<int> _y;
     };
 };
-
-#endif /* !MOUSE_HPP_ */
