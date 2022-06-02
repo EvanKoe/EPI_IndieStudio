@@ -10,12 +10,14 @@
 #include "../IGraphic.hpp"
 
 namespace Indie {
-    class Text : public IGraphic {
+    class Button : public IGraphic {
         public:
-            Text(std::string);
-            std::string getText(void);
+            Button(std::string);
             void setText(std::string);
-            ~Text();
+            std::string getText(void);
+            void setDisabled(bool);
+            bool isDisabled(void);
+            ~Button();
         protected:
         private:
     };

@@ -6,6 +6,7 @@
 */
 
 #pragma once
+#include <iostream>
 
 namespace Indie {
     class IGraphic {
@@ -15,4 +16,4 @@ namespace Indie {
         protected:
         private:
     };
-};
+}
