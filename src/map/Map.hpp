@@ -35,12 +35,12 @@ class Map {
         void LoadMap(std::string path); // Load a map from a txt file
         void SaveMap(std::string path); // Save a map in a txt file
         void ParseMap(std::string path); // Parse a map from a txt file
-        ~Map();
+        ~Map() {};
         // return en double tableau (protected) Cédric Kélian
         // class error sans std::exception (pas dans classe map) Cedric Kélian
 
     protected:
         Position _size;
-        std::list<std::list<int>> _map;
+        std::list<std::string>> _map;
     private:
 };
