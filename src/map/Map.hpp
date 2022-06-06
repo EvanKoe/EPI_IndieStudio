@@ -9,7 +9,8 @@
 
 #include <iostream>
 #include <list>
-#include "../GameObject.hpp"
+#include <raylib.h>
+#include "../GameCreator.hpp"
 
 enum Difficulty {
     EASY,
@@ -40,7 +41,7 @@ class Map {
         // class error sans std::exception (pas dans classe map) Cedric Kélian
 
     protected:
-        Position _size;
-        std::list<std::string>> _map;
+        Vector2 _size;
+        std::list<std::string> _map;
     private:
 };

@@ -18,7 +18,6 @@ namespace Indie {
             std::list<std::vector<int>> getPos(void);
             ~Mouse();
 
-        protected:
         private:
             std::vector<int> _x;
             std::vector<int> _y;
