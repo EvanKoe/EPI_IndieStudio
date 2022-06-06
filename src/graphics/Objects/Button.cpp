@@ -7,6 +7,7 @@
 
 #include "Button.hpp"
 #include <raylib.h>
+#include <iostream>
 
 namespace Indie {
     Button::Button(
@@ -43,7 +44,15 @@ namespace Indie {
     }
 
     void Button::draw(void) {
-        DrawText(_text.c_str(), _rec.x, _rec.y, 30, _color);
+        Rectangle r = getRect();
+        if (
+            r.x < GetMouseX() && GetMouseX() < r.x + r.width &&
+            r.y < GetMouseY() && GetMouseY() < r.y + r.height
+        ) {
+            onHover();
+        } else {
+            DrawText(_text.c_str(), _rec.x, _rec.y, 30, _color);
+        }
     }
 
     std::string Button::getText(void)

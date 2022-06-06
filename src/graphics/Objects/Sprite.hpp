@@ -13,6 +13,7 @@ namespace Indie {
     class Sprite : public IGraphic {
         public:
             Sprite(std::string);
+            void onHover(void) override {};
             void setSprite(std::string);
             void getSprite(std::string);
             ~Sprite();

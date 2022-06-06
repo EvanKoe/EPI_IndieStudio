@@ -10,16 +10,17 @@
 #include "../IGraphic.hpp"
 
 namespace Indie {
-    class Music : public IGraphic {
+    class Musics : public IGraphic {
         public:
-            Music(std::string);
+            Musics(std::string);
             void setLoop(void);
             bool isPlaying(void);
             void play(void);
             void pause(void);
             void stop(void);
-            void setSound(void);
-            ~Music();
+            void setSound(std::string);
+            ~Musics();
         private:
+            Music _music;
     };
 };

@@ -7,10 +7,12 @@
 
 #include "Display.hpp"
 #include "IGraphic.hpp"
-#include "Button.hpp"
+#include "Objects/Button.hpp"
+#include "Objects/Text.hpp"
 #include "Text.hpp"
 #include <exception>
 #include <memory>
+#include <raylib.h>
 
 namespace Indie {
     Display::Display(State s, int w, int h, std::string title) {
@@ -71,13 +73,13 @@ namespace Indie {
         free_comps();
         _comp.push_back(new Button(
             "Button",
-            [](){ std::cout << "putthe" << std::endl; },
-            { 500, 500 }
+            [](){ std::cout << "button clicked" << std::endl; },
+            { 500, 500 },
+            { 200, 400 },
+            LIGHTGRAY,
+            BLUE
         ));
         _comp.push_back(new Text("hello world !"));
-        for (auto e: _comp) {
-            std::cout << "putthe" << std::endl;
-        }
     };
 
     void Display::create_lose(void) {};

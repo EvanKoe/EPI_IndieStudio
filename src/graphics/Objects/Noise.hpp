@@ -13,6 +13,7 @@ namespace Indie {
     class Noise : public IGraphic {
         public:
             Noise(std::string);
+            void onHover(void) override {};
             void play(void);
             ~Noise();
 

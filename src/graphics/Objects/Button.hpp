@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "IGraphic.hpp"
+#include "../IGraphic.hpp"
 #include <functional>
 #include <raylib.h>
 #include <iostream>
@@ -23,6 +23,11 @@ namespace Indie {
                 Color textColor = GRAY,
                 Color hoverColor = ORANGE
             );
+            void onHover(void) override {
+                DrawText(_text.c_str(), _rec.x, _rec.y, 30, _hoverColor);
+            }
+            void onClick(void) override { return _onClick(); }
+            Rectangle getRect(void) override { return _rec; }
             void setPosition(Vector2);
             void setHover(void);
             Vector2 getPosition(void);
