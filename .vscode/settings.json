@@ -1,9 +1,12 @@
 {
     "cmake.configureOnOpen": false,
     "workbench.colorCustomizations": {
-        "activityBar.background": "#3206aa93",
-        "statusBar.background": "#e77c35",
-        "statusBar.foreground": "#471101"
+        "activityBar.background": "#38a0eafc",
+        "activityBar.inactiveForeground": "#4a4c51",
+        "activityBar.activeFocusBorder": "#6c6d71",
+        "activityBar.activeBackground": "#2e3440",
+        "statusBar.background": "#38a0eafc",
+        "statusBar.foreground": "#4a4c51"
     },
     "files.associations": {
         "array": "cpp",

@@ -12,8 +12,8 @@
 namespace Indie {
     class IGraphic {
         public:
-            virtual void draw(void);
-            virtual ~IGraphic();
+            virtual void draw(void) = 0;
+            virtual ~IGraphic() = default;
         protected:
         private:
     };

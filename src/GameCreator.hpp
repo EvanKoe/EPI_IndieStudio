@@ -18,10 +18,10 @@
 namespace Indie {
     class GameCreator {
         public:
-            GameCreator();
-            void startGame(void) { return; };
-            Display getDisp(void) { return _disp; };
-            ~GameCreator();
+            GameCreator() = default;
+            void startGame(void) { return; }
+            Display getDisp(void) { return _disp; }
+            ~GameCreator() = default;
         protected:
             Display _disp;
         private:

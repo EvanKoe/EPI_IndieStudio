@@ -10,8 +10,7 @@
 
 class IGame {
     public:
-        IGame();
-        ~IGame();
+        ~IGame() = default;
 
     protected:
     private:
