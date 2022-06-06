@@ -9,6 +9,7 @@
 
 #include "./graphics/Display.hpp"
 #include "./graphics/IGraphic.hpp"
+#include <filesystem>
 
 /** This is our global game class. Everything will be
  * initialized through this class.

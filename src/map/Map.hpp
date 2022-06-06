@@ -8,7 +8,10 @@
 #pragma once
 
 #include <iostream>
-#include <list>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <filesystem>
 #include <raylib.h>
 #include "../GameCreator.hpp"
 
@@ -42,6 +45,6 @@ class Map {
 
     protected:
         Vector2 _size;
-        std::list<std::string> _map;
+        std::vector<std::string> _map;
     private:
 };
