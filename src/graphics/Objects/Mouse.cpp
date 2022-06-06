@@ -6,17 +6,21 @@
 */
 
 #include "Mouse.hpp"
+#include <list>
+#include <raylib.h>
 
 namespace Indie {
-    Mouse::Mouse(std::vector<int> x, std::vector<int> y)
+    Mouse::Mouse(int x, int y)
     {
-        x = _x;
-        y = _y;
+        x = _pos.x;
+        y = _pos.y;
     }
 
-    std::list<std::vector<int>> Mouse::getPos(void)
+    Vector2 Mouse::getPos(void)
     {
-
+        _pos.x = static_cast<float>(GetMouseX());
+        _pos.y = static_cast<float>(GetMouseY());
+        return _pos;
     }
 
     Mouse::~Mouse()

@@ -14,12 +14,10 @@
 namespace Indie {
     class Mouse : public IGraphic {
         public:
-            Mouse(std::vector<int>, std::vector<int>);
-            std::list<std::vector<int>> getPos(void);
+            Mouse(int, int);
+            Vector2 getPos(void);
             ~Mouse();
-
         private:
-            std::vector<int> _x;
-            std::vector<int> _y;
+            Vector2 _pos;
     };
 };

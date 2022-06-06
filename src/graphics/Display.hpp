@@ -11,32 +11,38 @@
 #include "./IGraphic.hpp"
 #include "../Globals.hpp"
 #include <memory>
+#include <vector>
 
 namespace Indie {
-  class Display {
-    public:
-      Display(int w = 1440, int h = 900, std::string title = "Raylib Window");
-      int openWindow(State);
-      ~Display();
-    private:
-      Coordinates _size;
-  };
-  //
-  // void disp_menu(void);
-  // void disp_diff(void);
-  // void disp_load(void);
-  // void disp_quit(void);
-  // void disp_game(void);
-  // void disp_lose(void);
-  // void disp_pause(void);
-  //
-  // const StateAction stateArray[7] = {
-  //   { MAIN_MENU, [](){ return disp_menu(); } },
-  //   { DIFF_MENU, [](){ return disp_diff(); } },
-  //   { LOAD_MENU, [](){ return disp_load(); } },
-  //   { QUIT_MENU, [](){ return disp_quit(); } },
-  //   { CURR_GAME, [](){ return disp_game(); } },
-  //   { LOSE_GAME, [](){ return disp_lose(); } },
-  //   { PAUSE_MENU, [](){ return disp_pause(); } }
-  // };
+    class Display {
+        public:
+            Display(State s, int w = 1440, int h = 900, std::string title = "Raylib Window");
+            void changeState(State);
+            int draw(void);
+            key_e getEvents(void);
+            void addComp(IGraphic &);
+            void free_comps(void);
+            ~Display();
+        private:
+            Vector2 _size;
+            std::vector<IGraphic *> _comp;
+
+            void create_menu(void);
+            void create_diff(void);
+            void create_load(void);
+            void create_quit(void);
+            void create_game(void);
+            void create_lose(void);
+            void create_pause(void);
+
+            const StateAction stateArray[7] = {
+                { MAIN_MENU, [&](){ return create_menu(); } },
+                { DIFF_MENU, [&](){ return create_diff(); } },
+                { LOAD_MENU, [&](){ return create_load(); } },
+                { QUIT_MENU, [&](){ return create_quit(); } },
+                { CURR_GAME, [&](){ return create_game(); } },
+                { LOSE_GAME, [&](){ return create_lose(); } },
+                { PAUSE_MENU, [&](){ return create_pause(); } }
+            };
+    };
 };

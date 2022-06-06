@@ -7,16 +7,17 @@
 
 #pragma once
 
-#include "../IGraphic.hpp"
+#include "IGraphic.hpp"
 #include <functional>
 #include <raylib.h>
+#include <iostream>
 
 namespace Indie {
     class Button : public IGraphic {
         public:
             Button(
                 std::string str = "Click here",
-                std::function<void (void)> fun = [](){},
+                std::function<void (void)> fun = [](){ return; },
                 Vector2 pos = { 0, 0 },
                 Vector2 size = { 100, 100 },
                 Color textColor = GRAY,

@@ -10,6 +10,16 @@ FILE(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR}
   "src/graphics/*.cpp"
   "src/graphics/Objects/*.cpp"
 )
+
+INCLUDE_DIRECTORIES(
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Objects/"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Entities/"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/Enemy"
+)
+
 add_executable(bomberman ${SOURCES})
 target_link_libraries(bomberman raylib)
 

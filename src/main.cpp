@@ -5,14 +5,20 @@
 ** main
 */
 
-#include "./GameCreator.hpp"
+#include "graphics/Display.hpp"
+#include "Globals.hpp"
 #include <raylib.h>
 
 int main(int ac, char **av) {
-  Indie::GameCreator g;
-  g.getDisp().openWindow(Indie::MAIN_MENU);
-  while (!WindowShouldClose()) {
+    Indie::Display d(Indie::CURR_GAME, 1440, 900, "Indie studio");
+    // just create a GameEngine class
+    // Indie::GameEngine g;
+    Indie::key_e k;
 
-  }
-  return 0;
+    while (!WindowShouldClose()) {
+        d.draw();
+        k = d.getEvents();
+        // g.play(k);
+    }
+    return 0;
 }

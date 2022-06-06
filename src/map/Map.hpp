@@ -13,7 +13,6 @@
 #include <fstream>
 #include <filesystem>
 #include <raylib.h>
-#include "../GameCreator.hpp"
 
 enum Difficulty {
     EASY,
@@ -31,5 +30,5 @@ class Map {
         ~Map() {};
     protected:
         Vector2 _size;
-        char[33][33] _map;
+        // char[33][33] _map;
 };

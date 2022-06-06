@@ -17,6 +17,7 @@ namespace Indie {
         Color textColor,
         Color hoverColor
     ) {
+        _text = str;
         _hoverColor = hoverColor;
         _color = textColor;
         _rec = { pos.x, pos.y, size.x, size.y };

@@ -10,14 +10,14 @@
 
 void Map::Generator(size_t x, size_t y)
 {
-    for (int i = 0; y < i; i++) {
-        for (int j = 0; j < x; j++) {
-            if (i == 0 || i == 32)
-                _map[i][j] = 'x';
-            else
-                _map[i][j] = ' ';
-        }
-    }
+    // for (int i = 0; y < i; i++) {
+        // for (int j = 0; j < x; j++) {
+            // if (i == 0 || i == 32)
+            //     _map[i][j] = 'x';
+            // else
+            //     _map[i][j] = ' ';
+        // }
+    // }
     LoadMap("map.txt");
 }
 
@@ -29,10 +29,10 @@ void Map::LoadMap(std::string path)
     if (!stream)
         throw std::runtime_error("Cannot open file");
     std::string line;
-    for (int i = 0; std::getline(stream, line); ++i) {
-        std::cout << line << std::endl;
-        _map[i] = line;
-    }
+    // for (int i = 0; std::getline(stream, line); ++i) {
+    //     std::cout << line << std::endl;
+    //     _map[i] = line.c_str();
+    // }
     stream.close();
 }
 
@@ -43,9 +43,9 @@ void Map::SaveMap(std::string path)
     std::ifstream stream(my_path.string().c_str(), std::ios::binary);
     if (!stream)
         throw std::runtime_error("Cannot open file");
-    for (int i = 0; i < _map.size(); i++)
-        stream << std::ifstream(_map[i]) << std::endl;
-    std::cout << "SaveMap" << std::endl;
+    // for (int i = 0; i < _map.size(); i++)
+    //     stream << std::ifstream(_map[i]) << std::endl;
+    // std::cout << "SaveMap" << std::endl;
     stream.close();
 }
 

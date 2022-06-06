@@ -14,12 +14,11 @@ namespace Indie {
         public:
             Text(std::string, float x = 0, float y = 0, float size = 20, Color col = LIGHTGRAY);
             std::string getText(void);
-            void draw(void);
+            void draw(void) override;
             void setText(std::string);
             ~Text();
         protected:
         private:
-            Font _font;
             Vector2 _pos;
             size_t _size;
             Color _col;
