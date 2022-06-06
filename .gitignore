@@ -1,6 +1,7 @@
 # Prerequisites
 .vscode/
 build/*
+.vscode/settings.json
 *.d
 
 # Compiled Object files
