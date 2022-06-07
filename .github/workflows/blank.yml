@@ -3,10 +3,89 @@ name: Tests
 on: [push, workflow_dispatch]
 
 jobs:
+  on:
+    workflow_dispatch:
+    push:
+      paths:
+        - 'src/**'
+        - 'examples/**'
+        - '.github/workflows/cmake.yml'
+        - 'CMakeList.txt'
+        - 'CMakeOptions.txt'
+        - 'cmake/**'
+    pull_request:
+      paths:
+        - 'src/**'
+        - 'examples/**'
+        - '.github/workflows/cmake.yml'
+        - 'CMakeList.txt'
+        - 'CMakeOptions.txt'
+        - 'cmake/**'
+
+  env:
+    BUILD_TYPE: Release
+
+  permissions:
+    contents: read
+  build_windows:
+    name: Windows Build
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{github.workspace}}/build
+
+      - name: Configure CMake
+        shell: powershell
+        working-directory: ${{github.workspace}}/build
+        run: cmake $env:GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$env:BUILD_TYPE -DPLATFORM=Desktop
+
+      - name: Build
+        working-directory: ${{github.workspace}}/build
+        shell: powershell
+        run: cmake --build . --config $env:BUILD_TYPE
+
+      - name: Test
+        working-directory: ${{github.workspace}}/build
+        shell: powershell
+        run: ctest -C $env:BUILD_TYPE
+  build_linux:
+    name: Linux Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Build Environment
+        run: cmake -E make_directory ${{github.workspace}}/build
+
+      - name: Setup Environment
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install gcc-multilib
+          sudo apt-get install -y --no-install-recommends libglfw3 libglfw3-dev libx11-dev libxcursor-dev libxrandr-dev libxinerama-dev libxi-dev libxext-dev libxfixes-dev
+          sudo apt install -y asound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+          git clone https://github.com/raysan5/raylib.git raylib
+          cd raylib
+          mkdir build && cd build
+          cmake -DBUILD_SHARED_LIBS=ON ..
+          make
+          sudo make install
+      - name: Configure CMake
+        shell: bash
+        working-directory: ${{github.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DPLATFORM=Desktop
+      - name: Build
+        working-directory: ${{github.workspace}}/build
+        shell: bash
+        run: cmake --build . --config $BUILD_TYPE
+      - name: Test
+        working-directory: ${{github.workspace}}/build
+        shell: bash
+        run: ctest -C $BUILD_TYPE
   tests:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
-
     steps:
       - uses: actions/checkout@v2
         with:
