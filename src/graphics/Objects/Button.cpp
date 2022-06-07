@@ -19,8 +19,9 @@ namespace Indie {
         Color hoverColor
     ) {
         _text = str;
-        _hoverColor = hoverColor;
-        _color = textColor;
+        _hcolor = hoverColor;
+        _ncolor = textColor;
+        _color = _ncolor;
         _rec = { pos.x, pos.y, size.x, size.y };
         _onClick = fun;
         _name = str;
@@ -39,13 +40,16 @@ namespace Indie {
         _text = str;
     }
 
-    void Button::setHover(void) {
-        DrawText(_text.c_str(), _rec.x, _rec.y, 30, _hoverColor);
+    void Button::onHover(void) {
+        _color = _hcolor;
+    }
+
+    void Button::onHoverEnd(void) {
+        _color = _ncolor;
     }
 
     void Button::draw(void) {
         DrawText(_text.c_str(), _rec.x, _rec.y, 30, _color);
-
     }
 
     bool Button::isHover(void) {

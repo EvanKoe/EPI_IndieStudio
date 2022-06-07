@@ -5,52 +5,42 @@
 ** Picture
 */
 
-#include "IGraphic.hpp"
 #include "Picture.hpp"
-
-#pragma once
-
+#include <raylib.h>
 namespace Indie {
-    Picture::Picture(Image img, Texture2D textr, std::string *file, Vector2 vec)
+    Picture::Picture(std::string path, Vector2 pos, Vector2 size)
+    {
+        if (!std::filesystem::exists(std::filesystem::path(path))) {
+            std::cout << path << ": no such file or directory" << std::endl;
+            return;
+        }
+        _source = path;
+        _textr = LoadTexture(_source.c_str());
+        _pos = pos;
+        _size = size;
+        _img = LoadImageFromTexture(_textr);
+        _rec = { pos.x, pos.y, pos.x + size.x, pos.y + size.y };
+    }
+
+    void Picture::draw(void)
+    {
+        DrawTexture(_textr, _pos.x, _pos.y, WHITE);
+    }
+
+    void Picture::setPicture(std::string file)
     {
         _source = file;
-        _img = img;
-        _textr = textr;
-        _pos.x = vec.x;
-        _pos.y = vec.y;
-
-        display();
+        _textr = LoadTexture(file.c_str());
     }
 
-    void Picture::display(void)
+    void Picture::unLoadPicture(void)
     {
-        loadPicture();
-        ClearBackground(RAYWHITE);
-        DrawTexture(_textr, _pos.x, _pos.y, RAYWHITE);
-
-    }
-    void Picture::loadPicture()
-    {
-        _img = LoadImage(_source->c_str());
-        _textr = LoadTextureFromImage(_img);
-
-        // Is texture necessary ?
-    }
-
-    void Picture::setPicture(std::string *file)
-    {
-        _source = file;
-        _img = LoadImage(_source->c_str());
-    }
-
-    void unloadPicture(Image img)
-    {
-        unloadPicture(img);
+        UnloadImage(_img);
     }
 
     Picture::~Picture()
     {
-        unloadPicture(_img);
+        UnloadImage(_img);
         UnloadTexture(_textr);
 
         // Should it  appear in  destructor only ?

@@ -14,6 +14,7 @@ namespace Indie {
         public:
             Text(std::string, float x = 0, float y = 0, float size = 20, Color col = LIGHTGRAY);
             void onHover(void) override {};
+            bool isHover(void) override { return false; }
             Rectangle getRect(void) override { return (Rectangle){
                 _pos.x, _pos.y,
                 (float)(_size * _value.size()),

@@ -25,7 +25,7 @@ namespace Indie {
             ~Display();
         private:
             Vector2 _size;
-            std::vector<IGraphic *> _comp;
+            std::vector<std::shared_ptr<IGraphic>> _comp;
 
             void create_menu(void);
             void create_diff(void);
