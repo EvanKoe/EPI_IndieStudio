@@ -30,6 +30,7 @@ namespace Indie {
             Rectangle getRect(void) override { return _rec; }
             void setPosition(Vector2);
             void setHover(void);
+            bool isHover(void);
             Vector2 getPosition(void);
             void setText(std::string);
             std::string getText(void);

@@ -17,7 +17,7 @@ namespace Indie {
     {
 
     }
-    
+
     Noise::~Noise()
     {
     }

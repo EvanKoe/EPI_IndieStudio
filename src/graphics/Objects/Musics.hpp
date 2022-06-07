@@ -12,15 +12,17 @@
 namespace Indie {
     class Musics : public IGraphic {
         public:
-            Musics(std::string);
+            Musics(const std::string*, float);
             void setLoop(void);
             bool isPlaying(void);
             void play(void);
             void pause(void);
             void stop(void);
-            void setSound(std::string);
+            void setSound(float);
             ~Musics();
         private:
             Music _music;
+            const std::string *_source;
+            float _volume;
     };
 };

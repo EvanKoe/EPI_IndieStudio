@@ -44,15 +44,16 @@ namespace Indie {
     }
 
     void Button::draw(void) {
+        DrawText(_text.c_str(), _rec.x, _rec.y, 30, _color);
+
+    }
+
+    bool Button::isHover(void) {
         Rectangle r = getRect();
-        if (
+        return (
             r.x < GetMouseX() && GetMouseX() < r.x + r.width &&
             r.y < GetMouseY() && GetMouseY() < r.y + r.height
-        ) {
-            onHover();
-        } else {
-            DrawText(_text.c_str(), _rec.x, _rec.y, 30, _color);
-        }
+        );
     }
 
     std::string Button::getText(void)

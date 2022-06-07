@@ -21,7 +21,7 @@ namespace Indie {
     {
 
     }
-    
+
     Sprite::~Sprite()
     {
     }
