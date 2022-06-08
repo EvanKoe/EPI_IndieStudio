@@ -30,5 +30,5 @@ class Map {
         ~Map() {};
     protected:
         Vector2 _size;
-        // char[33][33] _map;
+        std::vector<std::string> _map;
 };
