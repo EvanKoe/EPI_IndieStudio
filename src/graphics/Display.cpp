@@ -21,6 +21,12 @@ namespace Indie {
     }
 
     void Display::changeState(State s) {
+        int size = _comp.size();
+
+        for (int i = 0; i < size; ++i) {
+            _comp.pop_back();
+        }
+
         for (auto e: stateArray) {
             if (e.s == s) {
                 return e.fun();
@@ -43,7 +49,6 @@ namespace Indie {
     {
         for (auto e: _comp) {
             if (e->isHover()) {
-                std::cout << "putthe" << std::endl;
                 e->onHover();
                 if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
                     e->onClick();
@@ -91,11 +96,17 @@ namespace Indie {
         _comp.push_back(std::make_shared<Musics>(Musics("src/assets/sounds/main_title.ogg", 50)));
     }
 
+    void Display::create_load(void) {
+        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
+    }
     void Display::create_diff(void) {}
-    void Display::create_load(void) {}
-    void Display::create_quit(void) {}
+    void Display::create_quit(void) {
+        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
+    }
     void Display::create_game(void) {}
-    void Display::create_settings(void) {}
+    void Display::create_settings(void) {
+        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
+    }
 
     bool Display::is_pressed(Rectangle rec) {
         return (
