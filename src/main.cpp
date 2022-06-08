@@ -10,7 +10,7 @@
 #include <raylib.h>
 
 int main(int ac, char **av) {
-    Indie::Display d(Indie::CURR_GAME, 1280, 720, "Indie studio");
+    Indie::Display d(Indie::MAIN_MENU, 1280, 720, "Indie studio");
     // just create a GameEngine class
     // Indie::GameEngine g;
     Indie::key_e k;

@@ -7,18 +7,25 @@
 
 #include "../IGraphic.hpp"
 #include "Musics.hpp"
+#include <raylib.h>
 
 namespace Indie {
-    Musics::Musics(const std::string *file, float vol)
+    Musics::Musics(std::string file, float vol)
     {
         _source = file;
         _volume = vol;
-        _music = LoadMusicStream(_source->c_str());
+        _music = LoadMusicStream(_source.c_str());
+    }
+
+    void Musics::draw(void)
+    {
+        InitAudioDevice();
+        play();
     }
 
     void Musics::setLoop(void)
     {
-        ResumeMusicStream(_music);
+        // ResumeMusicStream(_music);
     }
 
     bool Musics::isPlaying(void)
@@ -28,6 +35,7 @@ namespace Indie {
 
     void Musics::play(void)
     {
+        UpdateMusicStream(_music);
         PlayMusicStream(_music);
     }
 
@@ -49,5 +57,6 @@ namespace Indie {
     Musics::~Musics()
     {
         UnloadMusicStream(_music);
+        CloseAudioDevice();
     }
 };

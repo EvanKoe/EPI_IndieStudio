@@ -16,6 +16,7 @@ namespace Indie {
         MAIN_MENU,
         DIFF_MENU,
         LOAD_MENU,
+        SETT_MENU,
         QUIT_MENU,
         CURR_GAME,
         LOSE_GAME,

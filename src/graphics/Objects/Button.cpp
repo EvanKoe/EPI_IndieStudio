@@ -25,6 +25,7 @@ namespace Indie {
         _rec = { pos.x, pos.y, size.x, size.y };
         _onClick = fun;
         _name = str;
+        _is_enabled = true;
         _borderColor = LIGHTGRAY;
     }
 
@@ -42,6 +43,9 @@ namespace Indie {
     }
 
     void Button::onHover(void) {
+        if (!_is_enabled) {
+            return;
+        }
         _color = _hcolor;
         _borderColor = _hcolor;
     }

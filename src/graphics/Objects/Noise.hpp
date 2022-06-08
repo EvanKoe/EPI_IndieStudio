@@ -19,7 +19,6 @@ namespace Indie {
             void onClick(void) override {}
             void draw(void) override {};
             Rectangle getRect(void) override { return {0, 0, 0, 0}; }
-            
             ~Noise();
 
         protected:

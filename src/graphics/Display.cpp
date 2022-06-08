@@ -6,6 +6,8 @@
 */
 
 #include "Display.hpp"
+#include "Objects/Cam.hpp"
+#include <memory>
 #include <raylib.h>
 
 namespace Indie {
@@ -40,11 +42,16 @@ namespace Indie {
     {
         for (auto e: _comp) {
             if (e->isHover()) {
+                std::cout << "putthe" << std::endl;
                 e->onHover();
+                if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+                    e->onClick();
+                }
             } else {
                 e->onHoverEnd();
             }
         }
+
         for (int i = 0; i < 33; ++i) {
             if (IsKeyDown(key_tab[i].rayKey))
                 return key_tab[i].std_key;
@@ -52,24 +59,50 @@ namespace Indie {
         return KNull;
     }
 
-    void Display::free_comps(void) {}
-    void Display::create_menu(void) {};
-    void Display::create_diff(void) {};
-    void Display::create_load(void) {};
-    void Display::create_quit(void) {};
-
-    void Display::create_game(void) {
-        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/title.png")));
-        _comp.push_back(std::make_shared<Text>(Text("DoomerMan", 100, 20, 50)));
+    void Display::create_menu(void) {
+        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
+        _comp.push_back(std::make_shared<Cam>(Cam()));
+        _comp.push_back(std::make_shared<Text>(Text("DoomerMan", 100, 50, 70)));
         _comp.push_back(std::make_shared<Button>(Button(
             "Play",
-            [](){ std::cout << "button clicked" << std::endl; },
-            { 100, 100 },
+            [&](){ changeState(Indie::LOAD_MENU); },
+            { 100, 200 },
             { 350, 100 },
             BLACK,
             RED
         )));
-    };
+        _comp.push_back(std::make_shared<Button>(Button(
+            "Settings",
+            [&](){ changeState(Indie::SETT_MENU); },
+            { 100, 350 },
+            { 350, 100 },
+            BLACK,
+            RED
+        )));
+        _comp.push_back(std::make_shared<Button>(Button(
+            "Quit",
+            [&](){ changeState(Indie::QUIT_MENU); },
+            { 100, 500 },
+            { 350, 100 },
+            BLACK,
+            RED
+        )));
+        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/sounds/main_title.ogg")));
+    }
+
+    void Display::create_diff(void) {}
+    void Display::create_load(void) {}
+    void Display::create_quit(void) {}
+    void Display::create_game(void) {}
+    void Display::create_settings(void) {}
+
+    bool Display::is_pressed(Rectangle rec) {
+        return (
+            IsMouseButtonPressed(MOUSE_BUTTON_LEFT) &&
+            rec.x < GetMouseX() && GetMouseY() < rec.y &&
+            GetMouseX() < rec.x + rec.width && GetMouseY() < rec.y + rec.height
+        );
+    }
 
     void Display::create_lose(void) {};
 

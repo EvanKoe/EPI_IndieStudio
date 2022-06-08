@@ -17,6 +17,7 @@
 #include "Objects/Text.hpp"
 #include "Objects/Picture.hpp"
 #include "Objects/Text.hpp"
+#include "Objects/Cam.hpp"
 #include <exception>
 #include <type_traits>
 
@@ -28,7 +29,6 @@ namespace Indie {
             int draw(void);
             key_e getEvents(void);
             void addComp(IGraphic &);
-            void free_comps(void);
             ~Display();
         private:
             Vector2 _size;
@@ -41,12 +41,16 @@ namespace Indie {
             void create_game(void);
             void create_lose(void);
             void create_pause(void);
+            void create_settings(void);
 
-            const StateAction stateArray[7] = {
+            bool is_pressed(Rectangle);
+
+            const StateAction stateArray[8] = {
                 { MAIN_MENU, [&](){ return create_menu(); } },
                 { DIFF_MENU, [&](){ return create_diff(); } },
                 { LOAD_MENU, [&](){ return create_load(); } },
                 { QUIT_MENU, [&](){ return create_quit(); } },
+                { SETT_MENU, [&](){ return create_settings(); }}, // create settings page
                 { CURR_GAME, [&](){ return create_game(); } },
                 { LOSE_GAME, [&](){ return create_lose(); } },
                 { PAUSE_MENU, [&](){ return create_pause(); } }

@@ -1,10 +1,14 @@
 all:
-	mkdir build && cd build && cmake .. && make
+	cd build && make
 	cp build/bomberman ./bomberman
+
+cm:
+	mkdir -p build
+	cd build && cmake ..
 
 clean:
 	rm -rf build/
 
 fclean: clean
 
-re: fclean all
+re: fclean cm all
