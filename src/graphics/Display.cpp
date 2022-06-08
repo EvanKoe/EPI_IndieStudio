@@ -7,6 +7,7 @@
 
 #include "Display.hpp"
 #include "Objects/Cam.hpp"
+#include "Objects/Musics.hpp"
 #include <memory>
 #include <raylib.h>
 
@@ -87,7 +88,7 @@ namespace Indie {
             BLACK,
             RED
         )));
-        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/sounds/main_title.ogg")));
+        _comp.push_back(std::make_shared<Musics>(Musics("src/assets/sounds/main_title.ogg", 50)));
     }
 
     void Display::create_diff(void) {}
