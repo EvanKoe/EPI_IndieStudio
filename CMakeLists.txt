@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.17)
 project(bomberman)
 
+FIND_PACKAGE(raylib REQUIRED)
+
 if (NOT raylib_FOUND)
   INCLUDE(FetchContent)
   FetchContent_Declare(raylib URL https://github.com/raysan5/raylib/archive/refs/tags/4.0.0.tar.gz)
@@ -13,7 +15,6 @@ if (NOT raylib_FOUND)
     SET(raylib_FOUND TRUE)
   endif()
 endif()
-FIND_PACKAGE(raylib REQUIRED)
 
 FILE(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR}
   "src/*.cpp"
