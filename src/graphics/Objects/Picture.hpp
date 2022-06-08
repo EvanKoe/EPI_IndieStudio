@@ -5,23 +5,36 @@
 ** Image
 */
 
-#include "IGraphic.hpp"
+#include "../IGraphic.hpp"
+#include <raylib.h>
+#include <filesystem>
+#include <iostream>
 
 #pragma once
 
-class Picture {
+namespace Indie {
+    class Picture: public IGraphic {
     public:
-        Picture(Image, Texture2D, std::string*, Vector2);
-        void display();
-        void loadPicture(void);
-        void setPicture(std::string *file);
-        void unloadPicture(Image img);
+        Picture(
+            std::string path,
+            Vector2 pos = { 0, 0 },
+            Vector2 size = { 0, 0 },
+            float scale = 1.0
+        );
+        void draw(void) override;
+        void setPicture(std::string file);
+        void unLoadPicture(void);
+        Rectangle getRect(void) override { return _rec; }
+        bool isHover(void) override { return false; };
+        void onHover(void) override {};
         ~Picture();
 
-    protected:
     private:
-        std::string *_source;
+        std::string _source;
         Image _img;
         Texture2D _textr;
         Vector2 _pos;
-};
+        Vector2 _size;
+        Rectangle _rec;
+    };
+}

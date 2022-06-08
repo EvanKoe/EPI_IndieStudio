@@ -23,14 +23,12 @@ namespace Indie {
                 Color textColor = GRAY,
                 Color hoverColor = ORANGE
             );
-            void onHover(void) override {
-                DrawText(_text.c_str(), _rec.x, _rec.y, 30, _hoverColor);
-            }
+            void onHover(void) override;
+            void onHoverEnd(void) override;
             void onClick(void) override { return _onClick(); }
             Rectangle getRect(void) override { return _rec; }
             void setPosition(Vector2);
-            void setHover(void);
-            bool isHover(void);
+            bool isHover(void) override;
             Vector2 getPosition(void);
             void setText(std::string);
             std::string getText(void);
@@ -40,7 +38,8 @@ namespace Indie {
             ~Button();
         protected:
         private:
-            Color _hoverColor;
+            Color _hcolor;
+            Color _ncolor;
             Color _color;
             Rectangle _rec;
             std::function<void (void)> _onClick;
