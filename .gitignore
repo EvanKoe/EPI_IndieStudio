@@ -35,4 +35,3 @@ bomberman
 *.out
 *.app
 .vscode/c_cpp_properties.json
-src/map/Map.cpp
