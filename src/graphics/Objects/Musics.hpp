@@ -19,6 +19,11 @@ namespace Indie {
             void pause(void);
             void stop(void);
             void setSound(float);
+            void onHover(void) override {  };
+            void onHoverEnd(void) override {  };
+            void onClick(void) override {  }
+            void draw(void) override {  };
+            Rectangle getRect(void) override { return {0, 0, 0, 0}; }
             ~Musics();
         private:
             Music _music;

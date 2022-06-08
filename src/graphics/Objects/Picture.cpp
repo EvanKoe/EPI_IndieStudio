@@ -1,4 +1,4 @@
-/*
+ /*
 ** EPITECH PROJECT, 2022
 ** EPI_IndieStudio
 ** File description:
@@ -6,9 +6,8 @@
 */
 
 #include "Picture.hpp"
-#include <raylib.h>
 namespace Indie {
-    Picture::Picture(std::string path, Vector2 pos, Vector2 size)
+    Picture::Picture(std::string path, Vector2 pos, Vector2 size, float scale)
     {
         if (!std::filesystem::exists(std::filesystem::path(path))) {
             std::cout << path << ": no such file or directory" << std::endl;
@@ -18,7 +17,7 @@ namespace Indie {
         _textr = LoadTexture(_source.c_str());
         _pos = pos;
         _size = size;
-        _img = LoadImageFromTexture(_textr);
+        // _img = LoadImageFromTexture(_textr);
         _rec = { pos.x, pos.y, pos.x + size.x, pos.y + size.y };
     }
 
@@ -33,16 +32,7 @@ namespace Indie {
         _textr = LoadTexture(file.c_str());
     }
 
-    void Picture::unLoadPicture(void)
-    {
-        UnloadImage(_img);
-    }
+    void Picture::unLoadPicture(void) {}
 
-    Picture::~Picture()
-    {
-        UnloadImage(_img);
-        UnloadTexture(_textr);
-
-        // Should it  appear in  destructor only ?
-    }
+    Picture::~Picture() {}
 };

@@ -5,13 +5,20 @@
 ** Display
 */
 
-#include "raylib.h"
+#include <raylib.h>
 #include <iostream>
 #include <list>
-#include "./IGraphic.hpp"
+#include "IGraphic.hpp"
 #include "../Globals.hpp"
 #include <memory>
 #include <vector>
+
+#include "Objects/Button.hpp"
+#include "Objects/Text.hpp"
+#include "Objects/Picture.hpp"
+#include "Objects/Text.hpp"
+#include <exception>
+#include <type_traits>
 
 namespace Indie {
     class Display {

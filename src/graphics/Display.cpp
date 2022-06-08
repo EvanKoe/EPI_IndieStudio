@@ -6,13 +6,6 @@
 */
 
 #include "Display.hpp"
-#include "IGraphic.hpp"
-#include "Objects/Button.hpp"
-#include "Objects/Text.hpp"
-#include "Objects/Picture.hpp"
-#include "Objects/Text.hpp"
-#include <exception>
-#include <memory>
 #include <raylib.h>
 
 namespace Indie {
@@ -66,16 +59,16 @@ namespace Indie {
     void Display::create_quit(void) {};
 
     void Display::create_game(void) {
-        _comp.push_back(std::make_shared<IGraphic>(Picture("src/assets/hi.png")));
-        _comp.push_back(std::make_shared<IGraphic>(Button(
-            "Click here",
+        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/title.png")));
+        _comp.push_back(std::make_shared<Text>(Text("DoomerMan", 100, 20, 50)));
+        _comp.push_back(std::make_shared<Button>(Button(
+            "Play",
             [](){ std::cout << "button clicked" << std::endl; },
-            { 500, 500 },
-            { 200, 400 },
-            LIGHTGRAY,
-            BLUE
+            { 100, 100 },
+            { 350, 100 },
+            BLACK,
+            RED
         )));
-        _comp.push_back(std::make_shared<IGraphic>(Text("Hello world !")));
     };
 
     void Display::create_lose(void) {};

@@ -26,7 +26,9 @@ namespace Indie {
         void unLoadPicture(void);
         Rectangle getRect(void) override { return _rec; }
         bool isHover(void) override { return false; };
-        void onHover(void) override {};
+        void onHover(void) override {  };
+        void onHoverEnd(void) override {  };
+        void onClick(void) override {  }
         ~Picture();
 
     private:

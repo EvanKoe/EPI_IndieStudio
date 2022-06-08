@@ -26,6 +26,7 @@ namespace Indie {
             void onHover(void) override;
             void onHoverEnd(void) override;
             void onClick(void) override { return _onClick(); }
+            void draw(void) override;
             Rectangle getRect(void) override { return _rec; }
             void setPosition(Vector2);
             bool isHover(void) override;
@@ -34,13 +35,13 @@ namespace Indie {
             std::string getText(void);
             void setDisabled(bool);
             bool isDisabled(void);
-            void draw(void) override;
             ~Button();
         protected:
         private:
             Color _hcolor;
             Color _ncolor;
             Color _color;
+            Color _borderColor;
             Rectangle _rec;
             std::function<void (void)> _onClick;
             std::string _name;

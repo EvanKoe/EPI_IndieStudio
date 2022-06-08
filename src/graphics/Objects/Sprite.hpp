@@ -16,6 +16,10 @@ namespace Indie {
             void onHover(void) override {};
             void setSprite(std::string);
             void getSprite(std::string);
+            void onHoverEnd(void) override {  };
+            void onClick(void) override {  }
+            void draw(void) override {  };
+            Rectangle getRect(void) override { return {0, 0, 0, 0}; }
             ~Sprite();
         private:
     };

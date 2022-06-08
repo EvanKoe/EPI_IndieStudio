@@ -13,8 +13,13 @@ namespace Indie {
     class Noise : public IGraphic {
         public:
             Noise(std::string);
-            void onHover(void) override {};
             void play(void);
+            void onHover(void) override {};
+            void onHoverEnd(void) override {};
+            void onClick(void) override {}
+            void draw(void) override {};
+            Rectangle getRect(void) override { return {0, 0, 0, 0}; }
+            
             ~Noise();
 
         protected:

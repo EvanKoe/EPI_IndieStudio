@@ -23,6 +23,8 @@ namespace Indie {
             std::string getText(void);
             void draw(void) override;
             void setText(std::string);
+            void onHoverEnd(void) override {  };
+            void onClick(void) override {  }
             ~Text();
         protected:
         private:
