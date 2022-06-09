@@ -20,7 +20,7 @@ namespace Indie {
             void play(void);
             void pause(void);
             void stop(void);
-            bool isHover(void) override {  };
+            bool isHover(void) override { return false; }
             void onHover(void) override {  };
             void onHoverEnd(void) override {  };
             void onClick(void) override {  }

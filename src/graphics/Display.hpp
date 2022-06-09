@@ -32,7 +32,7 @@ namespace Indie {
             ~Display();
         private:
             Vector2 _size;
-            std::vector<std::shared_ptr<IGraphic>> _comp;
+            std::vector<std::unique_ptr<IGraphic>> _comp;
 
             void create_menu(void);
             void create_diff(void);
@@ -50,7 +50,7 @@ namespace Indie {
                 { DIFF_MENU, [&](){ return create_diff(); } },
                 { LOAD_MENU, [&](){ return create_load(); } },
                 { QUIT_MENU, [&](){ return create_quit(); } },
-                { SETT_MENU, [&](){ return create_settings(); }}, // create settings page
+                { SETT_MENU, [&](){ return create_settings(); } }, // create settings page
                 { CURR_GAME, [&](){ return create_game(); } },
                 { LOSE_GAME, [&](){ return create_lose(); } },
                 { PAUSE_MENU, [&](){ return create_pause(); } }

@@ -28,7 +28,9 @@ namespace Indie {
         }
 
         for (auto e: stateArray) {
+            std::cout << e.s << " loul\n";
             if (e.s == s) {
+                std::cout << "Switch to " << s << " type" << std::endl;
                 return e.fun();
             }
         }
@@ -66,46 +68,51 @@ namespace Indie {
     }
 
     void Display::create_menu(void) {
-        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
-        _comp.push_back(std::make_shared<Cam>(Cam()));
-        _comp.push_back(std::make_shared<Text>(Text("DoomerMan", 100, 50, 70)));
-        _comp.push_back(std::make_shared<Button>(Button(
+        std::unique_ptr<Picture> p1(new Picture("src/assets/img/title.png"));
+        std::unique_ptr<Cam> p2(new Cam());
+        std::unique_ptr<Text>p3(new Text("DoomerMan", 100, 50, 70));
+        std::unique_ptr<Button> p4(new Button(
             "Play",
-            [&](){ changeState(Indie::LOAD_MENU); },
-            { 100, 200 },
-            { 350, 100 },
-            BLACK,
-            RED
-        )));
-        _comp.push_back(std::make_shared<Button>(Button(
+            [&](){
+                std::cout << Indie::LOAD_MENU << std::endl;
+                changeState(Indie::LOAD_MENU);
+            },
+            { 100, 200 }, { 350, 100 }, BLACK, RED
+        ));
+        std::unique_ptr<Button> p5(new Button(
             "Settings",
-            [&](){ changeState(Indie::SETT_MENU); },
-            { 100, 350 },
-            { 350, 100 },
-            BLACK,
-            RED
-        )));
-        _comp.push_back(std::make_shared<Button>(Button(
+            [&](){
+                std::cout << Indie::SETT_MENU << std::endl;
+                changeState(Indie::SETT_MENU);
+            },
+            { 100, 350 }, { 350, 100 }, BLACK, RED
+        ));
+        std::unique_ptr<Button> p6(new Button(
             "Quit",
             [&](){ changeState(Indie::QUIT_MENU); },
-            { 100, 500 },
-            { 350, 100 },
-            BLACK,
-            RED
-        )));
-        _comp.push_back(std::make_shared<Musics>(Musics("src/assets/sounds/main_title.ogg", 50)));
+            { 100, 500 }, { 350, 100 }, BLACK, RED
+        ));
+        _comp.push_back(std::move(p1));
+        _comp.push_back(std::move(p2));
+        _comp.push_back(std::move(p3));
+        _comp.push_back(std::move(p4));
+        _comp.push_back(std::move(p5));
+        // _comp.push_back(std::make_unique<Musics>(Musics("src/assets/sounds/main_title.ogg", 50}\)));
     }
 
     void Display::create_load(void) {
-        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
+        _comp.push_back(std::make_unique<Picture>(Picture("src/assets/img/title.png")));
+        _comp.push_back(std::make_unique<Text>(Text("LOAD", 100, 50, 70)));
     }
     void Display::create_diff(void) {}
     void Display::create_quit(void) {
-        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
+        _comp.push_back(std::make_unique<Picture>(Picture("src/assets/img/title.png")));
+        _comp.push_back(std::make_unique<Text>(Text("QUIT", 100, 50, 70)));
     }
     void Display::create_game(void) {}
     void Display::create_settings(void) {
-        _comp.push_back(std::make_shared<Picture>(Picture("src/assets/img/title.png")));
+        _comp.push_back(std::make_unique<Picture>(Picture("src/assets/img/title.png")));
+        _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 100, 50, 70)));
     }
 
     bool Display::is_pressed(Rectangle rec) {
