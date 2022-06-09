@@ -3,7 +3,7 @@ project(bomberman)
 set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -lstdc++fs")
 set(CMAKE_CXX_STANDARD 17)
 
-if (win32)
+if (NOT raylib_FOUND)
   INCLUDE(FetchContent)
   FetchContent_Declare(raylib URL https://github.com/raysan5/raylib/archive/refs/tags/4.0.0.tar.gz)
   FetchContent_GetProperties(raylib)
