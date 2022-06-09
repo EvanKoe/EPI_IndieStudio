@@ -40,7 +40,7 @@ namespace Indie {
     int Display::draw(void) {
         BeginDrawing();
         ClearBackground(BLACK);
-        for (auto e: _comp) {
+        for (const auto &e: _comp) {
             e->draw();
         }
         EndDrawing();
@@ -49,7 +49,7 @@ namespace Indie {
 
     key_e Display::getEvents(void)
     {
-        for (auto e: _comp) {
+        for (const auto &e: _comp) {
             if (e->isHover()) {
                 e->onHover();
                 if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
