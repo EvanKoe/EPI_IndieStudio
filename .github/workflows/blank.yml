@@ -43,7 +43,7 @@ jobs:
       - name: Build
         working-directory: ${{github.workspace}}/build
         shell: powershell
-        run: cmake --build
+        run: cmake --build . 
 
       - name: Test
         working-directory: ${{github.workspace}}/build

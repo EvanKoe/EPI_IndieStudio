@@ -16,7 +16,7 @@ if (win32)
   endif()
 endif()
 
-FIND_PACKAGE(raylib REQUIRED)
+find_package(raylib 4.0.0 QUIET)
 
 FILE(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR}
   "src/*.cpp"
