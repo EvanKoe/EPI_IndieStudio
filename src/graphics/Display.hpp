@@ -15,6 +15,7 @@
 
 #include "Objects/Button.hpp"
 #include "Objects/Text.hpp"
+#include "Objects/Musics.hpp"
 #include "Objects/Picture.hpp"
 #include "Objects/Text.hpp"
 #include "Objects/Cam.hpp"
@@ -28,6 +29,7 @@ namespace Indie {
             void changeState(State);
             int draw(void);
             key_e getEvents(void);
+            Musics getMusic(void) { return _mus; }
             void addComp(IGraphic &);
             ~Display();
         private:
@@ -36,9 +38,10 @@ namespace Indie {
             Camera3D _cam;
             bool _is3D;
             Difficulty _diff;
+            Musics _mus;
 
             // settings
-            MusicMode_s _mus;
+            MusicMode_s _selected_mus;
 
             void initDraw(std::string);
             void create_menu(void);
@@ -63,12 +66,6 @@ namespace Indie {
                 { LOSE_GAME, [&](){ return create_lose(); } },
                 { PAUSE_MENU, [&](){ return create_pause(); } },
                 { WIN_MENU, [&](){ return create_win(); } }
-            };
-
-            const MusicMode_s musicArray[3] = {
-                { DOOM_OSTS, "Doom OSTs" },
-                { MEDIEVAL_MODE, "Medieval Mode" },
-                { WTF_IS_THAT, "WTF is that ?!" }
             };
     };
 };

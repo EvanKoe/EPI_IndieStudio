@@ -12,7 +12,7 @@
 namespace Indie {
     class Musics : public IGraphic {
         public:
-            Musics(const std::string, float);
+            Musics(const std::string src, float vol = 100);
             void draw(void) override;
             void setSound(float);
             bool isPlaying(void);
@@ -20,6 +20,7 @@ namespace Indie {
             void play(void);
             void pause(void);
             void stop(void);
+            Music getStream(void) { return _music; };
             bool isHover(void) override { return false; }
             void onHover(void) override {  };
             void onHoverEnd(void) override {  };

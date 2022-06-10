@@ -50,6 +50,17 @@ namespace Indie {
         std::function<void (void)> fun;
     } StateAction;
 
+    // musics
+    const std::string DOSTS[1] = {
+        "src/assets/sounds/main_title.ogg"
+    };
+
+    const MusicMode_s musicArray[3] = {
+        { DOOM_OSTS, "Doom OSTs" },
+        { MEDIEVAL_MODE, "Medieval Mode" },
+        { WTF_IS_THAT, "WTF is that ?!" }
+    };
+
     // keys struct
     typedef enum KEY {
         UP,

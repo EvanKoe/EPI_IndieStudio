@@ -66,12 +66,7 @@ namespace Indie {
 
     bool Button::isHover(void) {
         Rectangle r = getRect();
-        if (
-            r.x < GetMouseX() && GetMouseX() < r.x + r.width &&
-            r.y < GetMouseY() && GetMouseY() < r.y + r.height
-        ) {
-            std::cout << "tes dedans fdp\n";
-        }
+
         return (
             r.x < GetMouseX() && GetMouseX() < r.x + r.width &&
             r.y < GetMouseY() && GetMouseY() < r.y + r.height

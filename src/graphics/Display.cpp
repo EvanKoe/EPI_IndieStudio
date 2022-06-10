@@ -18,12 +18,12 @@
 namespace Indie {
     const std::string BGIMG = "./src/assets/img/title.png";
 
-    Display::Display(State s, int w, int h, std::string title) {
+    Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0])) {
         _size.x = w;
         _size.y = h;
         InitWindow(w, h, title.c_str());
         changeState(s);
-        _mus = musicArray[0];
+        _selected_mus = musicArray[0];
         SetTargetFPS(60);
     }
 
@@ -51,11 +51,11 @@ namespace Indie {
     void Display::initDraw(std::string str) {
         if (str == "START") {
             BeginDrawing();
-            if (_is3D) {
+            if (_is3D)
                 BeginMode3D(_cam);
-            }
         } else {
-            EndMode3D();
+            if (_is3D)
+                EndMode3D();
             EndDrawing();
         }
     }
@@ -165,8 +165,8 @@ namespace Indie {
         )));
         _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 200, 50, 70)));
         _comp.push_back(std::make_unique<Text>(Text("Music :", 100, 150, 70)));
-        _comp.push_back(std::make_unique<Button>(Button(_mus.to_str,
-            [&](){ _mus = _mus.m == 2 ? musicArray[0] : musicArray[_mus.m + 1]; },
+        _comp.push_back(std::make_unique<Button>(Button(_selected_mus.to_str,
+            [&](){ _selected_mus = _selected_mus.m == 2 ? musicArray[0] : musicArray[_selected_mus.m + 1]; },
             { 100, 350 }, { 500, 100 }, BLACK, RED
         )));
     }
