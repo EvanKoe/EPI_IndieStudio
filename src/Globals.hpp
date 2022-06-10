@@ -9,6 +9,7 @@
 
 #include <functional>
 #include <raylib.h>
+#include <string>
 
 namespace Indie {
     // those are the different screens of the game
@@ -20,8 +21,21 @@ namespace Indie {
         QUIT_MENU,
         CURR_GAME,
         LOSE_GAME,
-        PAUSE_MENU
+        PAUSE_MENU,
+        WIN_MENU
     };
+
+    // useless settings : music mode
+    enum MusicMode {
+        DOOM_OSTS,
+        MEDIEVAL_MODE,
+        WTF_IS_THAT
+    };
+
+    typedef struct {
+        MusicMode m;
+        std::string to_str;
+    } MusicMode_s;
 
     // difficuties
     enum Difficulty {

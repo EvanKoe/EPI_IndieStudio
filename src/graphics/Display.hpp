@@ -33,7 +33,13 @@ namespace Indie {
         private:
             Vector2 _size;
             std::vector<std::unique_ptr<IGraphic>> _comp;
+            Camera3D _cam;
+            bool _is3D;
 
+            // settings
+            MusicMode_s _mus;
+
+            void initDraw(std::string);
             void create_menu(void);
             void create_diff(void);
             void create_load(void);
@@ -42,10 +48,11 @@ namespace Indie {
             void create_lose(void);
             void create_pause(void);
             void create_settings(void);
+            void create_win(void);
 
             bool is_pressed(Rectangle);
 
-            const StateAction stateArray[8] = {
+            const StateAction stateArray[9] = {
                 { MAIN_MENU, [&](){ return create_menu(); } },
                 { DIFF_MENU, [&](){ return create_diff(); } },
                 { LOAD_MENU, [&](){ return create_load(); } },
@@ -53,7 +60,14 @@ namespace Indie {
                 { SETT_MENU, [&](){ return create_settings(); } }, // create settings page
                 { CURR_GAME, [&](){ return create_game(); } },
                 { LOSE_GAME, [&](){ return create_lose(); } },
-                { PAUSE_MENU, [&](){ return create_pause(); } }
+                { PAUSE_MENU, [&](){ return create_pause(); } },
+                { WIN_MENU, [&](){ return create_win(); } }
+            };
+
+            const MusicMode_s musicArray[3] = {
+                { DOOM_OSTS, "Doom OSTs" },
+                { MEDIEVAL_MODE, "Medieval Mode" },
+                { WTF_IS_THAT, "WTF is that ?!" }
             };
     };
 };

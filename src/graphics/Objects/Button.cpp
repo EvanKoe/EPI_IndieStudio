@@ -57,7 +57,10 @@ namespace Indie {
 
     void Button::draw(void) {
         DrawRectangleRec(_rec, LIGHTGRAY);
-        DrawText(_text.c_str(), _rec.x + (_rec.width / 3), _rec.y + (_rec.height / 2 - 20), 30, _color);
+        DrawText(_text.c_str(),
+            _rec.x + (_rec.width / 2) - (_text.length() * 5),
+            _rec.y + (_rec.height / 2 - 15),
+            30, _color);
         DrawRectangleLinesEx(_rec, 4, _borderColor);
     }
 

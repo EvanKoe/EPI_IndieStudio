@@ -6,17 +6,23 @@
 */
 
 #include "Display.hpp"
+#include "IGraphic.hpp"
+#include "Objects/Button.hpp"
 #include "Objects/Cam.hpp"
 #include "Objects/Musics.hpp"
+#include "Objects/Picture.hpp"
 #include <memory>
 #include <raylib.h>
 
 namespace Indie {
+    const std::string BGIMG = "./src/assets/img/title.png";
+
     Display::Display(State s, int w, int h, std::string title) {
         _size.x = w;
         _size.y = h;
         InitWindow(w, h, title.c_str());
         changeState(s);
+        _mus = musicArray[0];
         SetTargetFPS(60);
     }
 
@@ -28,9 +34,7 @@ namespace Indie {
         }
 
         for (auto e: stateArray) {
-            std::cout << e.s << " loul\n";
             if (e.s == s) {
-                std::cout << "Switch to " << s << " type" << std::endl;
                 return e.fun();
             }
         }
@@ -38,13 +42,25 @@ namespace Indie {
     }
 
     int Display::draw(void) {
-        BeginDrawing();
+        initDraw("start");
         ClearBackground(BLACK);
         for (const auto &e: _comp) {
             e->draw();
         }
-        EndDrawing();
+        initDraw("end");
         return 0;
+    }
+
+    void Display::initDraw(std::string str) {
+        if (str == "START") {
+            BeginDrawing();
+            if (_is3D) {
+                BeginMode3D(_cam);
+            }
+        } else {
+            EndMode3D();
+            EndDrawing();
+        }
     }
 
     key_e Display::getEvents(void)
@@ -68,27 +84,19 @@ namespace Indie {
     }
 
     void Display::create_menu(void) {
-        std::unique_ptr<Picture> p1(new Picture("src/assets/img/title.png"));
+        _is3D = false;
+        std::unique_ptr<Picture> p1(new Picture(BGIMG));
         std::unique_ptr<Cam> p2(new Cam());
         std::unique_ptr<Text>p3(new Text("DoomerMan", 100, 50, 70));
-        std::unique_ptr<Button> p4(new Button(
-            "Play",
-            [&](){
-                std::cout << Indie::LOAD_MENU << std::endl;
-                changeState(Indie::LOAD_MENU);
-            },
+        std::unique_ptr<Button> p4(new Button("Play",
+            [&](){ changeState(Indie::LOAD_MENU); },
             { 100, 200 }, { 350, 100 }, BLACK, RED
         ));
-        std::unique_ptr<Button> p5(new Button(
-            "Settings",
-            [&](){
-                std::cout << Indie::SETT_MENU << std::endl;
-                changeState(Indie::SETT_MENU);
-            },
+        std::unique_ptr<Button> p5(new Button("Settings",
+            [&](){ changeState(Indie::SETT_MENU); },
             { 100, 350 }, { 350, 100 }, BLACK, RED
         ));
-        std::unique_ptr<Button> p6(new Button(
-            "Quit",
+        std::unique_ptr<Button> p6(new Button("Quit",
             [&](){ changeState(Indie::QUIT_MENU); },
             { 100, 500 }, { 350, 100 }, BLACK, RED
         ));
@@ -97,23 +105,79 @@ namespace Indie {
         _comp.push_back(std::move(p3));
         _comp.push_back(std::move(p4));
         _comp.push_back(std::move(p5));
-        // _comp.push_back(std::make_unique<Musics>(Musics("src/assets/sounds/main_title.ogg", 50}\)));
+        _comp.push_back(std::move(p6));
     }
 
     void Display::create_load(void) {
-        _comp.push_back(std::make_unique<Picture>(Picture("src/assets/img/title.png")));
+        _is3D = false;
+        _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Text>(Text("LOAD", 100, 50, 70)));
     }
-    void Display::create_diff(void) {}
+    void Display::create_diff(void) {
+        _is3D = false;
+    }
+
     void Display::create_quit(void) {
-        _comp.push_back(std::make_unique<Picture>(Picture("src/assets/img/title.png")));
+        _is3D = false;
+        _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Text>(Text("QUIT", 100, 50, 70)));
+        _comp.push_back(std::make_unique<Text>(Text("Voulez-vous vraiment quitter ?", 150, 200, 40)));
+        _comp.push_back(std::make_unique<Button>(Button(
+            "Oui (pour les faibles)",
+            [&](){ CloseWindow(); exit(0); }, { 100, 350 }, { 500, 100 }, BLACK, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button(
+            "Non (pour les héros)",
+            [&](){ changeState(Indie::MAIN_MENU); }, { 700, 350 }, { 500, 100 }, BLACK, RED
+        )));
     }
-    void Display::create_game(void) {}
+    void Display::create_game(void) {
+        _is3D = true;
+    }
+
     void Display::create_settings(void) {
-        _comp.push_back(std::make_unique<Picture>(Picture("src/assets/img/title.png")));
+        _is3D = false;
+        _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 100, 50, 70)));
+        _comp.push_back(std::make_unique<Text>(Text("Music :", 100, 150, 70)));
+        _comp.push_back(std::make_unique<Button>(Button(_mus.to_str)));
     }
+
+    void Display::create_lose(void) {
+        _is3D = false;
+
+        _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
+        _comp.push_back(std::make_unique<Text>(Text("YOU LOST", 100, 50, 70)));
+        _comp.push_back(std::make_unique<Text>(Text("But you won't let the demons win again, will you ?", 150, 200, 40)));
+        _comp.push_back(std::make_unique<Button>(Button(
+            "Let's kick their ass (play again)",
+            [&](){ changeState(CURR_GAME); }, { 100, 350 }, { 800, 100 }, BLACK, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button(
+            "I think Imma take a nap (Quit)",
+            [&](){ changeState(Indie::MAIN_MENU); }, { 100, 500 }, { 800, 100 }, BLACK, RED
+        )));
+    };
+
+    void Display::create_win(void) {
+        _is3D = false;
+
+        _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
+        _comp.push_back(std::make_unique<Text>(Text("YOU WON !", 100, 50, 70)));
+        _comp.push_back(std::make_unique<Text>(Text("But you're not tired yet, are you ?", 150, 200, 40)));
+        _comp.push_back(std::make_unique<Button>(Button(
+            "I'm still hungry ! (play again)",
+            [&](){ changeState(CURR_GAME); }, { 100, 350 }, { 800, 100 }, BLACK, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button(
+            "I need to sleep a bit (Quit)",
+            [&](){ changeState(Indie::MAIN_MENU); }, { 100, 500 }, { 800, 100 }, BLACK, RED
+        )));
+    };
+
+    void Display::create_pause(void) {
+        _is3D = false;
+    };
 
     bool Display::is_pressed(Rectangle rec) {
         return (
@@ -121,14 +185,6 @@ namespace Indie {
             rec.x < GetMouseX() && GetMouseY() < rec.y &&
             GetMouseX() < rec.x + rec.width && GetMouseY() < rec.y + rec.height
         );
-    }
-
-    void Display::create_lose(void) {};
-
-    void Display::create_pause(void) {};
-
-    void disp_game(void) {
-
     }
 
     Display::~Display() {
