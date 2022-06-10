@@ -11,6 +11,7 @@
 #include "Objects/Cam.hpp"
 #include "Objects/Musics.hpp"
 #include "Objects/Picture.hpp"
+#include <iostream>
 #include <memory>
 #include <raylib.h>
 
@@ -27,11 +28,7 @@ namespace Indie {
     }
 
     void Display::changeState(State s) {
-        int size = _comp.size();
-
-        for (int i = 0; i < size; ++i) {
-            _comp.pop_back();
-        }
+        _comp.clear();
 
         for (auto e: stateArray) {
             if (e.s == s) {
@@ -65,11 +62,14 @@ namespace Indie {
 
     key_e Display::getEvents(void)
     {
+        if (_comp.size() == 0)
+            return KNull;
         for (const auto &e: _comp) {
             if (e->isHover()) {
                 e->onHover();
                 if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
                     e->onClick();
+                    break;
                 }
             } else {
                 e->onHoverEnd();
@@ -112,9 +112,29 @@ namespace Indie {
         _is3D = false;
         _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Text>(Text("LOAD", 100, 50, 70)));
+        // add saves if exists
+        _comp.push_back(std::make_unique<Button>(Button("New game",
+            [&](){ changeState(Indie::DIFF_MENU); },
+            { 100, 350 }, { 350, 100 }, BLACK, RED
+        )));
     }
     void Display::create_diff(void) {
         _is3D = false;
+
+        _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
+        _comp.push_back(std::make_unique<Text>(Text("New game - difficulty", 100, 50, 60)));
+        _comp.push_back(std::make_unique<Button>(Button("I'm too young to die",
+            [&](){ _diff = IM_TOO_YOUNG_TO_DIE; changeState(Indie::CURR_GAME); },
+            { 100, 150 }, { 550, 100 }, BLACK, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button("Hurt me plenty",
+            [&](){ _diff = HURT_ME_PLENTY; changeState(Indie::CURR_GAME); },
+            { 100, 300 }, { 550, 100 }, BLACK, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button("Nightmare",
+            [&](){ _diff = NIGHTMARE; changeState(Indie::CURR_GAME); },
+            { 100, 450 }, { 550, 100 }, BLACK, RED
+        )));
     }
 
     void Display::create_quit(void) {
@@ -137,10 +157,18 @@ namespace Indie {
 
     void Display::create_settings(void) {
         _is3D = false;
+
         _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
-        _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 100, 50, 70)));
+        _comp.push_back(std::make_unique<Button>(Button("<-",
+            [&](){ changeState(Indie::MAIN_MENU); },
+            { 100, 50 }, { 90, 50 }, BLACK, RED
+        )));
+        _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 200, 50, 70)));
         _comp.push_back(std::make_unique<Text>(Text("Music :", 100, 150, 70)));
-        _comp.push_back(std::make_unique<Button>(Button(_mus.to_str)));
+        _comp.push_back(std::make_unique<Button>(Button(_mus.to_str,
+            [&](){ _mus = _mus.m == 2 ? musicArray[0] : musicArray[_mus.m + 1]; },
+            { 100, 350 }, { 500, 100 }, BLACK, RED
+        )));
     }
 
     void Display::create_lose(void) {

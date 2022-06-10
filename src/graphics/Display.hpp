@@ -35,6 +35,7 @@ namespace Indie {
             std::vector<std::unique_ptr<IGraphic>> _comp;
             Camera3D _cam;
             bool _is3D;
+            Difficulty _diff;
 
             // settings
             MusicMode_s _mus;

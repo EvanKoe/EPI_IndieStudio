@@ -24,9 +24,7 @@ namespace Indie {
     }
 
     void Musics::setLoop(void)
-    {
-        // ResumeMusicStream(_music);
-    }
+    {}
 
     bool Musics::isPlaying(void)
     {

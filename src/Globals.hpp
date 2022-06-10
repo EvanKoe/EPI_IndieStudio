@@ -39,9 +39,9 @@ namespace Indie {
 
     // difficuties
     enum Difficulty {
-        EASY,
-        MEDIUM,
-        HARD
+        IM_TOO_YOUNG_TO_DIE,
+        HURT_ME_PLENTY,
+        NIGHTMARE
     };
 
     // used in Display.hpp
