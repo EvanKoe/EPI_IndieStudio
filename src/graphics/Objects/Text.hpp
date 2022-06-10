@@ -17,8 +17,8 @@ namespace Indie {
             bool isHover(void) override { return false; }
             Rectangle getRect(void) override { return (Rectangle){
                 _pos.x, _pos.y,
-                (float)(_size * _value.size()),
-                (float)(_size * 2)
+                static_cast<float>(_size * _value.size()),
+                static_cast<float>(_size * 2)
             }; }
             std::string getText(void);
             void draw(void) override;
