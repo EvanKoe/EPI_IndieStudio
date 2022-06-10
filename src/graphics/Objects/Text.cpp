@@ -6,7 +6,6 @@
 */
 
 #include "Text.hpp"
-#include <bits/types/__sigset_t.h>
 #include <raylib.h>
 
 namespace Indie {
