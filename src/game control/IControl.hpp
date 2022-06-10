@@ -8,12 +8,12 @@
 #pragma once
 
 class IControl {
-    public:
-        virtual int getEvents(void);
-        virtual int movement(int);
-        virtual int dropBomb(void);
-        virtual ~IControl();
+public:
+    virtual ~IControl() = default;
+    virtual int getEvents(void) = 0;
+    virtual int movement(int) = 0;
+    virtual int dropBomb(void) = 0;
 
-    protected:
-    private:
+protected:
+private:
 };

@@ -17,15 +17,15 @@ class Enemy: public IControl {
     };
     public:
         Enemy();
+        ~Enemy();
         int getEvents(void) override;
         int movement(int) override;
         int dropBomb(void) override;
+
+    protected:
+    private:
         void setPosition(void); // Set the position of the enemy at the beginning of the game
         void death(void); // The enemy is dead
         void setDifficulty(Difficulty d); // Set the difficulty of the game
         void getPosition(void); // Get the position of the enemy
-        ~Enemy();
-
-    protected:
-    private:
 };
