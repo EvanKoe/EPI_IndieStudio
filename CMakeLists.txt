@@ -42,5 +42,5 @@ INCLUDE_DIRECTORIES(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/Enemy"
 )
 
-add_executable(bomberman ${SOURCES})
+add_executable(bomberman ${SOURCES} "src/game control/Player/Player.cpp" "src/game control/Player/Player.hpp")
 target_link_libraries(bomberman raylib)
