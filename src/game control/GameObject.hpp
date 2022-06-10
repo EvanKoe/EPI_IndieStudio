@@ -18,16 +18,18 @@ typedef struct {
 
 class GameObject {
     public:
-        GameObject(float px = 0, float py = 0, float vx = 0, float vy = 0) {
-            pos.x = px;
-            pos.y = py;
-            vel.x = vx;
-            vel.y = vy;
+        GameObject(float px = 0, float py = 0, float vx = 0, float vy = 0, int id = 0) {
+            _position.x = px;
+            _position.y = py;
+            _velocity.x = vx;
+            _velocity.y = vy;
+            _id = id;
         };
         ~GameObject();
-
+        int getId() const;
     protected:
-        Position pos;     // position
-        Position vel;     // velocity
+        int _id;
+        Position _position;     // position
+        Position _velocity;     // velocity
     private:
 };

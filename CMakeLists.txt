@@ -39,8 +39,8 @@ INCLUDE_DIRECTORIES(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Objects/"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Entities/"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/Enemy"
+  "src/game control/Entity/Enemy"
 )
 
-add_executable(bomberman ${SOURCES} "src/game control/Player/Player.cpp" "src/game control/Player/Player.hpp")
+add_executable(bomberman ${SOURCES} "src/game control/Entity/Player/Player.cpp" "src/game control/Entity/Player/Player.hpp" "src/game control/Entity/Player/Player.cpp" "src/game control/Entity/Player/Player.hpp" "src/game control/Entity/Player/Player.cpp" "src/game control/Entity/Player/Player.hpp" "src/game control/Entity/Entity.hpp" "src/game control/PowerUp/PowerUp.cpp" "src/game control/PowerUp/PowerUp.hpp" "src/game control/Bomb/Bomb.cpp" "src/game control/Bomb/Bomb.hpp" "src/game control/Entity/Enemy/Enemy.cpp" "src/game control/GameObject.cpp")
 target_link_libraries(bomberman raylib)
