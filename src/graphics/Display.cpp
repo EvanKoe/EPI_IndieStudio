@@ -27,6 +27,7 @@ namespace Indie {
         changeState(s);
         _selected_mus = musicArray[0];
         SetTargetFPS(60);
+        // _mus = Musics("src/assets/sounds/main_title.ogg");
     }
 
     void Display::changeState(State s) {
@@ -103,14 +104,14 @@ namespace Indie {
             [&](){ changeState(Indie::QUIT_MENU); },
             { 100, 500 }, { 350, 100 }, BLACK, RED
         ));
-        std::unique_ptr<Musics> p7(new Musics("src/assets/sounds/main_title.ogg", 100));
+        // std::unique_ptr<Musics> p7(new Musics("src/assets/sounds/main_title.ogg", 100));
         _comp.push_back(std::move(p1));
         _comp.push_back(std::move(p2));
         _comp.push_back(std::move(p3));
         _comp.push_back(std::move(p4));
         _comp.push_back(std::move(p5));
         _comp.push_back(std::move(p6));
-        _comp.push_back(std::move(p7));
+        // _comp.push_back(std::move(p7));
     }
 
     void Display::create_load(void) {
