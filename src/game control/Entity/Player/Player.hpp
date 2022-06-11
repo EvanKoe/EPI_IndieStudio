@@ -12,7 +12,7 @@
 
 class Player : public Entity {
 public:
-    Player(int id, int x, int y, int speed, int bomb_range, int bomb_nb);
+    Player();
     ~Player();
     int getScore() const;
     void setScore(int score);
@@ -23,6 +23,8 @@ public:
     void setBombRange(int bomb_range);
     int getBombNb() const;
     void setBombNb(int bomb_nb);
+    bool getWallpass() const;
+    void setWallpass(bool wallpass);
 private:
     int _speed;
     int _bomb_range;

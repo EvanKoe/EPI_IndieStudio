@@ -11,9 +11,13 @@
 #ifndef BOMBERMAN_ENTITY_HPP
 #define BOMBERMAN_ENTITY_HPP
 
+enum EntityType {
+    PLAYER,
+    IA
+};
+
 class Entity : public GameObject {
 public:
-    Entity(int health);
     ~Entity() = default;
 protected:
     int _health;
