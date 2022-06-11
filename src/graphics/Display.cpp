@@ -11,6 +11,7 @@
 #include "Objects/Cam.hpp"
 #include "Objects/Musics.hpp"
 #include "Objects/Picture.hpp"
+#include "Objects/Sprite.hpp"
 #include <iostream>
 #include <memory>
 #include <raylib.h>
@@ -40,7 +41,6 @@ namespace Indie {
 
     int Display::draw(void) {
         initDraw("start");
-        ClearBackground(BLACK);
         for (const auto &e: _comp) {
             e->draw();
         }
@@ -51,6 +51,7 @@ namespace Indie {
     void Display::initDraw(std::string str) {
         if (str == "START") {
             BeginDrawing();
+            ClearBackground(BLACK);
             if (_is3D)
                 BeginMode3D(_cam);
         } else {
@@ -153,6 +154,9 @@ namespace Indie {
     }
     void Display::create_game(void) {
         _is3D = true;
+
+        _comp.push_back(std::make_unique<Cam>(Cam()));
+        _comp.push_back(std::make_unique<Sprite>(Sprite("assets/icon-of-sin-toy/Icon of sin Toy.iqm")));
     }
 
     void Display::create_settings(void) {
