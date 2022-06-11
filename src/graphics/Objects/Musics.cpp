@@ -16,10 +16,14 @@ namespace Indie {
         _volume = vol;
         InitAudioDevice();
         _music = LoadMusicStream(_source.c_str());
+        SetMusicVolume(_music, _volume);
         PlayMusicStream(_music);
+        draw();
     }
 
-    void Musics::draw(void) {}
+    void Musics::draw(void) {
+        UpdateMusicStream(_music);
+    }
 
     void Musics::setLoop(void) {}
 

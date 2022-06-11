@@ -19,7 +19,8 @@
 namespace Indie {
     const std::string BGIMG = "./src/assets/img/title.png";
 
-    Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0])) {
+    Display::Display(State s, int w, int h, std::string title): _mus(Musics(MOSTS[0])) {
+        std::cout << MOSTS[0] << std::endl;
         _size.x = w;
         _size.y = h;
         InitWindow(w, h, title.c_str());
@@ -65,6 +66,7 @@ namespace Indie {
     {
         if (_comp.size() == 0)
             return KNull;
+        UpdateMusicStream(_mus.getStream());
         for (const auto &e: _comp) {
             if (e->isHover()) {
                 e->onHover();
@@ -101,12 +103,14 @@ namespace Indie {
             [&](){ changeState(Indie::QUIT_MENU); },
             { 100, 500 }, { 350, 100 }, BLACK, RED
         ));
+        std::unique_ptr<Musics> p7(new Musics("src/assets/sounds/main_title.ogg", 100));
         _comp.push_back(std::move(p1));
         _comp.push_back(std::move(p2));
         _comp.push_back(std::move(p3));
         _comp.push_back(std::move(p4));
         _comp.push_back(std::move(p5));
         _comp.push_back(std::move(p6));
+        _comp.push_back(std::move(p7));
     }
 
     void Display::create_load(void) {
