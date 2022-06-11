@@ -51,14 +51,14 @@ namespace Indie {
             UpdateCamera(&_cam);
             BeginMode3D(_cam);
             DrawGrid(32, 1.0f);
-            for (const auto &e: _comp) {
-                if (e->getIs3D()) {
-                    e->draw();
-                }
-            }
+            // for (const auto &e: _comp) {
+            //     if (e->getIs3D()) {
+            //         e->draw();
+            //     }
+            // }
             EndMode3D();
         }
-        DrawFPS(1200, 50);
+        // DrawFPS(1200, 50);
         for (const auto &e: _comp) {
             if (!e->getIs3D()) {
                 e->draw();
@@ -96,7 +96,7 @@ namespace Indie {
         std::cout << "create menu\n";
         _is3D = false;
         std::unique_ptr<Picture> p1(new Picture(BGIMG));
-        std::unique_ptr<Cam> p2(new Cam());
+        // std::unique_ptr<Cam> p2(new Cam());
         std::unique_ptr<Text>p3(new Text("DoomerMan", 100, 50, 70));
         std::unique_ptr<Button> p4(new Button("Play",
             [&](){ changeState(Indie::LOAD_MENU); },
@@ -111,7 +111,7 @@ namespace Indie {
             { 100, 500 }, { 350, 100 }, BLACK, RED
         ));
         _comp.push_back(std::move(p1));
-        _comp.push_back(std::move(p2));
+        // _comp.push_back(std::move(p2));
         _comp.push_back(std::move(p3));
         _comp.push_back(std::move(p4));
         _comp.push_back(std::move(p5));
