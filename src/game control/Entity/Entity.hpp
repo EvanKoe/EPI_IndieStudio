@@ -18,7 +18,10 @@ enum EntityType {
 
 class Entity : public GameObject {
 public:
-    ~Entity() = default;
+    virtual ~Entity() = default;
+    virtual int getEvents(void) = 0;
+    virtual int movement(int) = 0;
+    virtual int dropBomb(void) = 0;
 protected:
     int _health;
 

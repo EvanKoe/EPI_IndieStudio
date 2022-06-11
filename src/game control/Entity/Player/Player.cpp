@@ -7,11 +7,13 @@
 
 #include "Player.hpp"
 
-Player::Player()
+Player::Player(int _health, int _speed, int _bomb_range, int _bomb_nb, int _id)
 {
-    this->_speed = 1;
-    this->_bomb_range = 1;
-    this->_bomb_nb = 1;
+    _health = _health;
+    _speed = _speed;
+    _bomb_range = _bomb_range;
+    _bomb_nb = _bomb_nb;
+    _id = _id;
     this->_position.x = 0;
     this->_position.y = 0;
     this->_wallpass = false;
@@ -19,6 +21,24 @@ Player::Player()
 
 Player::~Player()
 {
+}
+
+int Player::getEvents()
+{
+    while (!WindowShouldClose) {
+        if (IsKeyPressed(KEY_UP))
+            this->_position.y -= this->_speed;
+        if (IsKeyPressed(KEY_DOWN))
+            this->_position.y += this->_speed;
+        if (IsKeyPressed(KEY_LEFT))
+            this->_position.x -= this->_speed;
+        if (IsKeyPressed(KEY_RIGHT))
+            this->_position.x += this->_speed;
+        if (IsKeyPressed(KEY_SPACE)) {
+            // call dropBomb()
+            setBombNb(getBombNb() - 1);
+        }
+    }
 }
 
 void Player::setId(int id)

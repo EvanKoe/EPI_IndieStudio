@@ -12,8 +12,12 @@
 
 class Player : public Entity {
 public:
-    Player();
+    Player(int _health, int _speed, int _bomb_range, int _bomb_nb, int _id);
     ~Player();
+    int getEvents(void) override;
+    int movement(int) override;
+    int dropBomb(void) override;
+
     int getScore() const;
     void setScore(int score);
     void setId(int id);
