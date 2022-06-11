@@ -7,7 +7,7 @@
 
 #include "Player.hpp"
 
-Player::Player(int id, int x, int y, int speed, int bomb_range, int bomb_nb)
+Player::Player(int id, int x, int y, int speed, int bomb_range, int bomb_nb, bool wallpass = false)
 {
 }
 

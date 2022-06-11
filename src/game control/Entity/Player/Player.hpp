@@ -28,6 +28,7 @@ private:
     int _bomb_range;
     int _bomb_nb;
     int _score;
+    bool _wallpass;
 };
 
 #endif //BOMBERMAN_PLAYER_HPP

@@ -4,4 +4,5 @@
 ** File description:
 ** Bomb
 */
+
 #include "Bomb.hpp"
