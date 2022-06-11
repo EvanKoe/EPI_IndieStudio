@@ -13,14 +13,15 @@
 namespace Indie {
     class Cam : public IGraphic {
         public:
-            Cam(Vector3 pos = { 0 }, Vector3 target = { 0 }, Vector3 up = { 0 });
-            void start(void);
+            Cam(CameraMode mode = CAMERA_FREE, Vector3 pos = { 0 }, Vector3 target = { 0 }, Vector3 up = { 0 });
+            void draw(void);
             void onHover(void) {};
             void onHoverEnd(void) {};
             bool isHover(void) { return false; }
             void onClick(void) {};
-            Rectangle getRect(void) { return {0}; }
-            void draw(void) {};
+            Rectangle getRect(void) { return { 0 }; }
+            void start(void);
+            void end(void);
             ~Cam();
         private:
             Camera3D _cam;

@@ -79,6 +79,24 @@ namespace Indie {
         KNull
     } key_e;
 
+    // Sprite
+    typedef enum {
+        STANDING,
+        BLOW_UP,
+        STRAFE_LEFT,
+        STRAFE_RIGHT,
+        GO_UP,
+        GO_DOWN,
+        DROP_BOMB,
+        DEATH,
+        RUN
+    } AnimType;
+    typedef struct {
+        ModelAnimation anim;
+        AnimType type;
+        std::string path;
+    } Anims;
+
     typedef struct {
         KeyboardKey rayKey; // raylib key
         key_e std_key;      // our keys
