@@ -9,6 +9,7 @@
 #include <raylib.h>
 #include <filesystem>
 #include <iostream>
+#include <unistd.h>
 
 #pragma once
 
@@ -29,6 +30,7 @@ namespace Indie {
         void onHover(void) override { return; }
         void onHoverEnd(void) override { return; }
         void onClick(void) override { return; }
+        bool getIs3D(void) override { return false; }
         ~Picture();
 
     private:

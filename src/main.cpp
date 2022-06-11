@@ -20,5 +20,5 @@ int main(int ac, char **av) {
         k = d.getEvents();
         // g.play(k);
     }
-    return 0;
+    exit(0);
 }

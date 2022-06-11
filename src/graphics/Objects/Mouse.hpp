@@ -18,6 +18,7 @@ namespace Indie {
             void onHover(void) override {  };
             void onHoverEnd(void) override {  };
             void onClick(void) override {  }
+            bool getIs3D(void) override { return false; }
             void draw(void) override {  };
             Rectangle getRect(void) override { return {0, 0, 0, 0}; }
             Vector2 getPos(void);

@@ -15,7 +15,7 @@
 namespace Indie {
     class Sprite : public IGraphic {
         public:
-            Sprite(std::string);
+            Sprite(std::string, std::string texture = "EMPTY");
             void onHover(void) override {};
             void setSprite(std::string);
             void getSprite(std::string);
@@ -23,6 +23,7 @@ namespace Indie {
             bool isHover(void) override { return false; };
             void onClick(void) override {  }
             void draw(void) override;
+            bool getIs3D(void) override { return true; }
             Rectangle getRect(void) override { return {0, 0, 0, 0}; }
             ~Sprite();
         private:
@@ -30,5 +31,7 @@ namespace Indie {
             // std::vector<Anims> _anims;
             unsigned int animCount;
             ModelAnimation *anim;
+            Texture2D _texture;
+            int frameCounter;
     };
 };

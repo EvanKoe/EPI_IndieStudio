@@ -43,7 +43,6 @@ namespace Indie {
             // settings
             MusicMode_s _selected_mus;
 
-            void initDraw(std::string);
             void create_menu(void);
             void create_diff(void);
             void create_load(void);

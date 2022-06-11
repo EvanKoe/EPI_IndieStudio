@@ -19,15 +19,14 @@
 namespace Indie {
     const std::string BGIMG = "./src/assets/img/title.png";
 
-    Display::Display(State s, int w, int h, std::string title): _mus(Musics(MOSTS[0])) {
-        std::cout << MOSTS[0] << std::endl;
+    Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0])) {
         _size.x = w;
         _size.y = h;
+        _cam = { 0 };
         InitWindow(w, h, title.c_str());
         changeState(s);
         _selected_mus = musicArray[0];
         SetTargetFPS(60);
-        // _mus = Musics("src/assets/sounds/main_title.ogg");
     }
 
     void Display::changeState(State s) {
@@ -35,32 +34,38 @@ namespace Indie {
 
         for (auto e: stateArray) {
             if (e.s == s) {
-                return e.fun();
+                e.fun();
+                if (!_is3D) {
+                    _cam = { 0 };
+                }
+                break;
             }
         }
         return;
     }
 
     int Display::draw(void) {
-        initDraw("start");
+        BeginDrawing();
+        ClearBackground(BLACK);
+        if (_is3D) {
+            UpdateCamera(&_cam);
+            BeginMode3D(_cam);
+            DrawGrid(32, 1.0f);
+            for (const auto &e: _comp) {
+                if (e->getIs3D()) {
+                    e->draw();
+                }
+            }
+            EndMode3D();
+        }
+        DrawFPS(1200, 50);
         for (const auto &e: _comp) {
-            e->draw();
+            if (!e->getIs3D()) {
+                e->draw();
+            }
         }
-        initDraw("end");
+        EndDrawing();
         return 0;
-    }
-
-    void Display::initDraw(std::string str) {
-        if (str == "START") {
-            BeginDrawing();
-            ClearBackground(BLACK);
-            if (_is3D)
-                BeginMode3D(_cam);
-        } else {
-            if (_is3D)
-                EndMode3D();
-            EndDrawing();
-        }
     }
 
     key_e Display::getEvents(void)
@@ -88,6 +93,7 @@ namespace Indie {
     }
 
     void Display::create_menu(void) {
+        std::cout << "create menu\n";
         _is3D = false;
         std::unique_ptr<Picture> p1(new Picture(BGIMG));
         std::unique_ptr<Cam> p2(new Cam());
@@ -104,27 +110,26 @@ namespace Indie {
             [&](){ changeState(Indie::QUIT_MENU); },
             { 100, 500 }, { 350, 100 }, BLACK, RED
         ));
-        // std::unique_ptr<Musics> p7(new Musics("src/assets/sounds/main_title.ogg", 100));
         _comp.push_back(std::move(p1));
         _comp.push_back(std::move(p2));
         _comp.push_back(std::move(p3));
         _comp.push_back(std::move(p4));
         _comp.push_back(std::move(p5));
         _comp.push_back(std::move(p6));
-        // _comp.push_back(std::move(p7));
     }
 
     void Display::create_load(void) {
+        std::cout << "create load\n";
         _is3D = false;
         _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Text>(Text("LOAD", 100, 50, 70)));
-        // add saves if exists
         _comp.push_back(std::make_unique<Button>(Button("New game",
             [&](){ changeState(Indie::DIFF_MENU); },
             { 100, 350 }, { 350, 100 }, BLACK, RED
         )));
     }
     void Display::create_diff(void) {
+        std::cout << "create diff\n";
         _is3D = false;
 
         _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
@@ -144,6 +149,7 @@ namespace Indie {
     }
 
     void Display::create_quit(void) {
+        std::cout << "create quit\n";
         _is3D = false;
         _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Text>(Text("QUIT", 100, 50, 70)));
@@ -157,11 +163,16 @@ namespace Indie {
             [&](){ changeState(Indie::MAIN_MENU); }, { 700, 350 }, { 500, 100 }, BLACK, RED
         )));
     }
-    void Display::create_game(void) {
-        _is3D = true;
 
-        _comp.push_back(std::make_unique<Cam>(Cam()));
-        _comp.push_back(std::make_unique<Sprite>(Sprite("assets/icon-of-sin-toy/Icon of sin Toy.iqm")));
+    void Display::create_game(void) {
+        std::cout << "create game\n";
+        _is3D = true;
+        _cam = Cam().getCamera();
+
+        _comp.push_back(std::make_unique<Text>(Text("Game", 10, 10, 40, WHITE)));
+        _comp.push_back(std::make_unique<Sprite>(Sprite(
+            "assets/icon-of-sin-toy/Icon of sin Toy.iqm"
+        )));
     }
 
     void Display::create_settings(void) {

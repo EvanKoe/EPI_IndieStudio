@@ -20,6 +20,7 @@ namespace Indie {
             void play(void);
             void pause(void);
             void stop(void);
+            bool getIs3D(void) override { return false; }
             Music getStream(void) { return _music; };
             bool isHover(void) override { return false; }
             void onHover(void) override {  };

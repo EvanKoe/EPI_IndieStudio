@@ -21,6 +21,7 @@ namespace Indie {
             void draw(void) override;
             void setText(std::string);
             void onHoverEnd(void) override { return; }
+            bool getIs3D(void) override { return false; }
             void onClick(void) override { return; }
             ~Text();
         private:

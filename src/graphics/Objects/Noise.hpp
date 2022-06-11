@@ -15,6 +15,7 @@ namespace Indie {
             Noise(std::string);
             void play(void);
             void onHover(void) override {};
+            bool getIs3D(void) override { return false; }
             void onHoverEnd(void) override {};
             void onClick(void) override {}
             void draw(void) override {};
