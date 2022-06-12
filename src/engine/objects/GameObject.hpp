@@ -23,10 +23,10 @@ class GameObject {
         float getY() const;
         float getZ() const;
         std::vector<float> getPosition() const;
-        virtual void setX(float x) = 0;
-        virtual void setY(float y) = 0;
-        virtual void setZ(float z) = 0;
-        virtual int getId() const;
+        void setX(float x);
+        void setY(float y);
+        void setZ(float z);
+        int getId() const;
     protected:
         float _x;
         float _y;

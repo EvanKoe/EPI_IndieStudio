@@ -17,7 +17,7 @@ class PowerUp : public GameObject {
             _attribute(attribute)
         {};
         ~PowerUp() = default;
-        Indie::PowerUpAttribute gatAttribute();
+        Indie::PowerUpAttribute getAttribute();
     private:
         Indie::PowerUpAttribute _attribute;
 

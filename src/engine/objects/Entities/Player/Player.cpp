@@ -29,6 +29,13 @@ void Player::getEvents() {
         this->dropBomb();
 }
 
+bool Player::checkCollision(GameObject object)
+{
+    if (this->getX() == object.getX() && this->getY() == object.getY())
+        return true;
+    return false;
+}
+
 int Player::getScore() const
 {
     return this->_score;
