@@ -15,8 +15,8 @@
 
 class GameObject {
     public:
-        GameObject(float x = 0, float y = 0, float z = 0, int id = -1):
-            _x(x), _y(y), _z(z), _id(id)
+        GameObject(float x = 0, float y = 0, float z = 0, Indie::game_object_id_e id = Indie::NONE)
+        : _x(x), _y(y), _z(z), _id(id)
         {};
         ~GameObject();
         float getX() const;
