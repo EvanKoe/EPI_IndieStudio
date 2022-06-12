@@ -27,7 +27,7 @@ namespace Indie {
         InitWindow(w, h, title.c_str());
         changeState(s);
         _selected_mus = musicArray[0];
-        SetTargetFPS(144);
+        SetTargetFPS(60);
     }
 
     void Display::changeState(State s) {
@@ -167,12 +167,10 @@ namespace Indie {
         _comp.push_back(std::make_unique<Sprite>(Sprite(
             "assets/doomslayer-toy/object.obj",
             "assets/doomslayer-toy/textures/doomslayer_toy_n.png",
-            "putthe",
             "assets/doomslayer-toy/run_slayeriqm.iqm"
             // "assets/icon-of-sin-toy/object.iqm",
-            // "assets/icon-of-sin-toy/textures/iconofsin_toy_n.png",
-            // "assets/icon-of-sin-toy/textures/iconofsin_toy.png",
-            // "assets/icon-of-sin-toy/standing_1_1.iqm"
+            // "assets/icon-of-sin-toy/textures/iconofsin_toy_s@channels=G.png",
+            // "assets/icon-of-sin-toy/standingiqm.iqm"
         )));
         _comp.push_back(std::make_unique<Button>(Button("Pause",
             [&](){ changeState(Indie::PAUSE_MENU); },
