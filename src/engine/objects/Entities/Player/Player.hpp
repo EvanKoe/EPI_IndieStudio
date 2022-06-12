@@ -5,12 +5,12 @@
 ** Player.hpp
 */
 
-#include "../Entity.hpp"
+#include "../IEntity.hpp"
 
 #ifndef BOMBERMAN_PLAYER_HPP
 #define BOMBERMAN_PLAYER_HPP
 
-class Player : public Entity {
+class Player : public IEntity {
 public:
     Player(int _health, int _speed, int _bomb_range, int _bomb_nb, int _id);
     ~Player();
