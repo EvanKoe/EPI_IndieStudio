@@ -30,5 +30,7 @@ namespace Indie {
         UpdateCamera(&_cam);
     }
 
-    Cam::~Cam() {}
+    Cam::~Cam() {
+        EndMode3D();
+    }
 }
