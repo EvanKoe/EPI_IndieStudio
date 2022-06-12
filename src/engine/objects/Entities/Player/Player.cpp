@@ -29,6 +29,14 @@ void Player::getEvents() {
         this->dropBomb();
 }
 
+int Player::dropBomb()
+{
+    if (this->_bomb_nb > 0) {
+        Bomb bomb(this->_x, this->_y, this->_z, this->_bomb_range, 3);
+        this->_bomb_nb--;
+    }
+}
+
 bool Player::checkCollision(GameObject object)
 {
     if (this->getX() == object.getX() && this->getY() == object.getY())

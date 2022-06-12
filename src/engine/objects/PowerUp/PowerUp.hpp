@@ -18,6 +18,7 @@ class PowerUp : public GameObject {
         {};
         ~PowerUp() = default;
         Indie::PowerUpAttribute getAttribute();
+        virtual void setAttribute(Indie::PowerUpAttribute attribute) = 0;
     private:
         Indie::PowerUpAttribute _attribute;
 

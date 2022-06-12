@@ -6,6 +6,7 @@
 */
 
 #include "../Entity.hpp"
+#include "../../Bomb/Bomb.hpp"
 
 #ifndef BOMBERMAN_PLAYER_HPP
 #define BOMBERMAN_PLAYER_HPP
