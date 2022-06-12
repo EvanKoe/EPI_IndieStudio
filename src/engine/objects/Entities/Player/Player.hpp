@@ -30,14 +30,14 @@ public:
     void addScore(int score);
     void removeScore(int score);
     int getSpeed() const;
-    void addSpeed();
-    void removeSpeed();
+    void addSpeed(int speed);
+    void removeSpeed(int speed);
     int getBombRange() const;
-    void addBombRange();
-    void removeBombRange();
+    void addBombRange(int range);
+    void removeBombRange(int range);
     int getBombNb() const;
-    void addBombNb();
-    void removeBombNb();
+    void addBombNb(int bomb);
+    void removeBombNb(int bomb);
     bool getWallpass() const;
     void grantWallpass();
 

@@ -4,3 +4,10 @@
 ** File description:
 ** Enemy
 */
+
+#include "Enemy.hpp"
+
+int Enemy::movement(int direction)
+{
+    // IA
+}

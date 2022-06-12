@@ -29,19 +29,19 @@ void Player::getEvents() {
         this->dropBomb();
 }
 
-void Player::setId(int id)
-{
-    this->_id = id;
-}
-
 int Player::getScore() const
 {
     return this->_score;
 }
 
-void Player::setScore(int score)
+void Player::addScore(int score)
 {
-    this->_score = score;
+    this->_score += score;
+}
+
+void Player::removeScore(int score)
+{
+    this->_score -= score;
 }
 
 int Player::getSpeed() const
@@ -49,13 +49,18 @@ int Player::getSpeed() const
     return this->_speed;
 }
 
-void Player::setSpeed(int speed)
+void Player::addSpeed(int speed)
 {
-    this->_speed = speed;
-    if (this->_speed < 1)
-        this->_speed = 1;
+    this->_speed += speed;
     if (this->_speed > 3)
         this->_speed = 3;
+}
+
+void Player::removeSpeed(int speed)
+{
+    this->_speed -= speed;
+    if (this->_speed < 1)
+        this->_speed = 1;
 }
 
 int Player::getBombRange() const
@@ -63,14 +68,19 @@ int Player::getBombRange() const
     return this->_bomb_range;
 }
 
-void Player::setBombRange(int bomb_range)
+void Player::addBombRange(int bomb_range)
 {
-    this->_bomb_range = bomb_range;
+    this->_bomb_range += bomb_range;
 }
 
-void Player::setWallpass(bool wallpass)
+void Player::removeBombRange(int bomb_range)
 {
-    this->_wallpass = wallpass;
+    this->_bomb_range -= bomb_range;
+}
+
+void Player::grantWallpass()
+{
+    this->_wallpass = true;
 }
 
 bool Player::getWallpass() const
@@ -83,9 +93,14 @@ int Player::getBombNb() const
     return this->_bomb_nb;
 }
 
-void Player::setBombNb(int bomb_nb)
+void Player::addBombNb(int bomb)
 {
-    this->_bomb_nb = bomb_nb;
+    this->_bomb_nb += bomb;
+}
+
+void Player::removeBombNb(int bomb)
+{
+    this->_bomb_nb -= bomb;
     if (this->_bomb_nb < 1)
         this->_bomb_nb = 1;
 }

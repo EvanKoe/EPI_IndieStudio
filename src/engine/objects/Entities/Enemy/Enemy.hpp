@@ -15,8 +15,8 @@ class Enemy: public Entity {
             Entity(x, y, z, 1, Indie::ENEMY)
         {};
         ~Enemy();
-        int movement(int) override;
-        int dropBomb(void) override;
+        int movement(int);
+        int dropBomb(void);
 
     protected:
     private:
