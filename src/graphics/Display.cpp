@@ -23,6 +23,7 @@ namespace Indie {
         _size.x = w;
         _size.y = h;
         _cam = { 0 };
+        _is3D = false;
         InitWindow(w, h, title.c_str());
         changeState(s);
         _selected_mus = musicArray[0];
@@ -41,12 +42,16 @@ namespace Indie {
                 break;
             }
         }
+
+        for (auto e: _comp) {
+            std::cout << e.get() << std::endl;
+        }
         return;
     }
 
     int Display::draw(void) {
         BeginDrawing();
-        ClearBackground(BLACK);
+        ClearBackground(LIGHTGRAY);
         if (_is3D) {
             UpdateCamera(&_cam);
             BeginMode3D(_cam);
