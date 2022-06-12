@@ -10,7 +10,7 @@
 #include <unistd.h>
 
 namespace Indie {
-    Sprite::Sprite(std::string path, std::string texture)
+    Sprite::Sprite(std::string path, std::string texture, std::string animate)
     {
         if (access(path.c_str(), F_OK) == -1) {
             std::cout << "Error: " << path << " doesn't exist\n";
@@ -22,9 +22,11 @@ namespace Indie {
             _texture = LoadTexture(texture.c_str());
             SetMaterialTexture(&_model.materials[0], MATERIAL_MAP_DIFFUSE, _texture);
         }
-        animCount = 0;
-        frameCounter = 0;
-        anim = LoadModelAnimations("assets/icon-of-sin-toy/standing_1_1.iqm", &animCount);
+        if (animate != "EMPTY") {
+            animCount = 0;
+            frameCounter = 0;
+            anim = LoadModelAnimations(animate.c_str(), &animCount);
+        }
     }
 
     void Sprite::setSprite(std::string)
@@ -41,7 +43,8 @@ namespace Indie {
             frameCounter = 0;
 
         // Draw
-        DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, (Vector3){ 1.0f, 1.0f, 1.0f }, WHITE);
+        // DrawModelEx(Model model, Vector3 position, Vector3 rotationAxis, float rotationAngle, Vector3 scale, Color tint)
+        DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, (Vector3){ 2.0f, 2.0f, 2.0f }, WHITE);
         if (anim == nullptr) {
             return;
         }
