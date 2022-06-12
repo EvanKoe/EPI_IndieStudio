@@ -42,5 +42,5 @@ INCLUDE_DIRECTORIES(
   "src/engine/Entity/Enemy"
 )
 
-add_executable(bomberman ${SOURCES} "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Entity.hpp" "src/engine/PowerUp/PowerUp.cpp" "src/engine/PowerUp/PowerUp.hpp" "src/engine/Bomb/Bomb.cpp" "src/engine/Bomb/Bomb.hpp" "src/engine/Entity/Enemy/Enemy.cpp" "src/engine/GameObject.cpp")
+add_executable(bomberman ${SOURCES} "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Entity.hpp" "src/engine/PowerUp/PowerUp.cpp" "src/engine/PowerUp/PowerUp.hpp" "src/engine/Bomb/Bomb.cpp" "src/engine/Bomb/Bomb.hpp" "src/engine/Entity/Enemy/Enemy.cpp" "src/engine/GameObject.cpp" src/engine/objects/Entities/Entity.cpp)
 target_link_libraries(bomberman raylib)

@@ -7,25 +7,18 @@
 
 #pragma once
 
-#include "../IControl.hpp"
+#include "../Entity.hpp"
 
-class Enemy: public IControl {
-    enum Difficulty {
-        EASY,
-        MEDIUM,
-        HARD
-    };
+class Enemy: public Entity {
     public:
-        Enemy();
+        Enemy(float x = 0, float y = 0, float z = 0) :
+            Entity(x, y, z, 1, Indie::ENEMY)
+        {};
         ~Enemy();
-        int getEvents(void) override;
         int movement(int) override;
         int dropBomb(void) override;
 
     protected:
     private:
-        void setPosition(void); // Set the position of the enemy at the beginning of the game
         void death(void); // The enemy is dead
-        void setDifficulty(Difficulty d); // Set the difficulty of the game
-        void getPosition(void); // Get the position of the enemy
 };

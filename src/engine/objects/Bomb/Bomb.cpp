@@ -6,3 +6,14 @@
 */
 
 #include "Bomb.hpp"
+
+void Bomb::checkExplode()
+{
+    if (time(nullptr) >= _timer)
+        Explode();
+}
+
+void Bomb::Explode()
+{
+    std::cout << "Bomb Explode" << std::endl;
+}
