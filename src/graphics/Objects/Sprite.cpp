@@ -10,22 +10,32 @@
 #include <unistd.h>
 
 namespace Indie {
-    Sprite::Sprite(std::string path, std::string texture, std::string animate)
+    Sprite::Sprite(std::string path, std::string texture, std::string texture2, std::string animate)
     {
         if (access(path.c_str(), F_OK) == -1) {
-            std::cout << "Error: " << path << " doesn't exist\n";
+            std::cout << "3D Object Error: " << path << " doesn't exist\n";
             return;
         }
 
         _model = LoadModel(path.c_str());
         if (texture != "EMPTY") {
-            _texture = LoadTexture(texture.c_str());
-            SetMaterialTexture(&_model.materials[0], MATERIAL_MAP_DIFFUSE, _texture);
+            if (access(texture.c_str(), F_OK) == -1) {
+                std::cout << "Texture Error: " << texture << " doesn't exist\n";
+            } else {
+                _texture = LoadTexture(texture.c_str());
+                SetMaterialTexture(&_model.materials[0], MATERIAL_MAP_DIFFUSE, _texture);
+                // _texture2 = LoadTexture(texture.c_str());
+                // SetMaterialTexture(&_model.materials[0], MATERIAL_MAP_DIFFUSE, _texture2);
+            }
         }
         if (animate != "EMPTY") {
-            animCount = 0;
-            frameCounter = 0;
-            anim = LoadModelAnimations(animate.c_str(), &animCount);
+            if (access(animate.c_str(), F_OK) == -1) {
+                std::cout << "Animation Error: " << animate << " doesn't exist\n";
+            } else {
+                animCount = 0;
+                // anim = LoadModelAnimations(animate.c_str(), &animCount);
+                frameCounter = 0;
+            }
         }
     }
 
@@ -36,18 +46,14 @@ namespace Indie {
 
     void Sprite::draw(void)
     {
+        // Draw
+        DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 0.0f, 1.0f, 0.0f }, 90.0f, (Vector3){ 5.0f, 5.0f, 5.0f }, WHITE);
+
         // Update
         frameCounter++;
-        UpdateModelAnimation(_model, anim[0], frameCounter);
+        // UpdateModelAnimation(_model, anim[0], frameCounter);
         if (frameCounter >= anim[0].frameCount)
             frameCounter = 0;
-
-        // Draw
-        // DrawModelEx(Model model, Vector3 position, Vector3 rotationAxis, float rotationAngle, Vector3 scale, Color tint)
-        DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 1.0f, 0.0f, 0.0f }, -90.0f, (Vector3){ 2.0f, 2.0f, 2.0f }, WHITE);
-        if (anim == nullptr) {
-            return;
-        }
     }
 
     void Sprite::getSprite(std::string)
@@ -55,7 +61,5 @@ namespace Indie {
 
     }
 
-    Sprite::~Sprite()
-    {
-    }
+    Sprite::~Sprite() {}
 };

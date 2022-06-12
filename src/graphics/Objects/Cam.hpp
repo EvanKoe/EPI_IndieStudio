@@ -15,10 +15,10 @@ namespace Indie {
         public:
             Cam(
                 CameraMode mode = CAMERA_FREE,
-                Vector3 pos = (Vector3){ 0.0f, 20.0f, 2.0f },
+                Vector3 pos = (Vector3){ 0.0f, 10.0f, 10.0f },
                 Vector3 target = (Vector3){ 0.0f, 0.0f, 0.0f },
-                Vector3 up = (Vector3){ 0.0f, 90.0f, 0.0f },
-                float fovy = -90.0f
+                Vector3 up = (Vector3){ 0.0f, 1.0f, 0.0f },
+                float fovy = 45.0f
             );
             void draw(void) override;
             Camera3D getCamera(void) { return _cam; }

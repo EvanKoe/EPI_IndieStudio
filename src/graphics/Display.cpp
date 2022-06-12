@@ -27,7 +27,7 @@ namespace Indie {
         InitWindow(w, h, title.c_str());
         changeState(s);
         _selected_mus = musicArray[0];
-        SetTargetFPS(60);
+        SetTargetFPS(144);
     }
 
     void Display::changeState(State s) {
@@ -48,17 +48,23 @@ namespace Indie {
     int Display::draw(void) {
         BeginDrawing();
         ClearBackground(GetColor(0x121212ff));
+
         if (_is3D) {
-            UpdateCamera(&_cam);
+            BeginMode3D(_cam);
+            UpdateCamera(&_cam);     // Disables zoom on scroll
             DrawGrid(32, 1.0f);
+            for (const auto &e: _comp) {
+                if (e->getIs3D()) {
+                    e->draw();
+                }
+            }
+            EndMode3D();
         }
-        DrawFPS(1200, 50);
+        DrawFPS(1200, 10);
         for (const auto &e: _comp) {
-            if (e->getIs3D())
-                BeginMode3D(_cam);
-            e->draw();
-            if (e->getIs3D())
-                EndMode3D();
+            if (!e->getIs3D()) {
+                e->draw();
+            }
         }
         EndDrawing();
         return 0;
@@ -159,14 +165,19 @@ namespace Indie {
         _cam = Cam().getCamera();
 
         _comp.push_back(std::make_unique<Sprite>(Sprite(
-            "assets/icon-of-sin-toy/Icon of sin Toy.iqm",
-            "assets/test.png",
-            "assets/icon-of-sin-toy/standing_1_1.iqm"
-            // "assets/doomslayer-toy/doomslayer.obj"
-            // "assets/doomslayer-toy/doomslayer_toy.png",
-            // "assets/doomslayer-toy/stay_1_1.iqm"
+            "assets/doomslayer-toy/object.obj",
+            "assets/doomslayer-toy/textures/doomslayer_toy_n.png",
+            "putthe",
+            "assets/doomslayer-toy/run_slayeriqm.iqm"
+            // "assets/icon-of-sin-toy/object.iqm",
+            // "assets/icon-of-sin-toy/textures/iconofsin_toy_n.png",
+            // "assets/icon-of-sin-toy/textures/iconofsin_toy.png",
+            // "assets/icon-of-sin-toy/standing_1_1.iqm"
         )));
-        _comp.push_back(std::make_unique<Text>(Text("Game", 10, 10, 40, WHITE)));
+        _comp.push_back(std::make_unique<Button>(Button("Pause",
+            [&](){ changeState(Indie::PAUSE_MENU); },
+            { 10, 10 }, { 150, 50 }, LIGHTGRAY, RED
+        )));
     }
 
     void Display::create_settings(void) {
@@ -219,6 +230,21 @@ namespace Indie {
 
     void Display::create_pause(void) {
         _is3D = false;
+
+        _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
+        _comp.push_back(std::make_unique<Text>(Text("Menu pause", 100, 50, 60)));
+        _comp.push_back(std::make_unique<Button>(Button("Resume",
+            [&](){ changeState(Indie::CURR_GAME); },
+            { 100, 150 }, { 550, 100 }, LIGHTGRAY, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button("Settings",
+            [&](){ changeState(Indie::SETT_MENU); },
+            { 100, 300 }, { 550, 100 }, LIGHTGRAY, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button("Return to menu",
+            [&](){ changeState(Indie::MAIN_MENU); },
+            { 100, 450 }, { 550, 100 }, LIGHTGRAY, RED
+        )));
     };
 
     bool Display::is_pressed(Rectangle rec) {

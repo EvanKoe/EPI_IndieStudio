@@ -15,7 +15,7 @@
 namespace Indie {
     class Sprite : public IGraphic {
         public:
-            Sprite(std::string, std::string texture = "EMPTY", std::string animate = "EMPTY");
+            Sprite(std::string, std::string texture = "EMPTY", std::string texture2 = "EMPTY", std::string animate = "EMPTY");
             void onHover(void) override {};
             void setSprite(std::string);
             void getSprite(std::string);
@@ -32,6 +32,7 @@ namespace Indie {
             unsigned int animCount;
             ModelAnimation *anim;
             Texture2D _texture;
+            Texture2D _texture2;
             int frameCounter;
     };
 };
