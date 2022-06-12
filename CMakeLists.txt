@@ -28,7 +28,7 @@ find_package(raylib 4.0.0 QUIET)
 FILE(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR}
   "src/*.cpp"
   "src/map/*.cpp"
-  "src/game control/*.cpp"
+  "src/engine/*.cpp"
   "src/graphics/*.cpp"
   "src/graphics/Objects/*.cpp"
 )
@@ -38,9 +38,9 @@ INCLUDE_DIRECTORIES(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Objects/"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Entities/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/"
-  "src/game control/Entity/Enemy"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/engine"
+  "src/engine/Entity/Enemy"
 )
 
-add_executable(bomberman ${SOURCES} "src/game control/Entity/Player/Player.cpp" "src/game control/Entity/Player/Player.hpp" "src/game control/Entity/Player/Player.cpp" "src/game control/Entity/Player/Player.hpp" "src/game control/Entity/Player/Player.cpp" "src/game control/Entity/Player/Player.hpp" "src/game control/Entity/Entity.hpp" "src/game control/PowerUp/PowerUp.cpp" "src/game control/PowerUp/PowerUp.hpp" "src/game control/Bomb/Bomb.cpp" "src/game control/Bomb/Bomb.hpp" "src/game control/Entity/Enemy/Enemy.cpp" "src/game control/GameObject.cpp")
+add_executable(bomberman ${SOURCES} "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Entity.hpp" "src/engine/PowerUp/PowerUp.cpp" "src/engine/PowerUp/PowerUp.hpp" "src/engine/Bomb/Bomb.cpp" "src/engine/Bomb/Bomb.hpp" "src/engine/Entity/Enemy/Enemy.cpp" "src/engine/GameObject.cpp" src/engine/objects/Entities/Entity.cpp)
 target_link_libraries(bomberman raylib)

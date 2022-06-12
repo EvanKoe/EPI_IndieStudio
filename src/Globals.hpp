@@ -118,4 +118,24 @@ namespace Indie {
         { KEY_ENTER, Enter },
         { KEY_ESCAPE, Escape }
     };
+
+    typedef enum GameObjectsIds {
+        PLAYER = 0,
+        ENEMY = 1,
+        WALL = 2,
+        BRICK = 3,
+        POWERUP = 4,
+        BOMB = 5,
+        NONE = -1
+    }game_object_id_e;
+
+    enum PowerUpAttribute {
+        BOMB_UP,
+        SPEED_UP,
+        FIRE_UP,
+        BOMB_DOWN,
+        SPEED_DOWN,
+        FIRE_DOWN,
+        WALL_PASS,
+    };
 };

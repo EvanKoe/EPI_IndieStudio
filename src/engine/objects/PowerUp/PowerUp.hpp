@@ -10,23 +10,16 @@
 #ifndef BOMBERMAN_POWERUP_HPP
 #define BOMBERMAN_POWERUP_HPP
 
-enum Attribute {
-    BOMB_UP,
-    SPEED_UP,
-    FIRE_UP,
-    BOMB_DOWN,
-    SPEED_DOWN,
-    FIRE_DOWN,
-    WALL_PASS,
-};
-
 class PowerUp : public GameObject {
     public:
-        PowerUp(Attribute attribute);
+        PowerUp(Indie::PowerUpAttribute attribute, float x = 0, float y = 0, float z = 0):
+            GameObject(x, y, z, Indie::POWERUP),
+            _attribute(attribute)
+        {};
         ~PowerUp() = default;
-        Attribute getAttribute();
+        Indie::PowerUpAttribute gatAttribute();
     private:
-        Attribute _attribute;
+        Indie::PowerUpAttribute _attribute;
 
 };
 
