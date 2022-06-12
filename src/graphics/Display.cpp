@@ -19,7 +19,7 @@
 namespace Indie {
     const std::string BGIMG = "./src/assets/img/title.png";
 
-    Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0])) {
+    Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0], 0)) {
         _size.x = w;
         _size.y = h;
         _cam = { 0 };
@@ -101,7 +101,6 @@ namespace Indie {
         std::cout << "create menu\n";
         _is3D = false;
         std::unique_ptr<Picture> p1(new Picture(BGIMG));
-        std::unique_ptr<Cam> p2(new Cam());
         std::unique_ptr<Text>p3(new Text("DoomerMan", 100, 50, 70));
         std::unique_ptr<Button> p4(new Button("Play",
             [&](){ changeState(Indie::LOAD_MENU); },
@@ -116,7 +115,6 @@ namespace Indie {
             { 100, 500 }, { 350, 100 }, BLACK, RED
         ));
         _comp.push_back(std::move(p1));
-        _comp.push_back(std::move(p2));
         _comp.push_back(std::move(p3));
         _comp.push_back(std::move(p4));
         _comp.push_back(std::move(p5));
