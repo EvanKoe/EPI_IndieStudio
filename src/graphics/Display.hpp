@@ -22,6 +22,7 @@
 #include "Objects/Cam.hpp"
 #include <exception>
 #include <type_traits>
+#include <time.h>
 
 namespace Indie {
     class Display {

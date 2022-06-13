@@ -87,7 +87,7 @@ namespace Indie {
             }
         }
 
-        for (int i = 0; i < 33; ++i) {
+        for (int i = 0; i < 32; ++i) {
             if (IsKeyDown(key_tab[i].rayKey))
                 return key_tab[i].std_key;
         }
@@ -178,6 +178,7 @@ namespace Indie {
 
     void Display::create_settings(void) {
         _is3D = false;
+        srand(time(NULL));
 
         _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Button>(Button("<-",
@@ -186,11 +187,12 @@ namespace Indie {
         )));
         _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 250, 50, 70)));
         _comp.push_back(std::make_unique<Text>(Text("Music :", 100, 150, 70)));
+
         // Music choice buttons
         _comp.push_back(std::make_unique<Button>(Button(musicArray[0].to_str,
             [&](){
                 _selected_mus = { musicArray[0].m, musicArray[0].to_str };
-                _mus.setMusic(DOSTS[0]);
+                _mus.setMusic(DOSTS[rand() % 2]);
             },
             { 100, 250 }, { 300, 100 }, LIGHTGRAY, RED
         )));
@@ -204,7 +206,7 @@ namespace Indie {
         _comp.push_back(std::make_unique<Button>(Button(musicArray[2].to_str,
             [&](){
                 _selected_mus = { musicArray[2].m, musicArray[2].to_str };
-                _mus.setMusic(WOSTS[0]);
+                _mus.setMusic(WOSTS[rand() % 2]);
             },
             { 800, 250 }, { 300, 100 }, LIGHTGRAY, RED
         )));
