@@ -33,7 +33,7 @@ namespace Indie {
     }
 
     Vector2 Button::getPosition(void) {
-        return (Vector2){ _rec.x, _rec.y };
+        return { _rec.x, _rec.y };
     }
 
     void Button::setText(std::string str)
@@ -55,7 +55,6 @@ namespace Indie {
     }
 
     void Button::draw(void) {
-        // DrawRectangleRec(_rec, LIGHTGRAY);
         DrawRectangleRounded(_rec, 0.4, 0, Fade(LIGHTGRAY, 0.3f));
         DrawText(_text.c_str(),
             _rec.x + (_rec.width / 2) - (15 * _text.length() / 2),

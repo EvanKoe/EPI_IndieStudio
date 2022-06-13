@@ -11,7 +11,7 @@
 namespace Indie {
     Text::Text(std::string str, float x, float y, float size, Color col)
     {
-        _pos = (Vector2){ x, y };
+        _pos = { x, y };
         _col = col;
         _size = size;
         _value = std::string(str);

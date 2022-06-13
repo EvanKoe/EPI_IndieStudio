@@ -15,6 +15,7 @@ Indie::PowerUpAttribute Indie::PowerUp::getAttribute()
 void Indie::PowerUp::setAttribute(Indie::PowerUpAttribute attribute)
 {
     Player *player;
+
     if (attribute == Indie::PowerUpAttribute::SPEED_UP) {
         if (player) {
             player->addSpeed();

@@ -23,9 +23,10 @@ namespace Indie {
             void onHoverEnd(void) override {  };
             bool isHover(void) override { return false; };
             void onClick(void) override {  }
+            void setAnimation(std::string path = "EMPTY");
             void draw(void) override;
             bool getIs3D(void) override { return true; }
-            Rectangle getRect(void) override { return {0, 0, 0, 0}; }
+            Rectangle getRect(void) override { return { 0, 0, 0, 0 }; }
             ~Sprite();
         private:
             Model _model;

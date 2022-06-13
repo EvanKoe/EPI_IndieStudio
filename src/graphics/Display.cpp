@@ -27,7 +27,7 @@ namespace Indie {
         InitWindow(w, h, title.c_str());
         changeState(s);
         _selected_mus = musicArray[0];
-        SetTargetFPS(60);
+        SetTargetFPS(30);
     }
 
     void Display::changeState(State s) {
@@ -169,7 +169,7 @@ namespace Indie {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/run.iqm");
+        add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/win.iqm");
         _comp.push_back(std::make_unique<Button>(Button("Pause",
             [&](){ changeState(Indie::PAUSE_MENU); },
             { 10, 10 }, { 150, 50 }, LIGHTGRAY, RED
