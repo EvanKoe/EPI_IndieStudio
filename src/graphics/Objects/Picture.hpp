@@ -9,7 +9,6 @@
 #include <raylib.h>
 #include <filesystem>
 #include <iostream>
-#include <unistd.h>
 
 #pragma once
 

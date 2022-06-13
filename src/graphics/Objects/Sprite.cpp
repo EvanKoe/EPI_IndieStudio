@@ -7,7 +7,6 @@
 
 #include "Sprite.hpp"
 #include <raylib.h>
-#include <unistd.h>
 
 namespace Indie {
     Sprite::Sprite(std::string path, std::string texture, std::string animate):
