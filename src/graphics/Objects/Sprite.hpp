@@ -18,6 +18,8 @@ namespace Indie {
         public:
             Sprite(std::string, std::string texture = "EMPTY", std::string animate = "EMPTY");
             void onHover(void) override {};
+            void setPos(float x = 0, float y = 0, float z = 0) { _pos = { x, y, z }; }
+            void setPos(Vector3 pos) { _pos = pos; }
             void setSprite(std::string);
             void getSprite(std::string);
             void onHoverEnd(void) override {  };
@@ -30,7 +32,6 @@ namespace Indie {
             ~Sprite();
         private:
             Model _model;
-            // std::vector<Anims> _anims;
             unsigned int animCount;
             std::string _tpath;
             std::string _path;
@@ -38,5 +39,6 @@ namespace Indie {
             ModelAnimation *anim;
             Texture2D _texture;
             int frameCounter;
+            Vector3 _pos;
     };
 };

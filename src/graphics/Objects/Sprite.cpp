@@ -18,6 +18,7 @@ namespace Indie {
             std::cout << "3D Object Error: " << path << " doesn't exist\n";
             return;
         }
+        _pos = { 0 };
 
         _model = LoadModel(path.c_str());
         my_path = texture;
@@ -65,7 +66,7 @@ namespace Indie {
 
         // Draw
         if (_path != "EMPTY")
-            DrawModel(_model, { 0 }, { 1.0 }, WHITE);
+            DrawModel(_model, _pos, { 1.0 }, WHITE);
     }
 
     void Sprite::getSprite(std::string)
