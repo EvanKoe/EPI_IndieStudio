@@ -11,6 +11,7 @@
 #include <raylib.h>
 #include <string>
 #include <cstdlib>
+#include <memory>
 
 namespace Indie {
     // those are the different screens of the game
@@ -146,5 +147,28 @@ namespace Indie {
         { KEY_Z, Z },
         { KEY_ENTER, Enter },
         { KEY_ESCAPE, Escape }
+    };
+
+    // Used in Game Engine
+
+    typedef enum GameObjectsIds {
+        PLAYER = 0,
+        ENEMY = 1,
+        WALL = 2,
+        BRICK = 3,
+        POWERUP = 4,
+        BOMB = 5,
+        NONE = -1
+    }game_object_id_e;
+
+    enum PowerUpAttribute {
+        BOMB_UP,
+        SPEED_UP,
+        FIRE_UP,
+        BOMB_DOWN,
+        SPEED_DOWN,
+        FIRE_DOWN,
+        WALL_PASS_UP,
+        WALL_PASS_DOWN
     };
 };
