@@ -26,7 +26,6 @@ class Map {
         void Generator(size_t x, size_t y); // Generate a map in a txt file with a random map
         void LoadMap(std::string path); // Load a map from a txt file
         void SaveMap(std::string path); // Save a map in a txt file
-        void ParseMap(std::string path); // Parse a map from a txt file
         ~Map() {};
     protected:
         Vector2 _size;
