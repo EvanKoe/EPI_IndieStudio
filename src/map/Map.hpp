@@ -14,6 +14,7 @@
 #include <filesystem>
 #include <raylib.h>
 #include <cstdlib>
+#include <cstdio>
 
 enum Difficulty {
     EASY,
