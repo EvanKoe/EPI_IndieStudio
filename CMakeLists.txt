@@ -26,20 +26,31 @@ find_package(raylib 4.0.0 QUIET)
   endif()
 
 FILE(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR}
-  "src/*.cpp"
-  "src/map/*.cpp"
-  "src/game control/*.cpp"
-  "src/graphics/*.cpp"
-  "src/graphics/Objects/*.cpp"
+        "src/*.cpp"
+        "src/map/*.cpp"
+        "src/engine/*.cpp"
+        "src/engine/objects/*.cpp"
+        "src/engine/objects/Bomb/*.cpp"
+        "src/engine/objects/PowerUp/*.cpp"
+        "src/engine/objects/Entities/*.cpp"
+        "src/engine/objects/Entities/Enemy/*.cpp"
+        "src/engine/objects/Entities/Player/*.cpp"
+        "src/graphics/*.cpp"
+        "src/graphics/Objects/*.cpp"
 )
 
 INCLUDE_DIRECTORIES(
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Objects/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Entities/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/game control/Enemy"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Objects/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Entities/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/PowerUp/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Bomb/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Entities/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Entities/Player/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Entities/Enemy/"
 )
 
 add_executable(bomberman ${SOURCES})
