@@ -12,6 +12,7 @@
 #include "../Globals.hpp"
 #include <memory>
 #include <vector>
+#include <cstdlib>
 
 #include "Objects/Button.hpp"
 #include "Objects/Text.hpp"

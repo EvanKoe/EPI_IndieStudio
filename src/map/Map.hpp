@@ -13,6 +13,7 @@
 #include <fstream>
 #include <filesystem>
 #include <raylib.h>
+#include <cstdlib>
 
 enum Difficulty {
     EASY,
