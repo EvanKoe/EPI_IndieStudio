@@ -6,6 +6,7 @@
 */
 
 #include "../GameObject.hpp"
+#include "../Entities/Player/Player.hpp"
 
 #ifndef BOMBERMAN_POWERUP_HPP
 #define BOMBERMAN_POWERUP_HPP
@@ -18,7 +19,7 @@ class PowerUp : public GameObject {
         {};
         ~PowerUp() = default;
         Indie::PowerUpAttribute getAttribute();
-        virtual void setAttribute(Indie::PowerUpAttribute attribute) = 0;
+        void setAttribute(Indie::PowerUpAttribute attribute);
     private:
         Indie::PowerUpAttribute _attribute;
 

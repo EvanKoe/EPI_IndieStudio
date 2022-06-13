@@ -98,6 +98,11 @@ void Player::grantWallpass()
     this->_wallpass = true;
 }
 
+void Player::removeWallpass()
+{
+    this->_wallpass = false;
+}
+
 bool Player::getWallpass() const
 {
     return this->_wallpass;

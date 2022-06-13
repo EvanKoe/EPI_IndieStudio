@@ -136,6 +136,7 @@ namespace Indie {
         BOMB_DOWN,
         SPEED_DOWN,
         FIRE_DOWN,
-        WALL_PASS,
+        WALL_PASS_UP,
+        WALL_PASS_DOWN
     };
 };

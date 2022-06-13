@@ -41,6 +41,7 @@ public:
     void removeBombNb(int bomb);
     bool getWallpass() const;
     void grantWallpass();
+    void removeWallpass();
 
 private:
     int _bomb_range;
