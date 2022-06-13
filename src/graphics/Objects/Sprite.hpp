@@ -19,7 +19,6 @@ namespace Indie {
             Sprite(std::string, std::string texture = "EMPTY", std::string animate = "EMPTY");
             void onHover(void) override {};
             void setPos(float x = 0, float y = 0, float z = 0) { _pos = { x, y, z }; }
-            void setPos(Vector3 pos) { _pos = pos; }
             void setSprite(std::string);
             void getSprite(std::string);
             void onHoverEnd(void) override {  };

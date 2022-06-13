@@ -160,9 +160,11 @@ namespace Indie {
         )));
     }
 
-    void Display::add_image(std::string a, std::string b, std::string c)
+    Sprite Display::add_image(std::string a, std::string b, std::string c)
     {
-        _comp.push_back(std::make_unique<Sprite>(Sprite(a, b, c)));
+        std::unique_ptr<Sprite> a = std::make_unique<Sprite>(Sprite(a, b, c));
+        _comp.push_back(std::move(a));
+        return a;
     }
 
     void Display::create_game(void) {
@@ -170,7 +172,14 @@ namespace Indie {
         _cam = Cam().getCamera();
 
         add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/death.iqm");
-        _comp.push_back(std::make_unique<Button>(Button("Pause",
+        for (int i = 0; i < 30; ++i) {
+            for (int j = 0; j < 30; ++i) {
+                std::unique_ptr<Sprite> a = std::make_unique<Sprite>(Sprite("assets/map/floor.obj", "assets/map/floor.jpeg", "EMPTY"));
+                _comp.push_back(std::move(a));
+                a.get()->setPos(i * 8192, j * 8192, 0);
+            }
+        }
+        _comp.push_back(std::make_unique<Button>(Button("Quit",
             [&](){ changeState(Indie::PAUSE_MENU); },
             { 10, 10 }, { 150, 50 }, LIGHTGRAY, RED
         )));

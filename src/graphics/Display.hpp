@@ -55,7 +55,7 @@ namespace Indie {
             void create_settings(void);
             void create_win(void);
 
-            void add_image(std::string, std::string, std::string);
+            Sprite add_image(std::string, std::string, std::string);
             bool is_pressed(Rectangle);
 
             const StateAction stateArray[9] = {
