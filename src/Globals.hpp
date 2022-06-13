@@ -58,7 +58,7 @@ namespace Indie {
     };
 
     const std::string MOSTS[1] = {
-        "src/assets/sounds/medieval_the_only_thing.ogg"
+        "src/assets/sounds/medieval_rip_and_tear.ogg"
     };
 
     const std::string WOSTS[2] = {
