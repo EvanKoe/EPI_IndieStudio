@@ -17,3 +17,5 @@ void Indie::Bomb::Explode()
 {
     std::cout << "Bomb Explode" << std::endl;
 }
+
+Indie::Bomb::~Bomb() = default;

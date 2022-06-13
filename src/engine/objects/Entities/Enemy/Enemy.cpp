@@ -6,8 +6,3 @@
 */
 
 #include "Enemy.hpp"
-
-int Indie::Enemy::movement(int direction)
-{
-    // IA
-}

@@ -16,8 +16,8 @@ namespace Indie{
         Entity() = delete;
         ~Entity() { _counter--; }
         int getHealth() const;
-        int getCounter() const;
         void movement(int direction);
+        static int _counter;
 
     protected:
         explicit Entity(float x = 0, float y = 0, float z = 0, int health = 1, Indie::GameObjectsIds id = Indie::NONE)
@@ -29,7 +29,6 @@ namespace Indie{
         };
         int _health;
         int _speed;
-        static int _counter;
 
     private:
     };

@@ -16,9 +16,9 @@
 namespace Indie {
     class GameObject {
     public:
-        GameObject(float x = 0, float y = 0, float z = 0, Indie::game_object_id_e id = Indie::NONE)
+        explicit GameObject(float x = 0, float y = 0, float z = 0, Indie::game_object_id_e id = Indie::NONE)
             : _x(x), _y(y), _z(z), _id(id){};
-        ~GameObject();
+        ~GameObject() = default;
         float getX() const;
         float getY() const;
         float getZ() const;

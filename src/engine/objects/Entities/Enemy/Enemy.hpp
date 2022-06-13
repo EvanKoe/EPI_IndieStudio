@@ -14,9 +14,6 @@ namespace Indie {
     public:
         Enemy(float x = 0, float y = 0, float z = 0) : Entity(x, y, z, 1, Indie::ENEMY){};
         ~Enemy();
-        int movement(int);
-        int dropBomb(void);
-
     protected:
     private:
         void death(void); // The enemy is dead

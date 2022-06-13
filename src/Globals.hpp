@@ -10,6 +10,7 @@
 #include <functional>
 #include <raylib.h>
 #include <string>
+#include <memory>
 
 namespace Indie {
     // those are the different screens of the game

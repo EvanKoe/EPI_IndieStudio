@@ -18,7 +18,6 @@ namespace Indie {
             : GameObject(x, y, z, Indie::BOMB),
               _range(range)
         {
-            _counter++;
             _timer = time(nullptr) + timer * 1000;
         };
         ~Bomb();
@@ -28,7 +27,6 @@ namespace Indie {
     private:
         int _range;
         std::time_t _timer;
-        static int _counter;
     };
 }
 

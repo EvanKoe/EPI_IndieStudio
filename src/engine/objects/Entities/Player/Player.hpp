@@ -22,7 +22,7 @@ namespace Indie {
               _wallpass(false){};
         ~Player();
 
-        int dropBomb(void);
+        void dropBomb(void);
         void getEvents();
 
         bool checkCollision(GameObject object);
@@ -31,14 +31,14 @@ namespace Indie {
         void addScore(int score);
         void removeScore(int score);
         int getSpeed() const;
-        void addSpeed(int speed);
-        void removeSpeed(int speed);
+        void addSpeed();
+        void removeSpeed();
         int getBombRange() const;
-        void addBombRange(int range);
-        void removeBombRange(int range);
+        void addBombRange();
+        void removeBombRange();
         int getBombNb() const;
-        void addBombNb(int bomb);
-        void removeBombNb(int bomb);
+        void addBombNb();
+        void removeBombNb();
         bool getWallpass() const;
         void grantWallpass();
         void removeWallpass();
@@ -48,6 +48,7 @@ namespace Indie {
         int _bomb_nb;
         int _score;
         bool _wallpass;
+        std::vector<std::unique_ptr<Bomb>> _bombs;
     };
 }
 

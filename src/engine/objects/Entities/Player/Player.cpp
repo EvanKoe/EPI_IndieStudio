@@ -29,11 +29,11 @@ void Indie::Player::getEvents() {
         this->dropBomb();
 }
 
-int Indie::Player::dropBomb()
+void Indie::Player::dropBomb()
 {
     if (this->_bomb_nb > 0) {
         Bomb bomb(this->_x, this->_y, this->_z, this->_bomb_range, 3);
-        this->_bomb_nb--;
+        this->_bombs.push_back(std::unique_ptr<Bomb>(&bomb));
     }
 }
 
@@ -64,18 +64,21 @@ int Indie::Player::getSpeed() const
     return this->_speed;
 }
 
-void Indie::Player::addSpeed(int speed)
+void Indie::Player::addSpeed()
 {
-    this->_speed += speed;
-    if (this->_speed > 3)
+    if (this->_speed >= 3)
         this->_speed = 3;
+    else
+        this->_speed ++;
 }
 
-void Indie::Player::removeSpeed(int speed)
+void Indie::Player::removeSpeed()
 {
-    this->_speed -= speed;
-    if (this->_speed < 1)
+
+    if (this->_speed <= 1)
         this->_speed = 1;
+    else
+        this->_speed --;
 }
 
 int Indie::Player::getBombRange() const
@@ -83,14 +86,17 @@ int Indie::Player::getBombRange() const
     return this->_bomb_range;
 }
 
-void Indie::Player::addBombRange(int bomb_range)
+void Indie::Player::addBombRange()
 {
-    this->_bomb_range += bomb_range;
+    this->_bomb_range ++;
 }
 
-void Indie::Player::removeBombRange(int bomb_range)
+void Indie::Player::removeBombRange()
 {
-    this->_bomb_range -= bomb_range;
+    if (_bomb_range <= 1)
+        this->_bomb_range = 1;
+    else
+        this->_bomb_range --;
 }
 
 void Indie::Player::grantWallpass()
@@ -113,14 +119,15 @@ int Indie::Player::getBombNb() const
     return this->_bomb_nb;
 }
 
-void Indie::Player::addBombNb(int bomb)
+void Indie::Player::addBombNb()
 {
-    this->_bomb_nb += bomb;
+    this->_bomb_nb ++;
 }
 
-void Indie::Player::removeBombNb(int bomb)
+void Indie::Player::removeBombNb()
 {
-    this->_bomb_nb -= bomb;
-    if (this->_bomb_nb < 1)
+    if (this->_bomb_nb <= 1)
         this->_bomb_nb = 1;
+    else
+        this->_bomb_nb --;
 }

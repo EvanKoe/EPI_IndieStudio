@@ -17,32 +17,32 @@ void Indie::PowerUp::setAttribute(Indie::PowerUpAttribute attribute)
     Player *player;
     if (attribute == Indie::PowerUpAttribute::SPEED_UP) {
         if (player) {
-            player->addSpeed(1);
+            player->addSpeed();
         }
     }
     if (attribute == Indie::PowerUpAttribute::BOMB_UP) {
         if (player) {
-            player->addBombNb(1);
+            player->addBombNb();
         }
     }
     if (attribute == Indie::PowerUpAttribute::FIRE_UP) {
         if (player) {
-            player->addFire(1);
+            player->addBombRange();
         }
     }
     if (attribute == Indie::PowerUpAttribute::BOMB_DOWN) {
         if (player) {
-            player->removeBombNb(1);
+            player->removeBombNb();
         }
     }
     if (attribute == Indie::PowerUpAttribute::SPEED_DOWN) {
         if (player) {
-            player->removeSpeed(1);
+            player->removeSpeed();
         }
     }
     if (attribute == Indie::PowerUpAttribute::FIRE_DOWN) {
         if (player) {
-            player->removeFire(1);
+            player->removeBombRange();
         }
     }
     if (attribute == Indie::PowerUpAttribute::WALL_PASS_UP) {

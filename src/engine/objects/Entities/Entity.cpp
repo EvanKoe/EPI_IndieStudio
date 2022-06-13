@@ -12,25 +12,20 @@ int Indie::Entity::getHealth() const
     return _health;
 }
 
-int Indie::Entity::getCounter() const
-{
-    return _counter;
-}
-
 void Indie::Entity::movement(int direction)
 {
     switch (direction) {
         case Indie::UP:
-            _y += _speed;
+            _y += float(_speed);
             break;
         case Indie::DOWN:
-            _y -= _speed;
+            _y -= float(_speed);
             break;
         case Indie::LEFT:
-            _x -= _speed;
+            _x -= float(_speed);
             break;
         case Indie::RIGHT:
-            _x += _speed;
+            _x += float(_speed);
             break;
         default:
             break;

@@ -29,7 +29,13 @@ FILE(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR}
   "src/*.cpp"
   "src/map/*.cpp"
   "src/engine/*.cpp"
-  "src/graphics/*.cpp"
+        "src/engine/objects/*.cpp"
+        "src/engine/objects/Bomb/*.cpp"
+        "src/engine/objects/PowerUp/*.cpp"
+        "src/engine/objects/Entities/*.cpp"
+        "src/engine/objects/Entities/Enemy/*.cpp"
+        "src/engine/objects/Entities/Player/*.cpp"
+        "src/graphics/*.cpp"
   "src/graphics/Objects/*.cpp"
 )
 
@@ -38,9 +44,14 @@ INCLUDE_DIRECTORIES(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Objects/"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/graphics/Entities/"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/engine"
-  "src/engine/Entity/Enemy"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/PowerUp/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Bomb/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Entities/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Entities/Player/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Entities/Enemy/"
 )
 
-add_executable(bomberman ${SOURCES} "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Player/Player.cpp" "src/engine/Entity/Player/Player.hpp" "src/engine/Entity/Entity.hpp" "src/engine/PowerUp/PowerUp.cpp" "src/engine/PowerUp/PowerUp.hpp" "src/engine/Bomb/Bomb.cpp" "src/engine/Bomb/Bomb.hpp" "src/engine/Entity/Enemy/Enemy.cpp" "src/engine/GameObject.cpp" src/engine/objects/Entities/Entity.cpp)
+add_executable(bomberman ${SOURCES})
 target_link_libraries(bomberman raylib)
