@@ -53,8 +53,9 @@ namespace Indie {
             frameCounter = 0;
 
         // Draw
+        // DrawModelEx(Model, position, rotationAxis, rotationAngle, scale, color );
         if (_path != "EMPTY")
-            DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 1.0f, 0.0f, 1.0f }, 90.0f, (Vector3){ 5.0f, 5.0f, 5.0f }, WHITE);
+            DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 0.0f, 0.0f, 0.0f }, 90.0f, (Vector3){ 10.0f, 10.0f, 10.0f }, WHITE);
     }
 
     void Sprite::getSprite(std::string)

@@ -165,12 +165,12 @@ namespace Indie {
         _cam = Cam().getCamera();
 
         _comp.push_back(std::make_unique<Sprite>(Sprite(
-            "assets/doomslayer-toy/object.obj",
-            "assets/doomslayer-toy/textures/doomslayer_toy_n.png",
-            "putthe"
+            // "assets/doomslayer-toy/object.obj",
+            // "assets/doomslayer-toy/textures/doomslayer_toy_n.png",
+            // "putthe"
             // "assets/doomslayer-toy/run_slayeriqm.iqm"
-            // "assets/icon-of-sin-toy/object.iqm",
-            // "assets/icon-of-sin-toy/textures/iconofsin_toy_s@channels=G.png",
+            "assets/icon-of-sin-toy/object.iqm",
+            "assets/icon-of-sin-toy/textures/iconofsin_toy.png"
             // "assets/icon-of-sin-toy/standingiqm.iqm"
         )));
         _comp.push_back(std::make_unique<Button>(Button("Pause",

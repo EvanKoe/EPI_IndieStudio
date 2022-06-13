@@ -34,7 +34,9 @@
 void Map::LoadMap(std::string path)
 {
     std::filesystem::path my_path = path;
-    std::filesystem::exists(my_path.c_str());
+    if (!std::filesystem::exists(my_path.c_str())) {
+        std::cout << "Error: map doesn't exist" << std::endl;
+    }
     std::ifstream stream(my_path.string().c_str(), std::ios::binary);
     if (!stream)
         throw std::runtime_error("Cannot open file");
