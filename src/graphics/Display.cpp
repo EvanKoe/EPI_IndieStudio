@@ -87,7 +87,7 @@ namespace Indie {
             }
         }
 
-        for (int i = 0; i < 33; ++i) {
+        for (int i = 0; i < 32; ++i) {
             if (IsKeyDown(key_tab[i].rayKey))
                 return key_tab[i].std_key;
         }
