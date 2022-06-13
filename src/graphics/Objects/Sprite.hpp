@@ -11,6 +11,7 @@
 #include "../../Globals.hpp"
 #include <raylib.h>
 #include <vector>
+#include <filesystem>
 
 namespace Indie {
     class Sprite : public IGraphic {

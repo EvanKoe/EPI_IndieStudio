@@ -6,7 +6,6 @@
 */
 
 #include "Sprite.hpp"
-#include <raylib.h>
 
 namespace Indie {
     Sprite::Sprite(std::string path, std::string texture, std::string animate):
@@ -14,19 +13,22 @@ namespace Indie {
     _path(path),
     _tpath(texture)
     {
-        if (access(path.c_str(), F_OK) == -1) {
+        std::filesystem::path my_path = path;
+        if (!std::filesystem::exists(my_path.c_str())) {
             std::cout << "3D Object Error: " << path << " doesn't exist\n";
             return;
         }
 
         _model = LoadModel(path.c_str());
-        if (access(texture.c_str(), F_OK) == -1) {
+        my_path = texture;
+        if (!std::filesystem::exists(my_path)) {
             std::cout << "Texture Error: " << texture << " doesn't exist\n";
         } else {
             _texture = LoadTexture(texture.c_str());
             SetMaterialTexture(&_model.materials[0], MATERIAL_MAP_DIFFUSE, _texture);
         }
-        if (access(animate.c_str(), F_OK) == -1) {
+        my_path = animate;
+        if (!std::filesystem::exists(my_path)) {
             std::cout << "Animation Error: " << animate << " doesn't exist\n";
         } else {
             animCount = 0;

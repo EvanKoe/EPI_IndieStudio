@@ -16,10 +16,10 @@ int main(int ac, char **av) {
     // Indie::GameEngine g;
     Indie::key_e k;
 
-    Map m;
-    m.LoadMap("map.txt");
-    for (int i = 0; i < m._map.size(); i++)
-        std::cout << m._map[i] << std::endl;
+    // Map m;
+    // m.LoadMap("map.txt");
+    // for (int i = 0; i < m._map.size(); i++)
+        // std::cout << m._map[i] << std::endl;
     while (!WindowShouldClose()) {
         d.draw();
         k = d.getEvents();

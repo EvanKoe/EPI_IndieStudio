@@ -167,7 +167,8 @@ namespace Indie {
         _comp.push_back(std::make_unique<Sprite>(Sprite(
             "assets/doomslayer-toy/object.obj",
             "assets/doomslayer-toy/textures/doomslayer_toy_n.png",
-            "assets/doomslayer-toy/run_slayeriqm.iqm"
+            "putthe"
+            // "assets/doomslayer-toy/run_slayeriqm.iqm"
             // "assets/icon-of-sin-toy/object.iqm",
             // "assets/icon-of-sin-toy/textures/iconofsin_toy_s@channels=G.png",
             // "assets/icon-of-sin-toy/standingiqm.iqm"

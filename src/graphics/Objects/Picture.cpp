@@ -9,7 +9,8 @@
 namespace Indie {
     Picture::Picture(std::string path, Vector2 pos, Vector2 size, float scale)
     {
-        if (access(path.c_str(), F_OK) == -1) {
+        std::filesystem::path my_path = path;
+        if (!std::filesystem::exists(my_path.c_str())) {
             std::cout << path << ": no such file or directory" << std::endl;
             return;
         }
