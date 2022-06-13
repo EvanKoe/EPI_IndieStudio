@@ -9,11 +9,10 @@
 
 #include "../Entity.hpp"
 
-class Enemy: public Entity {
+namespace Indie {
+    class Enemy : public Entity {
     public:
-        Enemy(float x = 0, float y = 0, float z = 0) :
-            Entity(x, y, z, 1, Indie::ENEMY)
-        {};
+        Enemy(float x = 0, float y = 0, float z = 0) : Entity(x, y, z, 1, Indie::ENEMY){};
         ~Enemy();
         int movement(int);
         int dropBomb(void);
@@ -21,4 +20,5 @@ class Enemy: public Entity {
     protected:
     private:
         void death(void); // The enemy is dead
-};
+    };
+}

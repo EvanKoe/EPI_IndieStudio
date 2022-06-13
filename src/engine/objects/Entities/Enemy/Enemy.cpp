@@ -7,7 +7,7 @@
 
 #include "Enemy.hpp"
 
-int Enemy::movement(int direction)
+int Indie::Enemy::movement(int direction)
 {
     // IA
 }

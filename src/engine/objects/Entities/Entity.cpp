@@ -7,17 +7,17 @@
 
 #include "Entity.hpp"
 
-int Entity::getHealth() const
+int Indie::Entity::getHealth() const
 {
     return _health;
 }
 
-int Entity::getCounter() const
+int Indie::Entity::getCounter() const
 {
     return _counter;
 }
 
-void Entity::movement(int direction)
+void Indie::Entity::movement(int direction)
 {
     switch (direction) {
         case Indie::UP:

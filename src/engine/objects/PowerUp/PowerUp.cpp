@@ -7,12 +7,12 @@
 
 #include "PowerUp.hpp"
 
-Indie::PowerUpAttribute PowerUp::getAttribute()
+Indie::PowerUpAttribute Indie::PowerUp::getAttribute()
 {
     return _attribute;
 }
 
-void PowerUp::setAttribute(Indie::PowerUpAttribute attribute)
+void Indie::PowerUp::setAttribute(Indie::PowerUpAttribute attribute)
 {
     Player *player;
     if (attribute == Indie::PowerUpAttribute::SPEED_UP) {
