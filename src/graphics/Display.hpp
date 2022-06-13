@@ -12,6 +12,7 @@
 #include "../Globals.hpp"
 #include <memory>
 #include <vector>
+#include <cstdlib>
 
 #include "Objects/Button.hpp"
 #include "Objects/Text.hpp"
@@ -43,7 +44,6 @@ namespace Indie {
             // settings
             MusicMode_s _selected_mus;
 
-            void initDraw(std::string);
             void create_menu(void);
             void create_diff(void);
             void create_load(void);
@@ -54,6 +54,7 @@ namespace Indie {
             void create_settings(void);
             void create_win(void);
 
+            void add_image(std::string, std::string, std::string);
             bool is_pressed(Rectangle);
 
             const StateAction stateArray[9] = {

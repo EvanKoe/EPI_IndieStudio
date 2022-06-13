@@ -31,6 +31,7 @@ namespace Indie {
             void setPosition(Vector2);
             bool isHover(void) override;
             Vector2 getPosition(void);
+            bool getIs3D(void) override { return false; }
             void setText(std::string);
             std::string getText(void);
             void setDisabled(bool);

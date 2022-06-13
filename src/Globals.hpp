@@ -10,7 +10,7 @@
 #include <functional>
 #include <raylib.h>
 #include <string>
-#include <memory>
+#include <cstdlib>
 
 namespace Indie {
     // those are the different screens of the game
@@ -52,8 +52,18 @@ namespace Indie {
     } StateAction;
 
     // musics
-    const std::string DOSTS[1] = {
+    const std::string DOSTS[2] = {
+        "src/assets/sounds/bfg10k.ogg",
         "src/assets/sounds/main_title.ogg"
+    };
+
+    const std::string MOSTS[1] = {
+        "src/assets/sounds/medieval_the_only_thing.ogg"
+    };
+
+    const std::string WOSTS[2] = {
+        "src/assets/sounds/doomdoomdoom.ogg",
+        "src/assets/sounds/code_avec_le_q.ogg"
     };
 
     const MusicMode_s musicArray[3] = {
@@ -79,6 +89,24 @@ namespace Indie {
         Enter,
         KNull
     } key_e;
+
+    // Sprite
+    typedef enum {
+        STANDING,
+        BLOW_UP,
+        STRAFE_LEFT,
+        STRAFE_RIGHT,
+        GO_UP,
+        GO_DOWN,
+        DROP_BOMB,
+        DEATH,
+        RUN
+    } AnimType;
+    typedef struct {
+        ModelAnimation anim;
+        AnimType type;
+        std::string path;
+    } Anims;
 
     typedef struct {
         KeyboardKey rayKey; // raylib key
@@ -118,26 +146,5 @@ namespace Indie {
         { KEY_Z, Z },
         { KEY_ENTER, Enter },
         { KEY_ESCAPE, Escape }
-    };
-
-    typedef enum GameObjectsIds {
-        PLAYER = 0,
-        ENEMY = 1,
-        WALL = 2,
-        BRICK = 3,
-        POWERUP = 4,
-        BOMB = 5,
-        NONE = -1
-    }game_object_id_e;
-
-    enum PowerUpAttribute {
-        BOMB_UP,
-        SPEED_UP,
-        FIRE_UP,
-        BOMB_DOWN,
-        SPEED_DOWN,
-        FIRE_DOWN,
-        WALL_PASS_UP,
-        WALL_PASS_DOWN
     };
 };

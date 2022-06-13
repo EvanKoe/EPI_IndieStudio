@@ -7,7 +7,6 @@
 
 #include "Button.hpp"
 #include <raylib.h>
-#include <iostream>
 
 namespace Indie {
     Button::Button(
@@ -56,12 +55,13 @@ namespace Indie {
     }
 
     void Button::draw(void) {
-        DrawRectangleRec(_rec, LIGHTGRAY);
+        // DrawRectangleRec(_rec, LIGHTGRAY);
+        DrawRectangleRounded(_rec, 0.4, 0, Fade(LIGHTGRAY, 0.3f));
         DrawText(_text.c_str(),
-            _rec.x + (_rec.width / 2) - (_text.length() * 5),
-            _rec.y + (_rec.height / 2 - 15),
+            _rec.x + (_rec.width / 2) - (15 * _text.length() / 2),
+            _rec.y + (_rec.height / 2) - 15,
             30, _color);
-        DrawRectangleLinesEx(_rec, 4, _borderColor);
+        DrawRectangleRoundedLines(_rec, 0.4f, 0, 4.0f, _borderColor);
     }
 
     bool Button::isHover(void) {

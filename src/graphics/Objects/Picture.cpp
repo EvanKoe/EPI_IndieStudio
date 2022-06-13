@@ -6,10 +6,12 @@
 */
 
 #include "Picture.hpp"
+
 namespace Indie {
     Picture::Picture(std::string path, Vector2 pos, Vector2 size, float scale)
     {
-        if (!std::filesystem::exists(std::filesystem::path(path))) {
+        std::filesystem::path my_path = path;
+        if (!std::filesystem::exists(my_path.c_str())) {
             std::cout << path << ": no such file or directory" << std::endl;
             return;
         }
@@ -17,7 +19,6 @@ namespace Indie {
         _textr = LoadTexture(_source.c_str());
         _pos = pos;
         _size = size;
-        // _img = LoadImageFromTexture(_textr);
         _rec = { pos.x, pos.y, pos.x + size.x, pos.y + size.y };
     }
 

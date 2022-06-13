@@ -16,10 +16,19 @@ namespace Indie {
         _volume = vol;
         InitAudioDevice();
         _music = LoadMusicStream(_source.c_str());
+        SetMusicVolume(_music, _volume);
         PlayMusicStream(_music);
     }
 
-    void Musics::draw(void) {}
+    void Musics::draw(void) {
+        UpdateMusicStream(_music);
+    }
+
+    void Musics::setMusic(std::string path) {
+        stop();
+        _music = LoadMusicStream(path.c_str());
+        play();
+    }
 
     void Musics::setLoop(void) {}
 
@@ -30,7 +39,7 @@ namespace Indie {
 
     void Musics::play(void)
     {
-        UpdateMusicStream(_music);
+        // UpdateMusicStream(_music);
         PlayMusicStream(_music);
     }
 
@@ -51,6 +60,9 @@ namespace Indie {
 
     Musics::~Musics()
     {
+        if (IsMusicStreamPlaying(_music)) {
+            StopMusicStream(_music);
+        }
         UnloadMusicStream(_music);
         CloseAudioDevice();
     }

@@ -13,19 +13,25 @@
 namespace Indie {
     class Cam : public IGraphic {
         public:
-            Cam(Vector3 pos = { 0 }, Vector3 target = { 0 }, Vector3 up = { 0 });
+            Cam(
+                CameraMode mode = CAMERA_FREE,
+                Vector3 pos = (Vector3){ 0.0f, 10.0f, 10.0f },
+                Vector3 target = (Vector3){ 0.0f, 0.0f, 0.0f },
+                Vector3 up = (Vector3){ 0.0f, 1.0f, 0.0f },
+                float fovy = 45.0f
+            );
+            void draw(void) override;
+            Camera3D getCamera(void) { return _cam; }
+            void onHover(void) override {}
+            void onHoverEnd(void) override {}
+            bool isHover(void) override { return false; }
+            void onClick(void) override {}
+            Rectangle getRect(void) override { return { 0 }; }
+            bool getIs3D(void) override { return true; }
             void start(void);
-            void onHover(void) {};
-            void onHoverEnd(void) {};
-            bool isHover(void) { return false; }
-            void onClick(void) {};
-            Rectangle getRect(void) { return {0}; }
-            void draw(void) {};
+            void end(void);
             ~Cam();
         private:
             Camera3D _cam;
-            Vector3 _pos;       // position
-            Vector3 _target;    // object pointed by cam
-            Vector3 _up;        // distance from target
     };
 }

@@ -8,6 +8,7 @@
 #pragma once
 
 #include "../IGraphic.hpp"
+#include <raylib.h>
 
 namespace Indie {
     class Text : public IGraphic {
@@ -15,18 +16,14 @@ namespace Indie {
             Text(std::string, float x = 0, float y = 0, float size = 20, Color col = LIGHTGRAY);
             void onHover(void) override { return; }
             bool isHover(void) override { return false; }
-            Rectangle getRect(void) override { return (Rectangle){
-                _pos.x, _pos.y,
-                (float)(_size * _value.size()),
-                (float)(_size * 2)
-            }; }
             std::string getText(void);
+            Rectangle getRect(void) override;
             void draw(void) override;
             void setText(std::string);
             void onHoverEnd(void) override { return; }
+            bool getIs3D(void) override { return false; }
             void onClick(void) override { return; }
             ~Text();
-        protected:
         private:
             Vector2 _pos;
             size_t _size;
