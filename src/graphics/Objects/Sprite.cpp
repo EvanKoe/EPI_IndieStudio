@@ -33,7 +33,7 @@ namespace Indie {
         } else {
             animCount = 0;
             anim = LoadModelAnimations(animate.c_str(), &animCount);
-            std::cout << IsModelAnimationValid(_model, *anim) << std::endl;
+            // std::cout << IsModelAnimationValid(_model, *anim) << std::endl;
             frameCounter = 0;
         }
     }
@@ -55,7 +55,8 @@ namespace Indie {
         // Draw
         // DrawModelEx(Model, position, rotationAxis, rotationAngle, scale, color );
         if (_path != "EMPTY")
-            DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 0.0f, 0.0f, 0.0f }, 90.0f, (Vector3){ 10.0f, 10.0f, 10.0f }, WHITE);
+            DrawModel(_model, { 0 }, { 1.0 }, WHITE);
+            // DrawModelEx(_model, (Vector3){ 0.0f, 0.0f, 0.0f }, (Vector3){ 0.0f, 0.0f, 0.0f }, 90.0f, (Vector3){ 10.0f, 10.0f, 10.0f }, WHITE);
     }
 
     void Sprite::getSprite(std::string)

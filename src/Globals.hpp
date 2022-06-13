@@ -60,6 +60,11 @@ namespace Indie {
         "src/assets/sounds/medieval_the_only_thing.ogg"
     };
 
+    const std::string WOSTS[2] = {
+        "src/assets/sounds/doomdoomdoom.ogg",
+        "src/assets/sounds/code_avec_le_q.ogg"
+    };
+
     const MusicMode_s musicArray[3] = {
         { DOOM_OSTS, "Doom OSTs" },
         { MEDIEVAL_MODE, "Medieval Mode" },

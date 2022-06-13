@@ -160,19 +160,16 @@ namespace Indie {
         )));
     }
 
+    void Display::add_image(std::string a, std::string b, std::string c)
+    {
+        _comp.push_back(std::make_unique<Sprite>(Sprite(a, b, c)));
+    }
+
     void Display::create_game(void) {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        _comp.push_back(std::make_unique<Sprite>(Sprite(
-            // "assets/doomslayer-toy/object.obj",
-            // "assets/doomslayer-toy/textures/doomslayer_toy_n.png",
-            // "putthe"
-            // "assets/doomslayer-toy/run_slayeriqm.iqm"
-            "assets/icon-of-sin-toy/object.iqm",
-            "assets/icon-of-sin-toy/textures/iconofsin_toy.png"
-            // "assets/icon-of-sin-toy/standingiqm.iqm"
-        )));
+        add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/run.iqm");
         _comp.push_back(std::make_unique<Button>(Button("Pause",
             [&](){ changeState(Indie::PAUSE_MENU); },
             { 10, 10 }, { 150, 50 }, LIGHTGRAY, RED
@@ -189,9 +186,27 @@ namespace Indie {
         )));
         _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 250, 50, 70)));
         _comp.push_back(std::make_unique<Text>(Text("Music :", 100, 150, 70)));
-        _comp.push_back(std::make_unique<Button>(Button(_selected_mus.to_str,
-            [&](){ _selected_mus = _selected_mus.m == 2 ? musicArray[0] : musicArray[_selected_mus.m + 1]; },
-            { 100, 350 }, { 500, 100 }, LIGHTGRAY, RED
+        // Music choice buttons
+        _comp.push_back(std::make_unique<Button>(Button(musicArray[0].to_str,
+            [&](){
+                _selected_mus = { musicArray[0].m, musicArray[0].to_str };
+                _mus.setMusic(DOSTS[0]);
+            },
+            { 100, 250 }, { 300, 100 }, LIGHTGRAY, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button(musicArray[1].to_str,
+            [&](){
+                _selected_mus = { musicArray[1].m, musicArray[1].to_str };
+                _mus.setMusic(MOSTS[0]);
+            },
+            { 450, 250 }, { 300, 100 }, LIGHTGRAY, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button(musicArray[2].to_str,
+            [&](){
+                _selected_mus = { musicArray[2].m, musicArray[2].to_str };
+                _mus.setMusic(WOSTS[0]);
+            },
+            { 800, 250 }, { 300, 100 }, LIGHTGRAY, RED
         )));
     }
 

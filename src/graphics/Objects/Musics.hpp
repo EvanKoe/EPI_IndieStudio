@@ -20,6 +20,7 @@ namespace Indie {
             void play(void);
             void pause(void);
             void stop(void);
+            void setMusic(std::string = "nullptr");
             bool getIs3D(void) override { return false; }
             Music getStream(void) { return _music; };
             bool isHover(void) override { return false; }

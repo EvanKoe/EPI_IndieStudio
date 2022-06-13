@@ -24,6 +24,12 @@ namespace Indie {
         UpdateMusicStream(_music);
     }
 
+    void Musics::setMusic(std::string path) {
+        stop();
+        _music = LoadMusicStream(path.c_str());
+        play();
+    }
+
     void Musics::setLoop(void) {}
 
     bool Musics::isPlaying(void)
