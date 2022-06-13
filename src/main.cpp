@@ -17,7 +17,9 @@ int main(int ac, char **av) {
     Indie::key_e k;
 
     Map m;
-    m.Generator(32, 32);
+    m.LoadMap("map.txt");
+    for (int i = 0; i < m._map.size(); i++)
+        std::cout << m._map[i] << std::endl;
     while (!WindowShouldClose()) {
         d.draw();
         k = d.getEvents();
