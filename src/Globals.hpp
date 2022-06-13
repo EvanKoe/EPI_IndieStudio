@@ -52,7 +52,8 @@ namespace Indie {
     } StateAction;
 
     // musics
-    const std::string DOSTS[1] = {
+    const std::string DOSTS[2] = {
+        "src/assets/sounds/bfg10k.ogg",
         "src/assets/sounds/main_title.ogg"
     };
 
