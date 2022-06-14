@@ -1,0 +1,50 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl material0
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle_normal.jpg
+map_Kd C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle.jpg
+
+newmtl material1
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle_normal1.jpg
+map_Kd C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle1.jpg
+
+newmtl material2
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle_normal2.jpg
+map_Kd C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle2.jpg
+
+newmtl material3
+Ns 179.999996
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle_normal3.jpg
+map_Kd C:\\Users\\cedri\\Downloads\\concrete-rectangle-block\\source\\concrete-rectangle\\concrete-rectangle3.jpg
