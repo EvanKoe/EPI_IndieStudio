@@ -47,12 +47,12 @@ namespace Indie {
 
     int Display::draw(void) {
         BeginDrawing();
-        ClearBackground(GetColor(0x121212ff));
+        ClearBackground(GetColor(0x313131ff));
 
         if (_is3D) {
             BeginMode3D(_cam);
             UpdateCamera(&_cam);     // Disables zoom on scroll
-            DrawGrid(32, 1.0f);
+            // DrawGrid(32, 1.0f);   // Disables grid
             for (const auto &e: _comp) {
                 if (e->getIs3D()) {
                     e->draw();
@@ -171,7 +171,7 @@ namespace Indie {
         _cam = Cam().getCamera();
 
         add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/standing.iqm");
-        
+        _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("Quit",
             [&](){ changeState(Indie::PAUSE_MENU); },
             { 10, 10 }, { 150, 50 }, LIGHTGRAY, RED
@@ -208,7 +208,7 @@ namespace Indie {
         _comp.push_back(std::make_unique<Button>(Button(musicArray[2].to_str,
             [&](){
                 _selected_mus = { musicArray[2].m, musicArray[2].to_str };
-                _mus.setMusic(WOSTS[rand() % 2]);
+                _mus.setMusic(WOSTS[rand() % 3]);
             },
             { 800, 250 }, { 300, 100 }, LIGHTGRAY, RED
         )));

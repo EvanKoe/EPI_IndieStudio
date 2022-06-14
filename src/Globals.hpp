@@ -63,7 +63,7 @@ namespace Indie {
         "src/assets/sounds/medieval_bfg_division.ogg"
     };
 
-    const std::string WOSTS[2] = {
+    const std::string WOSTS[3] = {
         "src/assets/sounds/doomdoomdoom.ogg",
         "src/assets/sounds/code_avec_le_q.ogg",
         "src/assets/sounds/toujours_vivant.ogg"

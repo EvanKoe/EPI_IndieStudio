@@ -20,6 +20,7 @@
 #include "Objects/Picture.hpp"
 #include "Objects/Text.hpp"
 #include "Objects/Cam.hpp"
+#include "Objects/MeshMap.hpp"
 #include <exception>
 #include <type_traits>
 #include <time.h>
