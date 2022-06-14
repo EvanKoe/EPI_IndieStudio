@@ -31,7 +31,12 @@
 //     SaveMap("map.txt");
 // }
 
-void Map::LoadMap(std::string path)
+std::vector<std::string> Indie::Map::getMap() const
+{
+    return _map;
+}
+
+void Indie::Map::LoadMap(std::string path)
 {
     std::filesystem::path my_path = path;
     if (!std::filesystem::exists(my_path.c_str())) {
@@ -49,7 +54,7 @@ void Map::LoadMap(std::string path)
     stream.close();
 }
 
-void Map::SaveMap(std::string path)
+void Indie::Map::SaveMap(std::string path)
 {
     std::filesystem::path my_path = path;
     if (!std::filesystem::exists(my_path.c_str())) {
