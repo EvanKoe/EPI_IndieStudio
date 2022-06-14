@@ -12,7 +12,7 @@ namespace Indie {
             _text = LoadTexture("assets/map/texture_map.png");
             _mod.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = _text;
         }
-        void draw(void) override { DrawModel(_mod, {-15, 0, -15}, 1.0f, WHITE); }
+        void draw(void) override { DrawModel(_mod, {-17, 0, -17}, 1.0f, WHITE); }
         void onHover(void) override {}
         void onHoverEnd(void) override {}
         bool isHover(void) override { return false; }

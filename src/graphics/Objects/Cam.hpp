@@ -15,7 +15,7 @@ namespace Indie {
         public:
             Cam(
                 CameraMode mode = CAMERA_FREE,
-                Vector3 pos = { 0.0f, 10.0f, 5.0f },
+                Vector3 pos = { 0.0f, 20.0f, 10.0f },
                 Vector3 target = { 0.0f, 0.0f, 0.0f },
                 Vector3 up = { 0.0f, 1.0f, 0.0f },
                 float fovy = 45.0f
