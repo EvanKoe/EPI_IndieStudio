@@ -23,6 +23,7 @@
 #include <exception>
 #include <type_traits>
 #include <time.h>
+#include <./Objects/Sprite.hpp>
 
 namespace Indie {
     class Display {
@@ -55,7 +56,7 @@ namespace Indie {
             void create_settings(void);
             void create_win(void);
 
-            Sprite add_image(std::string, std::string, std::string);
+            std::unique_ptr<Sprite> &add_image(std::string, std::string, std::string);
             bool is_pressed(Rectangle);
 
             const StateAction stateArray[9] = {
