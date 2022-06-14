@@ -36,6 +36,7 @@ namespace Indie {
             std::string _path;
             std::string _apath;
             ModelAnimation *anim;
+            float _scale;
             Texture2D _texture;
             int frameCounter;
             Vector3 _pos;
