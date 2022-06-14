@@ -60,12 +60,12 @@ namespace Indie {
             }
             EndMode3D();
         }
-        DrawFPS(1200, 10);
         for (const auto &e: _comp) {
             if (!e->getIs3D()) {
                 e->draw();
             }
         }
+        DrawFPS(1200, 10);
         EndDrawing();
         return 0;
     }
@@ -160,26 +160,18 @@ namespace Indie {
         )));
     }
 
-    std::unique_ptr<Sprite> &Display::add_image(std::string a, std::string b, std::string c)
+    void Display::add_image(std::string a, std::string b, std::string c)
     {
         std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(a, b, c));
         _comp.push_back(std::move(s));
-
-        return s;
     }
 
     void Display::create_game(void) {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/death.iqm");
-        for (int i = 0; i < 30; ++i) {
-            for (int j = 0; j < 30; ++j) {
-                std::unique_ptr<Sprite> a = std::make_unique<Sprite>(Sprite("assets/map/floor.obj", "assets/map/floor.jpeg", "EMPTY"));
-                _comp.push_back(std::move(a));
-                a.get()->setPos(i * 8192, j * 8192, 0);
-            }
-        }
+        add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/standing.iqm");
+        
         _comp.push_back(std::make_unique<Button>(Button("Quit",
             [&](){ changeState(Indie::PAUSE_MENU); },
             { 10, 10 }, { 150, 50 }, LIGHTGRAY, RED
@@ -196,9 +188,9 @@ namespace Indie {
             { 100, 60 }, { 90, 45 }, LIGHTGRAY, RED
         )));
         _comp.push_back(std::make_unique<Text>(Text("SETTINGS", 250, 50, 70)));
-        _comp.push_back(std::make_unique<Text>(Text("Music :", 100, 150, 70)));
 
         // Music choice buttons
+        _comp.push_back(std::make_unique<Text>(Text("Music :", 100, 150, 70)));
         _comp.push_back(std::make_unique<Button>(Button(musicArray[0].to_str,
             [&](){
                 _selected_mus = { musicArray[0].m, musicArray[0].to_str };
@@ -209,7 +201,7 @@ namespace Indie {
         _comp.push_back(std::make_unique<Button>(Button(musicArray[1].to_str,
             [&](){
                 _selected_mus = { musicArray[1].m, musicArray[1].to_str };
-                _mus.setMusic(MOSTS[0]);
+                _mus.setMusic(MOSTS[rand() % 2]);
             },
             { 450, 250 }, { 300, 100 }, LIGHTGRAY, RED
         )));
@@ -219,6 +211,21 @@ namespace Indie {
                 _mus.setMusic(WOSTS[rand() % 2]);
             },
             { 800, 250 }, { 300, 100 }, LIGHTGRAY, RED
+        )));
+
+        // FPS choice buttons
+        _comp.push_back(std::make_unique<Text>(Text("FPS Limit :", 100, 400, 70)));
+        _comp.push_back(std::make_unique<Button>(Button("30 FPS",
+            [&](){ SetTargetFPS(30); },
+            { 100, 500 }, { 300, 100 }, LIGHTGRAY, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button("60 FPS",
+            [&](){ SetTargetFPS(60); },
+            { 450, 500 }, { 300, 100 }, LIGHTGRAY, RED
+        )));
+        _comp.push_back(std::make_unique<Button>(Button("144 FPS",
+            [&](){ SetTargetFPS(144); },
+            { 800, 500 }, { 300, 100 }, LIGHTGRAY, RED
         )));
     }
 

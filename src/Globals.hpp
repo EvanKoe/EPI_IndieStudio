@@ -58,13 +58,15 @@ namespace Indie {
         "src/assets/sounds/main_title.ogg"
     };
 
-    const std::string MOSTS[1] = {
-        "src/assets/sounds/medieval_rip_and_tear.ogg"
+    const std::string MOSTS[2] = {
+        "src/assets/sounds/medieval_rip_and_tear.ogg",
+        "src/assets/sounds/medieval_bfg_division.ogg"
     };
 
     const std::string WOSTS[2] = {
         "src/assets/sounds/doomdoomdoom.ogg",
-        "src/assets/sounds/code_avec_le_q.ogg"
+        "src/assets/sounds/code_avec_le_q.ogg",
+        "src/assets/sounds/toujours_vivant.ogg"
     };
 
     const MusicMode_s musicArray[3] = {

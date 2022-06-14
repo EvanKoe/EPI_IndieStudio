@@ -56,7 +56,7 @@ namespace Indie {
             void create_settings(void);
             void create_win(void);
 
-            std::unique_ptr<Sprite> &add_image(std::string, std::string, std::string);
+            void add_image(std::string, std::string, std::string);
             bool is_pressed(Rectangle);
 
             const StateAction stateArray[9] = {

@@ -14,7 +14,7 @@ namespace Indie {
     _tpath(texture)
     {
         std::filesystem::path my_path = path;
-        if (path != "EMPTY" || !std::filesystem::exists(my_path.c_str())) {
+        if (path == "EMPTY" || !std::filesystem::exists(my_path.c_str())) {
             std::cout << "3D Object Error: " << path << " doesn't exist\n";
             return;
         }
@@ -22,14 +22,14 @@ namespace Indie {
 
         _model = LoadModel(path.c_str());
         my_path = texture;
-        if (texture != "EMPTY" || !std::filesystem::exists(my_path)) {
+        if (texture == "EMPTY" || !std::filesystem::exists(my_path)) {
             std::cout << "Texture Error: " << texture << " doesn't exist\n";
         } else {
             _texture = LoadTexture(texture.c_str());
             SetMaterialTexture(&_model.materials[0], MATERIAL_MAP_DIFFUSE, _texture);
         }
         my_path = animate;
-        if (animate != "EMPTY" || !std::filesystem::exists(my_path)) {
+        if (animate == "EMPTY" || !std::filesystem::exists(my_path)) {
             std::cout << "Animation Error: " << animate << " doesn't exist\n";
         } else {
             animCount = 0;
