@@ -18,18 +18,19 @@ namespace Indie {
         public:
             Sprite(std::string, std::string texture = "EMPTY", std::string animate = "EMPTY");
             void onHover(void) override {};
+            void setPos(float x = 0.0f, float y = 0.0f, float z = 0.0f) { _pos = { x, y, z }; }
             void setSprite(std::string);
             void getSprite(std::string);
             void onHoverEnd(void) override {  };
             bool isHover(void) override { return false; };
             void onClick(void) override {  }
+            void setAnimation(std::string path = "EMPTY");
             void draw(void) override;
             bool getIs3D(void) override { return true; }
-            Rectangle getRect(void) override { return {0, 0, 0, 0}; }
+            Rectangle getRect(void) override { return { 0, 0, 0, 0 }; }
             ~Sprite();
         private:
             Model _model;
-            // std::vector<Anims> _anims;
             unsigned int animCount;
             std::string _tpath;
             std::string _path;
@@ -37,5 +38,6 @@ namespace Indie {
             ModelAnimation *anim;
             Texture2D _texture;
             int frameCounter;
+            Vector3 _pos;
     };
 };

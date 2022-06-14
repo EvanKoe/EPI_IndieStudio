@@ -8,6 +8,9 @@
 #pragma once
 #include <iostream>
 #include <raylib.h>
+#include <cstdio>
+#include <string>
+#include <cstring>
 
 namespace Indie {
     class IGraphic {

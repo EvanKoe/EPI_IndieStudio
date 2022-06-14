@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.17)
 project(bomberman)
-set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -lstdc++fs")
-set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_CXX_STANDARD 17)
 SET(raylib_FOUND TRUE)
 
 if (UNIX)
+  set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -lstdc++fs")
   SET(CMAKE_CXX_FLAGS "-g")
 endif()
 
@@ -55,3 +55,4 @@ INCLUDE_DIRECTORIES(
 
 add_executable(bomberman ${SOURCES} src/engine/Engine.cpp src/engine/Engine.hpp src/engine/objects/Brick/Brick.cpp src/engine/objects/Brick/Brick.hpp)
 target_link_libraries(bomberman raylib)
+
