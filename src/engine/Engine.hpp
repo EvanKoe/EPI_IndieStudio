@@ -11,7 +11,7 @@
 #include "objects/Brick/Brick.hpp"
 #include "PowerUp.hpp"
 #include "Bomb.hpp"
-#include "Enemy.hpp"
+#include "Ia/Ia.hpp"
 
 #ifndef BOMBERMAN_ENGINE_HPP
 #define BOMBERMAN_ENGINE_HPP
