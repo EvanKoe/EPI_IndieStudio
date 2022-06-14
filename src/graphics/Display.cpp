@@ -160,7 +160,7 @@ namespace Indie {
         )));
     }
 
-    void Display::add_image(std::string a, std::string b, std::string c)
+    void Display::add_image(std::string a, std::string b, std::string c, float scale)
     {
         std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(a, b, c));
         _comp.push_back(std::move(s));
@@ -170,7 +170,7 @@ namespace Indie {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/standing.iqm");
+        add_image("assets/doomslayer-toy/run_v12.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/run_v12.iqm", 5.0f);
         _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("Quit",
             [&](){ changeState(Indie::PAUSE_MENU); },

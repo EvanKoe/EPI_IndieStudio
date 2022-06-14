@@ -8,7 +8,7 @@
 #include "Sprite.hpp"
 
 namespace Indie {
-    Sprite::Sprite(std::string path, std::string texture, std::string animate):
+    Sprite::Sprite(std::string path, std::string texture, std::string animate, float scale):
     _apath(animate),
     _path(path),
     _tpath(texture)

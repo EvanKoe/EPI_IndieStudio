@@ -16,7 +16,7 @@
 namespace Indie {
     class Sprite : public IGraphic {
         public:
-            Sprite(std::string, std::string texture = "EMPTY", std::string animate = "EMPTY");
+            Sprite(std::string, std::string texture = "EMPTY", std::string animate = "EMPTY", float scale = 1.0f);
             void onHover(void) override {};
             void setPos(float x = 0.0f, float y = 0.0f, float z = 0.0f) { _pos = { x, y, z }; }
             void setSprite(std::string);
