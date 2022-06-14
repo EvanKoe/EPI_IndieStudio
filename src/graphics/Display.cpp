@@ -160,11 +160,12 @@ namespace Indie {
         )));
     }
 
-    Sprite Display::add_image(std::string a, std::string b, std::string c)
+    std::unique_ptr<Sprite> &Display::add_image(std::string a, std::string b, std::string c)
     {
-        std::unique_ptr<Sprite> a = std::make_unique<Sprite>(Sprite(a, b, c));
-        _comp.push_back(std::move(a));
-        return a;
+        std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(a, b, c));
+        _comp.push_back(std::move(s));
+
+        return s;
     }
 
     void Display::create_game(void) {
@@ -173,7 +174,7 @@ namespace Indie {
 
         add_image("assets/doomslayer-toy/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/death.iqm");
         for (int i = 0; i < 30; ++i) {
-            for (int j = 0; j < 30; ++i) {
+            for (int j = 0; j < 30; ++j) {
                 std::unique_ptr<Sprite> a = std::make_unique<Sprite>(Sprite("assets/map/floor.obj", "assets/map/floor.jpeg", "EMPTY"));
                 _comp.push_back(std::move(a));
                 a.get()->setPos(i * 8192, j * 8192, 0);
