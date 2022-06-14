@@ -24,6 +24,7 @@ namespace Indie {
             int pos_y_ia;
             std::vector<int> _path;
             std::vector<std::vector<int> > _map;
+            float _timer_respawn;
 
     public:
             IA(float x = 0, float y = 0, float z = 0, int health = 2) : Entity(x, y, z, 2, Indie::ENEMY) {};
