@@ -16,7 +16,7 @@ namespace Indie {
         Vector2 size,
         Color textColor,
         Color hoverColor
-    ) {
+    ): _noise(Noise("src/assets/sounds/shot_gun.mp3")) {
         _text = str;
         _hcolor = hoverColor;
         _ncolor = textColor;
@@ -26,6 +26,7 @@ namespace Indie {
         _name = str;
         _is_enabled = true;
         _borderColor = LIGHTGRAY;
+        // _noise = Noise("src/assets/sounds/shot_gun.mp3");
     }
 
     void Button::setPosition(Vector2 pos) {
