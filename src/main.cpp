@@ -18,7 +18,7 @@ int main(int ac, char **av) {
     // for (auto & i : m._map)
     //     std::cout << i << std::endl;
     Indie::Engine g(m._map, 1);
-    std::vector<std::unique_ptr<GameObject>> gcomps;
+    std::vector<Indie::GameObject> gcomps;
     int k;
 
     while (!WindowShouldClose()) {

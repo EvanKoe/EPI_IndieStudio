@@ -11,29 +11,37 @@
 #include <list>
 #include <map>
 #include <vector>
-#include "../Globals.hpp"
+#include "Globals.hpp"
+#include "Sprite.hpp"
 
 namespace Indie {
     class GameObject {
     public:
-        explicit GameObject(float x = 0, float y = 0, float z = 0, Indie::game_object_id_e id = Indie::NONE)
-            : _x(x), _y(y), _z(z), _id(id){};
-        ~GameObject() = default;
-        float getX() const;
-        float getY() const;
-        float getZ() const;
-        std::vector<float> getPosition() const;
+        GameObject(
+            float x = 0.0f,
+            float y = 0.0f,
+            float z = 0.0f,
+            game_object_id_e id = NONE
+        );
+        void draw(void) { return _sp->draw(); }
+        Sprite *getSprite(void) { return _sp; }
+        bool getIs3d(void) { return _sp->getIs3D(); }
+        float getX(void) const;
+        float getY(void) const;
+        float getZ(void) const;
+        pos_t getPosition(void) const;
         void setX(float x);
         void setY(float y);
         void setZ(float z);
-        Indie::GameObjectsIds getId() const;
+        GameObjectsIds getId() const;
+        ~GameObject() { delete(_sp); }
 
     protected:
+        Sprite *_sp;
         float _x;
         float _y;
         float _z;
-        Indie::GameObjectsIds _id;
-
-    private:
+        GameObjectsIds _id;
     };
 }
+

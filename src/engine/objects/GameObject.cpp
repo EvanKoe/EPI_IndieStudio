@@ -7,6 +7,21 @@
 
 #include "GameObject.hpp"
 
+Indie::GameObject::GameObject(float x, float y, float z, game_object_id_e id):
+    _x(x),
+    _y(y),
+    _z(z),
+    _id(id),
+    _sp(nullptr)
+{
+    for (auto e: textures_tab) {
+        if (e.id == id) {
+            _sp = new Sprite(e.path, e.texture, e.animate);
+            break;
+        }
+    }
+}
+
 Indie::GameObjectsIds Indie::GameObject::getId() const
 {
     return _id;
@@ -42,11 +57,8 @@ void Indie::GameObject::setZ(float z)
     _z = z;
 }
 
-std::vector<float> Indie::GameObject::getPosition() const
+Indie::pos_t Indie::GameObject::getPosition(void) const
 {
-    std::vector<float> position;
-    position.push_back(_x);
-    position.push_back(_y);
-    position.push_back(_z);
+    pos_t position = { _x, _y, _z };
     return position;
 }

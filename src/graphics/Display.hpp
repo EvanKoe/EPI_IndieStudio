@@ -24,15 +24,16 @@
 #include <exception>
 #include <type_traits>
 #include <time.h>
-#include <./Objects/Sprite.hpp>
+#include "Sprite.hpp"
+#include "GameObject.hpp"
 
 namespace Indie {
     class Display {
         public:
             Display(State s, int w = 1440, int h = 900, std::string title = "Raylib Window");
             void changeState(State);
-            int draw(void);
-            int getEvents(void);
+            int draw(std::vector<GameObject>);
+            int getEvents(std::vector<GameObject>);
             Musics getMusic(void) { return _mus; }
             void addComp(IGraphic &);
             ~Display();

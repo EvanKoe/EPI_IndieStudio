@@ -10,7 +10,7 @@
 #include "Player.hpp"
 #include "objects/Brick/Brick.hpp"
 #include "PowerUp.hpp"
-#include "Bomb.hpp"
+// #include "Bomb.hpp"
 #include "Ia/Ia.hpp"
 
 #ifndef BOMBERMAN_ENGINE_HPP
@@ -20,7 +20,7 @@ namespace Indie {
 
     class Engine {
     public:
-        Engine(const std::vector<std::string>& map, int nb_players);
+        Engine(const std::vector<std::string> &map, int nb_players);
         ~Engine() = default;
         void run();
         void addObject(Indie::GameObject *object);

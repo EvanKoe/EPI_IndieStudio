@@ -22,8 +22,8 @@ namespace Indie{
     protected:
         explicit Entity(float x = 0, float y = 0, float z = 0, int health = 1, Indie::GameObjectsIds id = Indie::NONE)
             : GameObject(x, y, z, id),
-              _health(health),
-              _speed(1)
+            _health(health),
+            _speed(1)
         {};
         int _health;
         int _speed;

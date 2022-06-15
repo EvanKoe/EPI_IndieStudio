@@ -14,6 +14,12 @@
 #include <memory>
 
 namespace Indie {
+    typedef struct {
+        float x;
+        float y;
+        float z;
+    } pos_t;
+
     // those are the different screens of the game
     enum State {
         MAIN_MENU,
@@ -163,24 +169,20 @@ namespace Indie {
         NONE = -1
     } game_object_id_e;
 
-    { PLAYER, "assets/doomslayer-oty/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/standing.iqm" },
-    
-
     typedef struct {
         game_object_id_e id;
         std::string path;
         std::string texture;
         std::string animate;
-    }textures_s;
+    } textures_s;
 
-    static const textures_s textures_tab[] = {
-        {PLAYER},
-        {ENEMY},
-        {BRICK},
-        {POWERUP},
-        {BOMB},
-        {WALL}
-
+    static const textures_s textures_tab[6] = {
+        { PLAYER, "assets/doom/run.iqm", "assets/doom/texture.png", "assets/doom/standing.iqm" },
+        { ENEMY, "assets/icon/run.iqm", "assets/icon/texture.png", "assets/icon/standing.iqm" },
+        { BRICK, "EMPTY", "EMPTY", "EMPTY" },
+        { POWERUP, "EMPTY", "EMPTY", "EMPTY" },
+        { BOMB, "EMPTY", "EMPTY", "EMPTY" },
+        { WALL, "EMPTY", "EMPTY", "EMPTY" }
     };
 
     enum PowerUpAttribute {

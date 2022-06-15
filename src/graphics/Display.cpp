@@ -7,11 +7,11 @@
 
 #include "Display.hpp"
 #include "IGraphic.hpp"
-#include "Objects/Button.hpp"
-#include "Objects/Cam.hpp"
-#include "Objects/Musics.hpp"
-#include "Objects/Picture.hpp"
-#include "Objects/Sprite.hpp"
+#include "Button.hpp"
+#include "Cam.hpp"
+#include "Musics.hpp"
+#include "Picture.hpp"
+#include "Sprite.hpp"
 #include <iostream>
 #include <memory>
 #include <raylib.h>
@@ -45,7 +45,7 @@ namespace Indie {
         return;
     }
 
-    int Display::draw(void) {
+    int Display::draw(std::vector<GameObject> comps) {
         BeginDrawing();
         ClearBackground(GetColor(0x313131ff));
 
@@ -53,9 +53,9 @@ namespace Indie {
             BeginMode3D(_cam);
             UpdateCamera(&_cam);     // Disables zoom on scroll
             // DrawGrid(32, 1.0f);   // Disables grid
-            for (const auto &e: _comp) {
-                if (e->getIs3D()) {
-                    e->draw();
+            for (auto e: comps) {
+                if (e.getIs3d()) {
+                    e.draw();
                 }
             }
             EndMode3D();
@@ -70,27 +70,23 @@ namespace Indie {
         return 0;
     }
 
-    int Display::getEvents(void)
+    int Display::getEvents(std::vector<GameObject> comps)
     {
         if (_comp.size() == 0)
             return KNull;
         UpdateMusicStream(_mus.getStream());
-        for (const auto &e: _comp) {
-            if (e->isHover()) {
-                e->onHover();
+        for (auto e: comps) {
+            if (e.getSprite()->isHover()) {
+                e.getSprite()->onHover();
                 if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-                    e->onClick();
+                    e.getSprite()->onClick();
                     break;
                 }
             } else {
-                e->onHoverEnd();
+                e.getSprite()->onHoverEnd();
             }
         }
 
-        // for (int i = 0; i < 32; ++i) {
-            // if (IsKeyDown(key_tab[i].rayKey))
-                // return key_tab[i].std_key;
-        // }
         return GetKeyPressed();
     }
 
