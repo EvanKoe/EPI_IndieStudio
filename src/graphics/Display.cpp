@@ -70,7 +70,7 @@ namespace Indie {
         return 0;
     }
 
-    key_e Display::getEvents(void)
+    int Display::getEvents(void)
     {
         if (_comp.size() == 0)
             return KNull;
@@ -87,11 +87,11 @@ namespace Indie {
             }
         }
 
-        for (int i = 0; i < 32; ++i) {
-            if (IsKeyDown(key_tab[i].rayKey))
-                return key_tab[i].std_key;
-        }
-        return KNull;
+        // for (int i = 0; i < 32; ++i) {
+            // if (IsKeyDown(key_tab[i].rayKey))
+                // return key_tab[i].std_key;
+        // }
+        return GetKeyPressed();
     }
 
     void Display::create_menu(void) {
@@ -160,9 +160,9 @@ namespace Indie {
         )));
     }
 
-    void Display::add_image(std::string a, std::string b, std::string c, float scale)
+    void Display::add_image(std::string path, std::string a, std::string b, std::string c, float scale)
     {
-        std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(a, b, c, scale));
+        std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(path + a, path + b, path + c, scale));
         _comp.push_back(std::move(s));
     }
 
@@ -170,8 +170,8 @@ namespace Indie {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image("assets/doomslayer-toy/run_v13.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/lose.iqm", 11.0f);
-        add_image("assets/icon-of-sin-toy/run.iqm", "assets/icon-of-sin-toy/texture.png", "assets/icon-of-sin-toy/run.iqm", 10.0f);
+        add_image("assets/doomslayer-toy/", "run.iqm", "texture.png", "standing.iqm", 11.0f);
+        add_image("assets/icon-of-sin-toy/", "run.iqm", "texture.png", "run.iqm", 10.0f);
         _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("MENU",
             [&](){ changeState(Indie::PAUSE_MENU); },

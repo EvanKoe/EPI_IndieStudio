@@ -75,24 +75,6 @@ namespace Indie {
         { WTF_IS_THAT, "WTF is that ?!" }
     };
 
-    // keys struct
-    typedef enum KEY {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A, B, C, D,
-        E, F, G, H,
-        I, J, K, L,
-        M, N, O, P,
-        Q, R, S, T,
-        U, V, W, X,
-        Y, Z,
-        Escape,
-        Enter,
-        KNull
-    } key_e;
-
     // Sprite
     typedef enum {
         STANDING,
@@ -110,6 +92,24 @@ namespace Indie {
         AnimType type;
         std::string path;
     } Anims;
+
+    // keys struct
+    typedef enum KEY {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+        A, B, C, D,
+        E, F, G, H,
+        I, J, K, L,
+        M, N, O, P,
+        Q, R, S, T,
+        U, V, W, X,
+        Y, Z,
+        Escape,
+        Enter,
+        KNull
+    } key_e;
 
     typedef struct {
         KeyboardKey rayKey; // raylib key
@@ -161,7 +161,10 @@ namespace Indie {
         POWERUP = 4,
         BOMB = 5,
         NONE = -1
-    }game_object_id_e;
+    } game_object_id_e;
+
+    { PLAYER, "assets/doomslayer-oty/run.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/standing.iqm" },
+    
 
     typedef struct {
         game_object_id_e id;
