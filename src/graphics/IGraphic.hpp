@@ -21,6 +21,7 @@ namespace Indie {
             virtual bool isHover(void) = 0;
             virtual bool getIs3D(void) = 0;
             virtual void onClick(void) {};
+            virtual int getID(void) { return -1; }
             virtual Rectangle getRect(void) = 0;
             virtual ~IGraphic() = default;
         protected:

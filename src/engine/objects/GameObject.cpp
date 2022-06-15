@@ -16,7 +16,7 @@ Indie::GameObject::GameObject(float x, float y, float z, game_object_id_e id):
 {
     for (auto e: textures_tab) {
         if (e.id == id) {
-            _sp = new Sprite(e.path, e.texture, e.animate);
+            _sp = new Sprite(0, e.path, e.texture, e.animate);
             break;
         }
     }

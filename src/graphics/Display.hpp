@@ -27,6 +27,7 @@
 #include "Sprite.hpp"
 #include "GameObject.hpp"
 #include "Engine.hpp"
+#include <chrono>
 namespace Indie {
     class Display {
         public:
@@ -44,6 +45,9 @@ namespace Indie {
             bool _is3D;
             Difficulty _diff;
             Musics _mus;
+            State _state;
+            // std::clock_t _clock;
+            std::chrono::_V2::system_clock::time_point _clock;
 
             // settings
             MusicMode_s _selected_mus;
@@ -57,11 +61,13 @@ namespace Indie {
             void create_pause(void);
             void create_settings(void);
             void create_win(void);
+            void create_splash(void);
 
-            void add_image(std::string, std::string, std::string, std::string, float scale = 1.0f);
+            void add_image(int, std::string, std::string, std::string, std::string, float scale = 1.0f);
             bool is_pressed(Rectangle);
+            void move_slayer(float x, float y);
 
-            const StateAction stateArray[9] = {
+            const StateAction stateArray[10] = {
                 { MAIN_MENU, [&](){ return create_menu(); } },
                 { DIFF_MENU, [&](){ return create_diff(); } },
                 { LOAD_MENU, [&](){ return create_load(); } },
@@ -70,7 +76,16 @@ namespace Indie {
                 { CURR_GAME, [&](){ return create_game(); } },
                 { LOSE_GAME, [&](){ return create_lose(); } },
                 { PAUSE_MENU, [&](){ return create_pause(); } },
-                { WIN_MENU, [&](){ return create_win(); } }
+                { WIN_MENU, [&](){ return create_win(); } },
+                { SPLASH_SCR, [&](){ return create_splash(); } }
+            };
+
+            const events_t eventTab[5] = {
+                { KEY_A, [&](){ move_slayer(-0.1, 0.0); } },
+                { KEY_W, [&](){ move_slayer(0.0, -0.1); } },
+                { KEY_S, [&](){ move_slayer(0.0, 0.1); } },
+                { KEY_D, [&](){ move_slayer(0.1, 0.0); } },
+                { KEY_ESCAPE, [&](){ changeState(PAUSE_MENU); } }
             };
     };
 };

@@ -22,6 +22,7 @@ namespace Indie {
     Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0], 0)) {
         _size.x = w;
         _size.y = h;
+        _state = s;
         _cam = { 0 };
         _is3D = false;
         InitWindow(w, h, title.c_str());
@@ -32,6 +33,7 @@ namespace Indie {
 
     void Display::changeState(State s) {
         _comp.clear();
+        _state = s;
 
         for (auto e: stateArray) {
             if (e.s == s) {
@@ -67,7 +69,34 @@ namespace Indie {
         }
         DrawFPS(1200, 10);
         EndDrawing();
+        if (_state == SPLASH_SCR) {
+            float a = std::chrono::duration<double, std::milli>(
+                std::chrono::high_resolution_clock::now() - _clock
+            ).count();
+            if (a > 3000)
+                changeState(CURR_GAME);
+        }
         return 0;
+    }
+
+    void Display::move_slayer(float x, float y)
+    {
+        if (!_is3D) {
+            return;
+        }
+        Sprite *s = nullptr;
+        Vector3 r = { 0 };
+
+        for (const auto &e: _comp) {
+            if (e.get()->getID() == 0) {
+                s = (Sprite *)e.get();
+                r = s->getPos();
+                s->setPos(r.x + x, 0, r.z + y);
+                float z = y == 0.0f ? (x == -0.1f ? 270.0f : 90.0f) : (y == 0.1f ? 0.0f : 180.0f);
+                s->setRotation(z);
+                return;
+            }
+        }
     }
 
     int Display::getEvents(Engine &e)
@@ -89,9 +118,31 @@ namespace Indie {
             }
         }
 
-        for (; (k = GetKeyPressed()) != 0; ) {
-            // e.run(k, );
+        // for (; (k = GetKeyPressed()) != 0; ) {
+        //     switch (k) {
+        //         case (KEY_A): move_slayer(-1, 0); break;
+        //         case (KEY_W): move_slayer(0, -1); break;
+        //         case (KEY_S): move_slayer(0, 1); break;
+        //         case (KEY_D): move_slayer(1, 0); break;
+        //         case (KEY_ESCAPE): changeState(PAUSE_MENU); break;
+        //     }
+        // }
+        for (auto e: eventTab) {
+            if (IsKeyDown(e.key)) {
+                e.fun();
+            }
         }
+    }
+
+    void Display::create_splash(void) {
+        _is3D = false;
+        srand(time(NULL));
+
+        _comp.push_back(std::make_unique<Picture>(Picture("./src/assets/img/loading.png")));
+        _comp.push_back(std::make_unique<Text>(Text("DOOMERMAN", 100, 50, 70)));
+        _comp.push_back(std::make_unique<Text>(Text("Loading ...", 100, 150, 70)));
+        _comp.push_back(std::make_unique<Text>(Text(tipsArray[rand() % 6], 100, 300, 20)));
+        _clock = std::chrono::high_resolution_clock::now();
     }
 
     void Display::create_menu(void) {
@@ -132,15 +183,15 @@ namespace Indie {
         _comp.push_back(std::make_unique<Picture>(Picture(BGIMG)));
         _comp.push_back(std::make_unique<Text>(Text("New game - difficulty", 100, 50, 60)));
         _comp.push_back(std::make_unique<Button>(Button("I'm too young to die",
-            [&](){ _diff = IM_TOO_YOUNG_TO_DIE; changeState(Indie::CURR_GAME); },
+            [&](){ _diff = IM_TOO_YOUNG_TO_DIE; changeState(Indie::SPLASH_SCR); },
             { 100, 150 }, { 550, 100 }, LIGHTGRAY, RED
         )));
         _comp.push_back(std::make_unique<Button>(Button("Hurt me plenty",
-            [&](){ _diff = HURT_ME_PLENTY; changeState(Indie::CURR_GAME); },
+            [&](){ _diff = HURT_ME_PLENTY; changeState(Indie::SPLASH_SCR); },
             { 100, 300 }, { 550, 100 }, LIGHTGRAY, RED
         )));
         _comp.push_back(std::make_unique<Button>(Button("Nightmare",
-            [&](){ _diff = NIGHTMARE; changeState(Indie::CURR_GAME); },
+            [&](){ _diff = NIGHTMARE; changeState(Indie::SPLASH_SCR); },
             { 100, 450 }, { 550, 100 }, LIGHTGRAY, RED
         )));
     }
@@ -160,9 +211,9 @@ namespace Indie {
         )));
     }
 
-    void Display::add_image(std::string path, std::string a, std::string b, std::string c, float scale)
+    void Display::add_image(int id, std::string path, std::string a, std::string b, std::string c, float scale)
     {
-        std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(path + a, path + b, path + c, scale));
+        std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(id, path + a, path + b, path + c, scale));
         _comp.push_back(std::move(s));
     }
 
@@ -170,8 +221,8 @@ namespace Indie {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image("assets/doom/", "run.iqm", "texture.png", "standing.iqm", 11.0f);
-        add_image("assets/icon/", "run.iqm", "texture.png", "run.iqm", 10.0f);
+        add_image(0, "assets/doom/", "run.iqm", "texture.png", "run.iqm", 11.0f);
+        add_image(1, "assets/icon/", "run.iqm", "texture.png", "run.iqm", 10.0f);
         _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("MENU",
             [&](){ changeState(Indie::PAUSE_MENU); },

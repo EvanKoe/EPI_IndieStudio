@@ -16,13 +16,11 @@ int main(int ac, char **av) {
     Indie::Map m;
     m.LoadMap("map.txt");
     Indie::Engine g(m._map, 1);
-    // std::vector<Indie::GameObject> gcomps;
     int k;
 
     while (!WindowShouldClose()) {
         d.draw();
         k = d.getEvents(g);
-        // g.play(k);
     }
     exit(0);
 }

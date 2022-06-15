@@ -25,7 +25,6 @@ Indie::Engine::Engine(const std::vector<std::string> &map, int nb_players) {
         y = 0;
         x++;
     }
-    this->printMap();
 }
 
 void Indie::Engine::addObject(Indie::GameObject *object) {
@@ -59,6 +58,6 @@ void Indie::Engine::printMap() {
 
 void Indie::Engine::run(int k) {
     // switch (k) {
-        // case (KEY_Q): 
+        // case (KEY_Q):
     // }
 }

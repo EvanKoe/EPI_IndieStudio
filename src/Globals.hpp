@@ -30,7 +30,8 @@ namespace Indie {
         CURR_GAME,
         LOSE_GAME,
         PAUSE_MENU,
-        WIN_MENU
+        WIN_MENU,
+        SPLASH_SCR
     };
 
     // useless settings : music mode
@@ -80,6 +81,20 @@ namespace Indie {
         { MEDIEVAL_MODE, "Medieval Mode" },
         { WTF_IS_THAT, "WTF is that ?!" }
     };
+
+    const std::string tipsArray[5] = {
+        "In order to kill a Tyrant, shoot at it until it dies.",
+        "Rip and tear, until it is done.",
+        "Did you know you could change the soundtrack in the settings ?",
+        "More FPS = more time to appreciate your fight !",
+        "Marauder once said that you were a usurper. Make him regret."
+    };
+
+    // Events
+    typedef struct {
+        KeyboardKey key;
+        std::function<void (void)> fun;
+    } events_t;
 
     // Sprite
     typedef enum {

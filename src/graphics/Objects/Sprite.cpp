@@ -8,7 +8,8 @@
 #include "Sprite.hpp"
 
 namespace Indie {
-    Sprite::Sprite(std::string path, std::string texture, std::string animate, float scale):
+    Sprite::Sprite(int id, std::string path, std::string texture, std::string animate, float scale):
+    _id(id),
     _apath(animate),
     _path(path),
     _tpath(texture),
@@ -19,6 +20,7 @@ namespace Indie {
             std::cout << "3D Object Error: " << path << " doesn't exist\n";
             return;
         }
+        _rot = 0.0f;
         _pos = { 0 };
 
         _model = LoadModel(path.c_str());
@@ -66,8 +68,10 @@ namespace Indie {
         }
 
         // Draw
-        if (_path != "EMPTY")
-            DrawModel(_model, _pos, _scale, WHITE);
+        if (_path != "EMPTY") {
+            DrawModelEx(_model, _pos, { 0.0f, 1.0f, 0.0f }, _rot, { _scale, _scale, _scale }, WHITE);
+        }
+            // DrawModel(_model, _pos, _scale, WHITE);
     }
 
     void Sprite::getSprite(std::string)
