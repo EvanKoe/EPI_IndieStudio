@@ -38,7 +38,6 @@ std::vector<std::string> Indie::Map::getMap() const
 
 void Indie::Map::LoadMap(std::string path)
 {
-    std::cout << "LoadMap" << std::endl;
     std::filesystem::path my_path = path;
     if (!std::filesystem::exists(my_path.c_str())) {
         std::cout << "Error: map doesn't exist" << std::endl;

@@ -5,6 +5,8 @@
 ** game engine
 */
 
+#pragma once
+
 #include "Globals.hpp"
 #include "GameObject.hpp"
 #include "Player.hpp"
@@ -13,8 +15,6 @@
 // #include "Bomb.hpp"
 #include "Ia/Ia.hpp"
 
-#ifndef BOMBERMAN_ENGINE_HPP
-#define BOMBERMAN_ENGINE_HPP
 
 namespace Indie {
 
@@ -22,7 +22,7 @@ namespace Indie {
     public:
         Engine(const std::vector<std::string> &map, int nb_players);
         ~Engine() = default;
-        void run();
+        void run(int k = 0);
         void addObject(Indie::GameObject *object);
         Indie::GameObjectsIds checkCollision(float x, float y, float z);
         void printMap();
@@ -31,4 +31,3 @@ namespace Indie {
         int _nb_players{};
     };
 }
-#endif //BOMBERMAN_ENGINE_HPP

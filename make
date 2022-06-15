@@ -10,4 +10,4 @@ if [ "$1" == "re" ]; then
 fi
 
 make -C ./build
-cp ./bomberman ../bomberman
+cp ./build/bomberman ./bomberman

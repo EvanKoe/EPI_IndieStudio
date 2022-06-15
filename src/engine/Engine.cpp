@@ -56,3 +56,9 @@ void Indie::Engine::printMap() {
         std::cout << object->getId() << " x: " << position.x << " y: " << position.y << " z: " << position.z << std::endl;
     }
 }
+
+void Indie::Engine::run(int k) {
+    // switch (k) {
+        // case (KEY_Q): 
+    // }
+}

@@ -58,10 +58,10 @@ namespace Indie {
     void Sprite::draw(void)
     {
         // Update
-        if (_apath != "EMPTY") {
+        if (_path == "EMPTY" || _apath != "EMPTY") {
             frameCounter++;
             UpdateModelAnimation(_model, anim[0], frameCounter);
-            if (frameCounter >= anim[0].frameCount)
+            if (frameCounter == anim[0].frameCount)
                 frameCounter = 0;
         }
 

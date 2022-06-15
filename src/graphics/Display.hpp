@@ -26,14 +26,14 @@
 #include <time.h>
 #include "Sprite.hpp"
 #include "GameObject.hpp"
-
+#include "Engine.hpp"
 namespace Indie {
     class Display {
         public:
             Display(State s, int w = 1440, int h = 900, std::string title = "Raylib Window");
             void changeState(State);
-            int draw(std::vector<GameObject>);
-            int getEvents(std::vector<GameObject>);
+            int draw(void);
+            int getEvents(Engine &e);
             Musics getMusic(void) { return _mus; }
             void addComp(IGraphic &);
             ~Display();

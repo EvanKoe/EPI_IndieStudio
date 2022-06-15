@@ -45,7 +45,7 @@ namespace Indie {
         return;
     }
 
-    int Display::draw(std::vector<GameObject> comps) {
+    int Display::draw(void) {
         BeginDrawing();
         ClearBackground(GetColor(0x313131ff));
 
@@ -53,9 +53,9 @@ namespace Indie {
             BeginMode3D(_cam);
             UpdateCamera(&_cam);     // Disables zoom on scroll
             // DrawGrid(32, 1.0f);   // Disables grid
-            for (auto e: comps) {
-                if (e.getIs3d()) {
-                    e.draw();
+            for (const auto &e: _comp) {
+                if (e.get()->getIs3D()) {
+                    e.get()->draw();
                 }
             }
             EndMode3D();
@@ -70,24 +70,28 @@ namespace Indie {
         return 0;
     }
 
-    int Display::getEvents(std::vector<GameObject> comps)
+    int Display::getEvents(Engine &e)
     {
+        int k = 0;
+
         if (_comp.size() == 0)
             return KNull;
         UpdateMusicStream(_mus.getStream());
-        for (auto e: comps) {
-            if (e.getSprite()->isHover()) {
-                e.getSprite()->onHover();
+        for (const auto &e: _comp) {
+            if (e.get()->isHover()) {
+                e.get()->onHover();
                 if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-                    e.getSprite()->onClick();
+                    e.get()->onClick();
                     break;
                 }
             } else {
-                e.getSprite()->onHoverEnd();
+                e.get()->onHoverEnd();
             }
         }
 
-        return GetKeyPressed();
+        for (; (k = GetKeyPressed()) != 0; ) {
+            // e.run(k, );
+        }
     }
 
     void Display::create_menu(void) {
@@ -166,8 +170,8 @@ namespace Indie {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image("assets/doomslayer-toy/", "run.iqm", "texture.png", "standing.iqm", 11.0f);
-        add_image("assets/icon-of-sin-toy/", "run.iqm", "texture.png", "run.iqm", 10.0f);
+        add_image("assets/doom/", "run.iqm", "texture.png", "standing.iqm", 11.0f);
+        add_image("assets/icon/", "run.iqm", "texture.png", "run.iqm", 10.0f);
         _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("MENU",
             [&](){ changeState(Indie::PAUSE_MENU); },

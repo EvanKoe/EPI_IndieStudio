@@ -15,15 +15,13 @@ int main(int ac, char **av) {
     Indie::Display d(Indie::MAIN_MENU, 1280, 720, "Indie studio");
     Indie::Map m;
     m.LoadMap("map.txt");
-    // for (auto & i : m._map)
-    //     std::cout << i << std::endl;
     Indie::Engine g(m._map, 1);
-    std::vector<Indie::GameObject> gcomps;
+    // std::vector<Indie::GameObject> gcomps;
     int k;
 
     while (!WindowShouldClose()) {
-        d.draw(gcomps);
-        k = d.getEvents(gcomps);
+        d.draw();
+        k = d.getEvents(g);
         // g.play(k);
     }
     exit(0);
