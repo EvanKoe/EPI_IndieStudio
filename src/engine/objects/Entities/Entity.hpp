@@ -14,7 +14,7 @@ namespace Indie{
     class Entity : public GameObject {
     public:
         Entity() = delete;
-        ~Entity() { _counter--; }
+        ~Entity() {};
         int getHealth() const;
         void movement(int direction);
         static int _counter;

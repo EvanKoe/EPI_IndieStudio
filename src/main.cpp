@@ -22,6 +22,7 @@ int main(int ac, char **av) {
     Indie::key_e k;
 
 
+
     while (!WindowShouldClose()) {
         d.draw();
         k = d.getEvents();

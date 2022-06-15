@@ -20,7 +20,7 @@ namespace Indie {
               _bomb_range(1),
               _bomb_nb(1),
               _wallpass(false){};
-        ~Player();
+        ~Player() = default;
 
         void dropBomb(void);
         void getEvents();

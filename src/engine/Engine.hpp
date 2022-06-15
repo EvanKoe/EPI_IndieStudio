@@ -25,9 +25,10 @@ namespace Indie {
         void run();
         void addObject(Indie::GameObject *object);
         Indie::GameObjectsIds checkCollision(float x, float y, float z);
+        void printMap();
     private:
         std::vector<std::unique_ptr<Indie::GameObject>> _map;
-        int _nb_players;
+        int _nb_players{};
     };
 }
 #endif //BOMBERMAN_ENGINE_HPP

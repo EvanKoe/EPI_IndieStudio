@@ -15,7 +15,7 @@ namespace Indie{
     public:
         explicit Brick(float x = 0, float y = 0, float z = 0):
         GameObject(x, y, z, Indie::BRICK){};
-        ~Brick();
+        ~Brick() = default;
     };
 }
 

@@ -38,6 +38,7 @@ std::vector<std::string> Indie::Map::getMap() const
 
 void Indie::Map::LoadMap(std::string path)
 {
+    std::cout << "LoadMap" << std::endl;
     std::filesystem::path my_path = path;
     if (!std::filesystem::exists(my_path.c_str())) {
         std::cout << "Error: map doesn't exist" << std::endl;
@@ -47,6 +48,9 @@ void Indie::Map::LoadMap(std::string path)
     if (!stream)
         throw std::runtime_error("Cannot open file");
     std::string line;
+    while (std::getline(stream, line)) {
+        _map.push_back(line);
+    }
     stream.close();
 }
 

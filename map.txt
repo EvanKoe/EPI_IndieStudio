@@ -1,5 +1,5 @@
 ###############################
-#O                           O#
+#P                           I#
 # x x x x x x x x x x x x x x #
 #                             #
 # x x x x x x x x x x x x x x #
@@ -27,5 +27,5 @@
 # x x x x x x x x x x x x x x #
 #                             #
 # x x x x x x x x x x x x x x #
-#O                           O#
+#I                           I#
 ###############################
