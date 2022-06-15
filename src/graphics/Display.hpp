@@ -46,7 +46,6 @@ namespace Indie {
             Difficulty _diff;
             Musics _mus;
             State _state;
-            // std::clock_t _clock;
             std::chrono::_V2::system_clock::time_point _clock;
 
             // settings
@@ -63,7 +62,7 @@ namespace Indie {
             void create_win(void);
             void create_splash(void);
 
-            void add_image(int, std::string, std::string, std::string, std::string, float scale = 1.0f);
+            void add_image(int, std::string, std::string, std::string, std::string, float scale = 1.0f, Vector3 pos = { 0 });
             bool is_pressed(Rectangle);
             void move_slayer(float x, float y);
 

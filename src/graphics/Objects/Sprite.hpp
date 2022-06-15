@@ -31,6 +31,8 @@ namespace Indie {
             int getID(void) { return _id; }
             Vector3 getPos(void) { return _pos; }
             void setRotation(float angle = 0.0f) { _rot = angle; }
+            bool is_running(void) { return _is_running; }
+            void set_running(bool a = false) { _is_running = a; }
             ~Sprite();
         private:
             int _id;
@@ -42,6 +44,7 @@ namespace Indie {
             ModelAnimation *anim;
             float _rot;
             float _scale;
+            bool _is_running;
             Texture2D _texture;
             int frameCounter;
             Vector3 _pos;

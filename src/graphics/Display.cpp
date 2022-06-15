@@ -88,13 +88,20 @@ namespace Indie {
         Vector3 r = { 0 };
 
         for (const auto &e: _comp) {
+            s = (Sprite *)e.get();
+            float z = y == 0.0f ? (x == -0.1f ? 270.0f : 90.0f) : (y == 0.1f ? 0.0f : 180.0f);
+            r = s->getPos();
             if (e.get()->getID() == 0) {
-                s = (Sprite *)e.get();
-                r = s->getPos();
-                s->setPos(r.x + x, 0, r.z + y);
-                float z = y == 0.0f ? (x == -0.1f ? 270.0f : 90.0f) : (y == 0.1f ? 0.0f : 180.0f);
+                if (!s->is_running()) {
+                    s->setAnimation("assets/doom/run.iqm");
+                    s->set_running(true);
+                }
+                s->setPos(
+                    r.x + x < -15.2f || r.x + x > 17.0f ? r.x : r.x + x,
+                    0,
+                    r.z + y < -15.7f || r.z + y > 17.0f ? r.z : r.z + y
+                );
                 s->setRotation(z);
-                return;
             }
         }
     }
@@ -106,6 +113,8 @@ namespace Indie {
         if (_comp.size() == 0)
             return KNull;
         UpdateMusicStream(_mus.getStream());
+
+        // Buttons (2D)
         for (const auto &e: _comp) {
             if (e.get()->isHover()) {
                 e.get()->onHover();
@@ -118,20 +127,21 @@ namespace Indie {
             }
         }
 
-        // for (; (k = GetKeyPressed()) != 0; ) {
-        //     switch (k) {
-        //         case (KEY_A): move_slayer(-1, 0); break;
-        //         case (KEY_W): move_slayer(0, -1); break;
-        //         case (KEY_S): move_slayer(0, 1); break;
-        //         case (KEY_D): move_slayer(1, 0); break;
-        //         case (KEY_ESCAPE): changeState(PAUSE_MENU); break;
-        //     }
-        // }
+        // Keys (3D)
         for (auto e: eventTab) {
             if (IsKeyDown(e.key)) {
                 e.fun();
+                return 0;
             }
         }
+        for (const auto &e: _comp) {
+            if (e.get()->getID() == 0 && ((Sprite *)e.get())->is_running()) {
+                ((Sprite *)e.get())->setAnimation("assets/doom/standing.iqm");
+                ((Sprite *)e.get())->set_running(false);
+                return 1;
+            }
+        }
+        return 0;
     }
 
     void Display::create_splash(void) {
@@ -211,9 +221,10 @@ namespace Indie {
         )));
     }
 
-    void Display::add_image(int id, std::string path, std::string a, std::string b, std::string c, float scale)
+    void Display::add_image(int id, std::string path, std::string a, std::string b, std::string c, float scale, Vector3 pos)
     {
         std::unique_ptr<Sprite> s = std::make_unique<Sprite>(Sprite(id, path + a, path + b, path + c, scale));
+        s.get()->setPos(pos.x, pos.y, pos.z);
         _comp.push_back(std::move(s));
     }
 
@@ -221,8 +232,9 @@ namespace Indie {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image(0, "assets/doom/", "run.iqm", "texture.png", "run.iqm", 11.0f);
-        add_image(1, "assets/icon/", "run.iqm", "texture.png", "run.iqm", 10.0f);
+        add_image(0, "assets/doom/", "run.iqm", "texture.png", "standing.iqm", 11.0f, { 1.0f, 0.0f, 1.0f });
+        add_image(1, "assets/icon/", "run.iqm", "texture.png", "standing.iqm", 10.0f, { 13.0f, 0.0f, 13.0f });
+        add_image(2, "assets/gladiator/", "run.iqm", "texture.png", "standing.iqm", 10.0f, { -11.0f, 0.0f, -11.0f });
         _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("MENU",
             [&](){ changeState(Indie::PAUSE_MENU); },
