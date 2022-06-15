@@ -170,7 +170,7 @@ namespace Indie {
         _is3D = true;
         _cam = Cam().getCamera();
 
-        add_image("assets/doomslayer-toy/run_v13.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/run_v13.iqm", 11.0f);
+        add_image("assets/doomslayer-toy/run_v13.iqm", "assets/doomslayer-toy/texture.png", "assets/doomslayer-toy/lose.iqm", 11.0f);
         // add_image("assets/icon-of-sin-toy/run.iqm", "assets/icon-of-sin-toy/texture.png", "assets/icon-of-sin-toy/run.iqm", 10.0f);
         _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("MENU",
