@@ -163,6 +163,23 @@ namespace Indie {
         NONE = -1
     }game_object_id_e;
 
+    typedef struct {
+        game_object_id_e id;
+        std::string path;
+        std::string texture;
+        std::string animate;
+    }textures_s;
+
+    static const textures_s textures_tab[] = {
+        {PLAYER},
+        {ENEMY},
+        {BRICK},
+        {POWERUP},
+        {BOMB},
+        {WALL}
+
+    };
+
     enum PowerUpAttribute {
         BOMB_UP,
         SPEED_UP,
