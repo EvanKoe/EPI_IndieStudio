@@ -32,7 +32,7 @@ namespace Indie {
             Display(State s, int w = 1440, int h = 900, std::string title = "Raylib Window");
             void changeState(State);
             int draw(void);
-            key_e getEvents(void);
+            int getEvents(void);
             Musics getMusic(void) { return _mus; }
             void addComp(IGraphic &);
             ~Display();
@@ -57,7 +57,7 @@ namespace Indie {
             void create_settings(void);
             void create_win(void);
 
-            void add_image(std::string, std::string, std::string, float scale = 1.0f);
+            void add_image(std::string, std::string, std::string, std::string, float scale = 1.0f);
             bool is_pressed(Rectangle);
 
             const StateAction stateArray[9] = {

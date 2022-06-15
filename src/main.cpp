@@ -13,19 +13,17 @@
 
 int main(int ac, char **av) {
     Indie::Display d(Indie::MAIN_MENU, 1280, 720, "Indie studio");
-    // just create a GameEngine class
     Indie::Map m;
     m.LoadMap("map.txt");
-    for (auto & i : m._map)
-        std::cout << i << std::endl;
+    // for (auto & i : m._map)
+    //     std::cout << i << std::endl;
     Indie::Engine g(m._map, 1);
-    Indie::key_e k;
-
-
+    std::vector<std::unique_ptr<GameObject>> gcomps;
+    int k;
 
     while (!WindowShouldClose()) {
-        d.draw();
-        k = d.getEvents();
+        d.draw(gcomps);
+        k = d.getEvents(gcomps);
         // g.play(k);
     }
     exit(0);
