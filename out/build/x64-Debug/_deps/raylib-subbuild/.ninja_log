@@ -1,0 +1,21 @@
+# ninja log v5
+1	292	6768106429978381	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	8e9cf027e8a0defd
+1	292	6768106429978381	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-mkdir	8e9cf027e8a0defd
+293	9851	6768106525570436	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	6f270e83d7534aca
+293	9851	6768106525570436	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-download	6f270e83d7534aca
+9853	9930	6768106526350455	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	5cc2d4ce148579e0
+9853	9930	6768106526350455	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-update	5cc2d4ce148579e0
+9930	10001	6768106527080451	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	db4c4c924318085b
+9930	10001	6768106527080451	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-patch	db4c4c924318085b
+10001	10071	6768106527780453	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	7b122d70ea27244c
+10001	10071	6768106527780453	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-configure	7b122d70ea27244c
+10071	10149	6768106528550743	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	6428e973600cf165
+10071	10149	6768106528550743	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-build	6428e973600cf165
+10149	10223	6768106529290483	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	946d8e8fc9547d7d
+10149	10223	6768106529290483	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-install	946d8e8fc9547d7d
+10223	10298	6768106530040436	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	836e0b6021befab
+10223	10298	6768106530040436	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-test	836e0b6021befab
+10298	10402	6768106531080620	CMakeFiles/raylib-populate-complete	d822970c2a483b3b
+10298	10402	6768106531080620	raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	d822970c2a483b3b
+10298	10402	6768106531080620	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/CMakeFiles/raylib-populate-complete	d822970c2a483b3b
+10298	10402	6768106531080620	C:/Users/cedri/Desktop/EPI_IndieStudio/out/build/x64-Debug/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/raylib-populate-done	d822970c2a483b3b
