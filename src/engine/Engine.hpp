@@ -16,13 +16,18 @@
 #ifndef BOMBERMAN_ENGINE_HPP
 #define BOMBERMAN_ENGINE_HPP
 
-class Engine {
-public:
-    Engine();
-    ~Engine();
-    void run();
-private:
-    std::vector<std::vector<Indie::GameObject *>> _map;
-};
+namespace Indie {
 
+    class Engine {
+    public:
+        Engine(const std::vector<std::string>& map, int nb_players);
+        ~Engine() = default;
+        void run();
+        void addObject(Indie::GameObject *object);
+        Indie::GameObjectsIds checkCollision(float x, float y, float z);
+    private:
+        std::vector<std::unique_ptr<Indie::GameObject>> _map;
+        int _nb_players;
+    };
+}
 #endif //BOMBERMAN_ENGINE_HPP

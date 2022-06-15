@@ -47,10 +47,6 @@ void Indie::Map::LoadMap(std::string path)
     if (!stream)
         throw std::runtime_error("Cannot open file");
     std::string line;
-    for (int i = 0; std::getline(stream, line); ++i) {
-        std::cout << line << std::endl;
-        _map[i] = line;
-    }
     stream.close();
 }
 

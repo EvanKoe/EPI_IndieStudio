@@ -26,13 +26,13 @@ namespace Indie {
         void setX(float x);
         void setY(float y);
         void setZ(float z);
-        int getId() const;
+        Indie::GameObjectsIds getId() const;
 
     protected:
         float _x;
         float _y;
         float _z;
-        int _id;
+        Indie::GameObjectsIds _id;
 
     private:
     };

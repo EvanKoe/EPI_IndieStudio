@@ -53,6 +53,6 @@ INCLUDE_DIRECTORIES(
         "${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects/Entities/Enemy/"
 )
 
-add_executable(bomberman ${SOURCES} src/engine/Engine.cpp src/engine/Engine.hpp src/engine/objects/Brick/Brick.cpp src/engine/objects/Brick/Brick.hpp)
+add_executable(bomberman ${SOURCES} src/engine/Engine.cpp src/engine/Engine.hpp src/engine/objects/Brick/Brick.cpp src/engine/objects/Brick/Brick.hpp src/engine/objects/Wall/Wall.cpp src/engine/objects/Wall/Wall.hpp)
 target_link_libraries(bomberman raylib)
 

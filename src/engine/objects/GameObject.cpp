@@ -7,7 +7,7 @@
 
 #include "GameObject.hpp"
 
-int Indie::GameObject::getId() const
+Indie::GameObjectsIds Indie::GameObject::getId() const
 {
     return _id;
 }
@@ -46,6 +46,7 @@ std::vector<float> Indie::GameObject::getPosition() const
 {
     std::vector<float> position;
     position.push_back(_x);
+    position.push_back(_y);
     position.push_back(_z);
     return position;
 }

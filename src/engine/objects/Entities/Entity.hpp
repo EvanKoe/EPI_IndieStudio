@@ -24,9 +24,7 @@ namespace Indie{
             : GameObject(x, y, z, id),
               _health(health),
               _speed(1)
-        {
-            _counter++;
-        };
+        {};
         int _health;
         int _speed;
 
