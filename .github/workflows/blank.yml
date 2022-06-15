@@ -86,27 +86,6 @@ jobs:
         shell: bash
         run: ctest -C $BUILD_TYPE
         
-  macOs_build:
-    name: macOs Build
-    runs-on: macOS-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Create Build Environment
-        run: cmake -E make_directory ${{github.workspace}}/build
-
-      - name: Configure CMake
-        working-directory: ${{github.workspace}}/build
-        run: cmake $env:GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$env:BUILD_TYPE -DPLATFORM=Desktop
-
-      - name: Build
-        working-directory: ${{github.workspace}}/build
-        run: cmake --build 
-
-      - name: Test
-        working-directory: ${{github.workspace}}/build
-        run: ctest -C $env:BUILD_TYPE
   Push:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
