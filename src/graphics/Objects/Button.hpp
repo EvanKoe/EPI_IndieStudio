@@ -8,6 +8,7 @@
 #pragma once
 
 #include "../IGraphic.hpp"
+#include "Noise.hpp"
 #include <functional>
 #include <raylib.h>
 #include <iostream>
@@ -25,7 +26,10 @@ namespace Indie {
             );
             void onHover(void) override;
             void onHoverEnd(void) override;
-            void onClick(void) override { return _onClick(); }
+            void onClick(void) override {
+                _noise.play();
+                return _onClick();
+            }
             void draw(void) override;
             Rectangle getRect(void) override { return _rec; }
             void setPosition(Vector2);
@@ -48,5 +52,6 @@ namespace Indie {
             std::string _name;
             std::string _text;
             bool _is_enabled;
+            Noise _noise;
     };
 };

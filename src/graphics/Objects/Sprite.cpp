@@ -11,7 +11,8 @@ namespace Indie {
     Sprite::Sprite(std::string path, std::string texture, std::string animate, float scale):
     _apath(animate),
     _path(path),
-    _tpath(texture)
+    _tpath(texture),
+    _scale(scale)
     {
         std::filesystem::path my_path = path;
         if (path == "EMPTY" || !std::filesystem::exists(my_path.c_str())) {
@@ -66,7 +67,7 @@ namespace Indie {
 
         // Draw
         if (_path != "EMPTY")
-            DrawModel(_model, _pos, { 1.0 }, WHITE);
+            DrawModel(_model, _pos, _scale, WHITE);
     }
 
     void Sprite::getSprite(std::string)
