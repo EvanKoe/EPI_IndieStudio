@@ -95,15 +95,14 @@ namespace Indie {
             int a = r.x + x < -15.2f || r.x + x > 17.0f;
             int b = r.z + y < -15.7f || r.z + y > 17.0f;
             if (e.get()->getID() == id) {
+                s->setRotation(z);
                 if (!s->is_running()) {
                     s->setAnimation(runToIdTab[id]);
                     s->set_running(true);
                 } if (a || b) {
-                    std::make_unique<Noise>(Noise("assets/map/ehh.wav", 0.5f));
                     break;
                 }
                 s->setPos(r.x + x, 0, r.z + y);
-                s->setRotation(z);
             }
         }
     }
