@@ -19,7 +19,7 @@
 namespace Indie {
     const std::string BGIMG = "./src/assets/img/title.png";
 
-    Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0], 0)) {
+    Display::Display(State s, int w, int h, std::string title): _mus(Musics(DOSTS[0], 1)) {
         _size.x = w;
         _size.y = h;
         _state = s;
@@ -79,7 +79,7 @@ namespace Indie {
         return 0;
     }
 
-    void Display::move_slayer(float x, float y)
+    void Display::move_slayer(int id, float x, float y)
     {
         if (!_is3D) {
             return;
@@ -91,9 +91,9 @@ namespace Indie {
             s = (Sprite *)e.get();
             float z = y == 0.0f ? (x == -0.1f ? 270.0f : 90.0f) : (y == 0.1f ? 0.0f : 180.0f);
             r = s->getPos();
-            if (e.get()->getID() == 0) {
+            if (e.get()->getID() == id) {
                 if (!s->is_running()) {
-                    s->setAnimation("assets/doom/run.iqm");
+                    s->setAnimation(runToIdTab[id]);
                     s->set_running(true);
                 }
                 s->setPos(
@@ -135,10 +135,10 @@ namespace Indie {
             }
         }
         for (const auto &e: _comp) {
-            if (e.get()->getID() == 0 && ((Sprite *)e.get())->is_running()) {
-                ((Sprite *)e.get())->setAnimation("assets/doom/standing.iqm");
-                ((Sprite *)e.get())->set_running(false);
-                return 1;
+            Sprite *s = (Sprite *)(e.get());
+            if (s->getID() >= 0 && s->is_running()) {
+                s->setAnimation(standToIdTab[s->getID()]);
+                s->set_running(false);
             }
         }
         return 0;
