@@ -12,15 +12,19 @@
 #include "Engine.hpp"
 
 int main(int ac, char **av) {
-    Indie::Display d(Indie::MAIN_MENU, 1280, 720, "Indie studio");
-    Indie::Map m;
-    m.LoadMap("map.txt");
-    Indie::Engine g(m._map, 1);
-    int k;
+    try {
+        Indie::Display d(Indie::MAIN_MENU, 1280, 720, "Indie studio");
+        Indie::Map m;
+        m.LoadMap("map.txt");
+        Indie::Engine g(m._map, 1);
+        int k;
 
-    while (!WindowShouldClose()) {
-        d.draw();
-        k = d.getEvents(g);
+        while (!WindowShouldClose()) {
+            d.draw();
+            k = d.getEvents(g);
+        }
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
     }
-    exit(0);
+    return 0;
 }

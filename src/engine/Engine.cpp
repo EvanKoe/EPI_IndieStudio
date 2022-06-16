@@ -17,7 +17,7 @@ Indie::Engine::Engine(const std::vector<std::string> &map, int nb_players) {
                 case ('x'): this->addObject(new Indie::Brick(x, y, 0)); break;
                 case ('#'): this->addObject(new Indie::Wall(x, y, 0)); break;
                 case ('P'): this->addObject(new Indie::Player(x, y, 0)); break;
-                case ('I'): this->addObject(new Indie::IA(x, y, 0)); break;
+                // case ('I'): this->addObject(new Indie::IA(x, y, 0)); break;
                 default: break;
             }
             y++;
