@@ -45,6 +45,7 @@ namespace Indie {
             bool _is3D;
             Difficulty _diff;
             Musics _mus;
+            int _fps;
             State _state;
             std::chrono::_V2::system_clock::time_point _clock;
 

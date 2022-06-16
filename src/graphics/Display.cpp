@@ -280,15 +280,15 @@ namespace Indie {
         // FPS choice buttons
         _comp.push_back(std::make_unique<Text>(Text("FPS Limit :", 100, 400, 70)));
         _comp.push_back(std::make_unique<Button>(Button("30 FPS",
-            [&](){ SetTargetFPS(30); },
+            [&](){ SetTargetFPS(30); _fps = 30; },
             { 100, 500 }, { 300, 100 }, LIGHTGRAY, RED
         )));
         _comp.push_back(std::make_unique<Button>(Button("60 FPS",
-            [&](){ SetTargetFPS(60); },
+            [&](){ SetTargetFPS(60); _fps = 60; },
             { 450, 500 }, { 300, 100 }, LIGHTGRAY, RED
         )));
         _comp.push_back(std::make_unique<Button>(Button("144 FPS",
-            [&](){ SetTargetFPS(144); },
+            [&](){ SetTargetFPS(144); _fps = 144; },
             { 800, 500 }, { 300, 100 }, LIGHTGRAY, RED
         )));
     }
