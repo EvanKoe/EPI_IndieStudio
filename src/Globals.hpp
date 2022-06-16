@@ -59,6 +59,18 @@ namespace Indie {
         std::function<void (void)> fun;
     } StateAction;
 
+    const std::string runToIdTab[] = {
+        "assets/doom/run.iqm",
+        "assets/icon/run.iqm",
+        "assets/marauder/run.iqm"
+    };
+
+    const std::string standToIdTab[] = {
+        "assets/doom/standing.iqm",
+        "assets/icon/standing.iqm",
+        "assets/marauder/standing.iqm"
+    };
+
     // musics
     const std::string DOSTS[2] = {
         "src/assets/sounds/bfg10k.ogg",

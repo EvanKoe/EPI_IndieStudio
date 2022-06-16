@@ -45,6 +45,7 @@ namespace Indie {
             bool _is3D;
             Difficulty _diff;
             Musics _mus;
+            int _fps;
             State _state;
             std::chrono::system_clock::time_point _clock;
 
@@ -64,7 +65,7 @@ namespace Indie {
 
             void add_image(int, std::string, std::string, std::string, std::string, float scale = 1.0f, Vector3 pos = { 0 });
             bool is_pressed(Rectangle);
-            void move_slayer(float x, float y);
+            void move_slayer(int, float x, float y);
 
             const StateAction stateArray[10] = {
                 { MAIN_MENU, [&](){ return create_menu(); } },
@@ -79,11 +80,15 @@ namespace Indie {
                 { SPLASH_SCR, [&](){ return create_splash(); } }
             };
 
-            const events_t eventTab[5] = {
-                { KEY_A, [&](){ move_slayer(-0.1, 0.0); } },
-                { KEY_W, [&](){ move_slayer(0.0, -0.1); } },
-                { KEY_S, [&](){ move_slayer(0.0, 0.1); } },
-                { KEY_D, [&](){ move_slayer(0.1, 0.0); } },
+            const events_t eventTab[9] = {
+                { KEY_A, [&](){ move_slayer(0, -0.1, 0.0); } },
+                { KEY_W, [&](){ move_slayer(0, 0.0, -0.1); } },
+                { KEY_S, [&](){ move_slayer(0, 0.0, 0.1); } },
+                { KEY_D, [&](){ move_slayer(0, 0.1, 0.0); } },
+                { KEY_UP, [&](){ move_slayer(1, 0.0, -0.1 ); } },
+                { KEY_DOWN, [&](){ move_slayer(1, 0.0, 0.1); } },
+                { KEY_LEFT, [&](){ move_slayer(1, -0.1, 0.0 ); } },
+                { KEY_RIGHT, [&](){ move_slayer(1, 0.1, 0.0 ); } },
                 { KEY_ESCAPE, [&](){ changeState(PAUSE_MENU); } }
             };
     };
