@@ -129,6 +129,9 @@ namespace Indie {
         }
 
         // Keys (3D)
+        if (!_is3D) {
+            return 0;
+        }
         for (auto e: eventTab) {
             if (IsKeyDown(e.key)) {
                 e.fun();
