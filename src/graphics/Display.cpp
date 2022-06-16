@@ -71,7 +71,7 @@ namespace Indie {
         EndDrawing();
         if (_state == SPLASH_SCR) {
             float a = std::chrono::duration<double, std::milli>(
-                std::chrono::high_resolution_clock::now() - _clock
+                std::chrono::system_clock::now() - _clock
             ).count();
             if (a > 3000)
                 changeState(CURR_GAME);
@@ -152,7 +152,7 @@ namespace Indie {
         _comp.push_back(std::make_unique<Text>(Text("DOOMERMAN", 100, 50, 70)));
         _comp.push_back(std::make_unique<Text>(Text("Loading ...", 100, 150, 70)));
         _comp.push_back(std::make_unique<Text>(Text(tipsArray[rand() % 6], 100, 300, 20)));
-        _clock = std::chrono::high_resolution_clock::now();
+        _clock = std::chrono::system_clock::now();
     }
 
     void Display::create_menu(void) {
@@ -234,7 +234,7 @@ namespace Indie {
 
         add_image(0, "assets/doom/", "run.iqm", "texture.png", "standing.iqm", 11.0f, { 1.0f, 0.0f, 1.0f });
         add_image(1, "assets/icon/", "run.iqm", "texture.png", "standing.iqm", 10.0f, { 13.0f, 0.0f, 13.0f });
-        add_image(2, "assets/gladiator/", "run.iqm", "texture.png", "standing.iqm", 10.0f, { -11.0f, 0.0f, -11.0f });
+        add_image(2, "assets/marauder/", "run.iqm", "texture.png", "death.iqm", 10.0f, { -11.0f, 0.0f, -11.0f });
         _comp.push_back(std::make_unique<MeshMap>(MeshMap("assets/map/map.png")));
         _comp.push_back(std::make_unique<Button>(Button("MENU",
             [&](){ changeState(Indie::PAUSE_MENU); },

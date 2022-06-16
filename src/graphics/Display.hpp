@@ -46,7 +46,7 @@ namespace Indie {
             Difficulty _diff;
             Musics _mus;
             State _state;
-            std::chrono::_V2::system_clock::time_point _clock;
+            std::chrono::system_clock::time_point _clock;
 
             // settings
             MusicMode_s _selected_mus;
